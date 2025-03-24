@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
-const port = 5000;
+const port =  process.env.PORT || 5000;  // Usa la porta dell'ambiente o 5000 come fallback;
 
 // Modello Cliente (definito nel file 'cliente.js', se non l'hai ancora fatto)
 const Cliente = require('./models/cliente');
