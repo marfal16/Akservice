@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';  // Assicurati che il CSS sia nella stessa cartella
 
 // Componenti di esempio (crea questi file se non esistono ancora)
-import Home from './pages/Home';  
-import About from './pages/About';
+import Home from './app/pages/Home';  
+import About from './app/pages/About'; 
 
 function App() {
   // Definisci uno stato per memorizzare i dati che ricevi dal backend
