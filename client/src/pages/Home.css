@@ -1,0 +1,311 @@
+/* Corpo della pagina */
+body {
+    background-color: #f4f4f4;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .about-us {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .about-content {
+    display: flex; /* Usa flex per allineare immagine e testo orizzontalmente */
+    justify-content: flex-start; /* Allinea gli elementi a sinistra */
+    align-items: flex-start; /* Allinea gli elementi verticalmente in alto */
+    margin-bottom: 10px;
+  }
+  
+  .about-image {
+    max-width: 30%;
+    border-radius: 1px;
+    margin-right: 20px; /* Distanza tra l'immagine e il testo */
+  }
+  
+  .about-content p {
+    text-align: left; /* Allinea il testo a sinistra */
+    margin: 0; /* Rimuove margini indesiderati */
+  }
+  
+
+  
+/* Sezioni principali */
+.company-description, .services-courses, .contact-info {
+    background-color: #fff;
+    padding: 30px;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 1200px; /* Larghezza massima */
+    width: 100%;
+    min-height: 400px; /* Aggiungi altezza minima */
+  }
+  
+  .services-courses {
+    background-color: #f9f9f9;
+  }
+  
+  /* Immagine di copertura */
+  .cover-img {
+    width: 100%; /* L'immagine riempie tutta la larghezza */
+    height: 100%; /* L'immagine occupa tutta l'altezza del contenitore */
+    object-fit: cover; /* L'immagine si adatta senza distorcere */
+  }
+  
+/* Servizi e Corsi */
+.services-list {
+    display: flex; /* Utilizza flexbox per allineare gli elementi in orizzontale */
+    justify-content: space-between; /* Spaziatura tra i box */
+    gap: 20px; /* Distanza tra i box */
+    flex-wrap: nowrap; /* Impedisce che i box vadano a capo su una nuova riga */
+  }
+  
+  /* Elementi del servizio */
+  .service-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 30%; /* Ogni box occupa il 30% della larghezza del contenitore */
+    text-align: center;
+    min-width: 250px;
+  }
+  
+  /* Stile per le immagini */
+  .service-item img {
+    width: 100%; /* La larghezza dell'immagine è il 100% del contenitore */
+    max-width: 250px; /* Limita la dimensione massima */
+    height: auto; /* Mantiene le proporzioni */
+    margin-bottom: 20px;
+  }
+  
+  .service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Link per la pagina Shop */
+  .shop-link {
+    background-color: #bd732a;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .shop-link:hover {
+    background-color: #f0a500; /* Cambia colore al passaggio del mouse */
+  }
+
+  /* Testimonianze */
+.testimonials-section {
+    padding: 40px 0;
+    background-color: #f9f9f9;
+    text-align: center;
+  }
+  
+  .testimonials-section h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Carosello delle testimonianze */
+  .testimonials-carousel {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* Ogni testimonianza */
+  .testimonial-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100% !important;  /* Forza il 100% */
+    max-width: 350px !important;  /* Ridotto per restringere il box */
+    text-align: center;
+    margin: 0 auto 20px auto;
+  }
+  
+  /* Stile del testo della testimonianza */
+  .testimonial-item blockquote {
+    font-style: italic;
+    color: #555;
+  }
+  
+  .testimonial-item p {
+    font-size: 1rem;
+    margin-top: 1px;
+    color: #333;
+  }
+
+  
+  /* Contatti */
+  .contact-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 30px;
+  }
+  
+  .map-container {
+    width: 58%;
+  }
+  
+  .contact-details {
+    width: 58%;
+  }
+  
+  .emails {
+    margin-top: 10px;
+  }
+  
+  .contact-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .contact-box {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .info-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .info-title {
+    font-weight: bold;
+    text-transform: uppercase;  /* Maiuscolo */
+    color: #bd732a;
+    margin-bottom: 5px;
+  }
+  
+  .info-content {
+    color: #555;
+    margin: 0;
+  }
+  
+  .info-content a {
+    color: #2b669c;
+    text-decoration: none;
+  }
+  
+  .info-content a:hover {
+    text-decoration: underline;
+  }
+  
+  .map-box {
+    flex: 1.2;
+  }
+  
+  .info-box {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .form-box {
+    flex: 1.2;
+  }
+  
+  .contact-box iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+  }
+  
+/* Box Contattaci */
+.contact-box.form-box {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px; /* Imposta una larghezza massima per un aspetto più compatto */
+    margin: 0px auto;
+    min-height: 400px; /* Aggiungi altezza minima per uniformare */
+  }
+  
+  .contact-box h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #bd732a;
+  }
+  
+  input, textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box; /* Per includere padding nella larghezza totale */
+  }
+  
+  textarea {
+    resize: vertical; /* Permette la ridimensionabilità solo verticale */
+  }
+  
+  button {
+    background-color: #bd732a;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  button:hover {
+    background-color: #9a5e1f;
+  }
+  
+
+  /* Ottimizzazioni per mobile */
+  @media (max-width: 768px) {
+    .cover-image {
+      height: 40vh;
+    }
+  
+    .service-item {
+      width: 100%;
+    }
+  
+    .contact-box.form-box {
+      padding: 15px;
+    }
+  
+    input, textarea, button {
+      font-size: 1rem;
+    }
+  }
+  
