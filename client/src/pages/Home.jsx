@@ -5,6 +5,7 @@ import workImage from '../assets/work.jpg';
 import payImage from '../assets/pay.jpg';  
 import studyImage from '../assets/study.jpg';  
 import logoImage from '../assets/logo.jpg';  
+import { Link } from 'react-router-dom';  // Importa Link da react-router-dom
 
 const Home = () => {
   useEffect(() => {
@@ -12,6 +13,12 @@ const Home = () => {
     script.src = 'https://cdn.shapo.io/js/embed.js';
     script.defer = true;
     document.body.appendChild(script);
+    script.onload = () => {
+      if (window.Shapo) {
+        window.Shapo.init();
+      }
+    };
+
   }, []);
 
   return (
@@ -31,28 +38,28 @@ const Home = () => {
       </div>
 
       <section className="services-courses" id="services">
-        <h2>I Nostri Servizi</h2>
-        <div className="services-list">
-          <div className="service-item">
-            <img src={workImage} alt="Servizio 1" className="service-icon" />
-            <h3>Formazione Professionale</h3>
-            <p>Corsi pensati per preparare i giovani al mondo del lavoro, con focus su competenze pratiche e teoriche.</p>
-            <a href="/shop" className="shop-link">Scopri i dettagli</a>
-          </div>
-          <div className="service-item">
-            <img src={payImage} alt="Servizio 2" className="service-icon" />
-            <h3>Supporto al Cliente</h3>
-            <p>Assistenza completa per ogni esigenza, dalle domande frequenti a consulenze personalizzate.</p>
-            <a href="/shop" className="shop-link">Scopri i dettagli</a>
-          </div>
-          <div className="service-item">
-            <img src={studyImage} alt="Servizio 3" className="service-icon" />
-            <h3>Formazione Scolastica</h3>
-            <p>Offriamo corsi pratici su competenze specifiche per carriere professionali nel settore tecnico.</p>
-            <a href="/shop" className="shop-link">Scopri i dettagli</a>
-          </div>
-        </div>
-      </section>
+  <h2>I Nostri Servizi</h2>
+  <div className="services-list">
+    <div className="service-item">
+      <img src={workImage} alt="Servizio 1" className="service-icon" />
+      <h3>Certificazioni Informatiche</h3>
+      <p>Corsi pensati per preparare i giovani al mondo del lavoro, con focus su competenze pratiche e teoriche.</p>
+      <Link to="/corsi-informatici" className="shop-link">Scopri i dettagli</Link>
+    </div>
+    <div className="service-item">
+      <img src={payImage} alt="Servizio 2" className="service-icon" />
+      <h3>Supporto al Cliente</h3>
+      <p>Assistenza completa per ogni esigenza, dalle domande frequenti a consulenze personalizzate.</p>
+      <Link to="/supporto-cliente" className="shop-link">Scopri i dettagli</Link>
+    </div>
+    <div className="service-item">
+      <img src={studyImage} alt="Servizio 3" className="service-icon" />
+      <h3>Formazione Scolastica</h3>
+      <p>Offriamo corsi pratici su competenze specifiche per carriere professionali nel settore tecnico.</p>
+      <Link to="/formazione-scolastica" className="shop-link">Scopri i dettagli</Link>
+    </div>
+  </div>
+</section>
 
       {/* Sezione Testimonianze */}
       <section className="testimonials-section" id="testimonials">

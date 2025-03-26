@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
+const Corso = require('./models/corsoModel'); // Importa il modello
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -18,40 +19,6 @@ mongoose.connect(uri)
   .then(() => console.log('Connected to MongoDB Atlas'))
   .catch(err => console.log('Error connecting to MongoDB Atlas', err));
 
-// Modello Cliente
-const Cliente = require('./models/cliente');
-
-// Rotte CRUD per i clienti
-app.post('/clienti', async (req, res) => {
-  const { nome, email, telefono } = req.body;
-  const cliente = new Cliente({ nome, email, telefono });
-  await cliente.save();
-  res.status(201).send(cliente);
-});
-
-app.get('/clienti', async (req, res) => {
-  try {
-    const clienti = await Cliente.find();
-    res.json(clienti);
-  } catch (err) {
-    res.status(500).send('Errore nel recuperare i clienti');
-  }
-});
-
-app.put('/clienti/:id', async (req, res) => {
-  try {
-    const { nome, email, telefono } = req.body;
-    const cliente = await Cliente.findByIdAndUpdate(req.params.id, { nome, email, telefono }, { new: true });
-
-    if (!cliente) {
-      return res.status(404).send('Cliente non trovato');
-    }
-
-    res.status(200).json(cliente);
-  } catch (error) {
-    res.status(500).send('Errore del server');
-  }
-});
 
 // SOLO IN PRODUZIONE: Servire il frontend React
 if (process.env.NODE_ENV === "production") {
@@ -63,6 +30,27 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
+// Rotta per aggiungere un nuovo corso
+app.post('/api/corsi/add', async (req, res) => {
+  const nuovoCorso = new Corso(req.body);
+
+  try {
+    await nuovoCorso.save();
+    res.status(201).send(nuovoCorso);
+  } catch (err) {
+    res.status(400).send(err);
+  }
+});
+
+// Rotta per ottenere tutti i corsi
+app.get('/api/corsi', async (req, res) => {
+  try {
+    const corsi = await Corso.find();
+    res.status(200).json(corsi);
+  } catch (err) {
+    res.status(400).send(err);
+  }
+});
 // Avvio del server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

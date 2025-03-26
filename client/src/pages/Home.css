@@ -89,18 +89,19 @@ body {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   }
   
-  /* Link per la pagina Shop */
   .shop-link {
-    background-color: #bd732a;
+    display: inline-block;
+    background-color: #bd732a; /* Arancione */
     color: white;
     padding: 10px 20px;
-    border-radius: 5px;
     text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
     transition: background-color 0.3s ease;
   }
   
   .shop-link:hover {
-    background-color: #f0a500; /* Cambia colore al passaggio del mouse */
+    background-color: #bd732a; /* Un arancione più scuro per hover */
   }
 
   /* Testimonianze */
@@ -308,4 +309,5 @@ body {
       font-size: 1rem;
     }
   }
-  
+
+
