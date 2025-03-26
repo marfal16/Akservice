@@ -54,7 +54,7 @@ const Home = () => {
     </div>
     <div className="service-item">
       <img src={studyImage} alt="Servizio 3" className="service-icon" />
-      <h3>Formazione Scolastica</h3>
+      <h3>Certificazioni Linguistiche</h3>
       <p>Offriamo corsi pratici su competenze specifiche per carriere professionali nel settore tecnico.</p>
       <Link to="/formazione-scolastica" className="shop-link">Scopri i dettagli</Link>
     </div>
@@ -68,7 +68,7 @@ const Home = () => {
       </section>
 
       <section className="contact-section" id="contact">
-        <h2>Contattaci</h2>
+        <h2>Contatti</h2>
         <div className="contact-container">
           <div className="contact-box map-box">
             <iframe

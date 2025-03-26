@@ -19,7 +19,7 @@ const CorsiList = () => {
   }, []); // [] significa che la chiamata viene fatta una sola volta al caricamento del componente
 
   return (
-    <div>
+  {/*  <div>
       <h2>Corsi disponibili</h2>
       <div className="corsi-list">
         {corsi.map((corso) => (
@@ -31,8 +31,10 @@ const CorsiList = () => {
             <p>Fine: {new Date(corso.data_fine).toLocaleDateString()}</p>
           </div>
         ))}
-      </div>
-    </div>
+      </div> 
+
+
+    </div> */}
   );
 };
 

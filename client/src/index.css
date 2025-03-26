@@ -1,27 +1,16 @@
-body {
+/* body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
+  background-color: #f4f4f4;  /* Mantenere il background globale 
 }
 
 h1 {
   color: #333;
 }
 
-.logo {
-  width: 50px;
-}
-
-.card {
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
 button {
-  background-color: #4CAF50;
+  background-color: #d9c3da;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -30,25 +19,6 @@ button {
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #c09e15;
 }
-
-nav ul {
-  list-style: none;
-  padding: 0;
-}
-
-nav ul li {
-  display: inline;
-  margin-right: 20px;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: #333;
-}
-
-nav ul li a:hover {
-  color: #4CAF50;
-}
-
+*/

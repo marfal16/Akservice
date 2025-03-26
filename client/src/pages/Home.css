@@ -45,9 +45,16 @@ body {
     min-height: 400px; /* Aggiungi altezza minima */
   }
   
-  .services-courses {
-    background-color: #f9f9f9;
-  }
+/* Allargare la sezione "I Nostri Servizi" */
+.services-courses {
+  background-color: #f9f9f9;
+  width: 100%; /* Impostare la larghezza al 100% */
+  max-width: none; /* Rimuovere la larghezza massima per evitare che venga limitata */
+  padding: 30px;
+  margin: 20px auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
   
   /* Immagine di copertura */
   .cover-img {
