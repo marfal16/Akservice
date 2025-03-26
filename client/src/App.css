@@ -48,6 +48,54 @@ body {
   margin-top: 60px; /* Altezza della barra di navigazione */
 }
 
+/* Barra di navigazione */
+.navbar {
+  background-color: #333;
+  padding: 10px 20px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.navbar nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar nav ul li {
+  display: inline-block;
+}
+
+.navbar nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar nav ul li a:hover {
+  background-color: #bd732a;
+  border-radius: 5px;
+}
+
+/* Effetto di scorrimento fluido */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Per evitare che il contenuto si nasconda sotto la barra */
+body {
+  margin-top: 60px;
+}
+
 
 .logo {
   height: 6em;

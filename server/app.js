@@ -3,6 +3,16 @@ const mongoose = require('mongoose');
 const cors = require('cors');  // Aggiungi questa linea
 const app = express();
 const port = process.env.PORT || 5000;
+const path = require('path');
+
+// Servire i file statici di React
+app.use(express.static(path.join(__dirname, 'build')));
+
+// Per qualsiasi altra richiesta, invia il file index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 
 // Modello Cliente (definito nel file 'cliente.js')
 const Cliente = require('./models/cliente');
