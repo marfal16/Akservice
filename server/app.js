@@ -1,33 +1,25 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');  // Aggiungi questa linea
-const app = express();
-const port = process.env.PORT || 5000;
+const cors = require('cors');
 const path = require('path');
 
-// Servire i file statici di React
-app.use(express.static(path.join(__dirname, 'build')));
-
-// Per qualsiasi altra richiesta, invia il file index.html
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-
-
-// Modello Cliente (definito nel file 'cliente.js')
-const Cliente = require('./models/cliente');
+const app = express();
+const port = process.env.PORT || 5000;
 
 // Middleware per leggere il body in formato JSON
 app.use(express.json());
 
 // Usa CORS per permettere le richieste dal frontend
-app.use(cors());  // Consente richieste da qualsiasi dominio, per la sicurezza puoi specificare l'origin come nel secondo esempio sopra
+app.use(cors());
 
 // Connessione a MongoDB Atlas
 const uri = "mongodb+srv://marfal:Database2025@database.tclph.mongodb.net/gestionale?retryWrites=true&w=majority&appName=DataBase";
 mongoose.connect(uri)
   .then(() => console.log('Connected to MongoDB Atlas'))
   .catch(err => console.log('Error connecting to MongoDB Atlas', err));
+
+// Modello Cliente
+const Cliente = require('./models/cliente');
 
 // Rotte CRUD per i clienti
 app.post('/clienti', async (req, res) => {
@@ -61,10 +53,17 @@ app.put('/clienti/:id', async (req, res) => {
   }
 });
 
+// SOLO IN PRODUZIONE: Servire il frontend React
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, 'dist')));
+
+  // Rotta catch-all per servire index.html
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  });
+}
+
+// Avvio del server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
-});
-
-app.get('/', (req, res) => {
-  res.send('Server attivo! 🚀');
 });
