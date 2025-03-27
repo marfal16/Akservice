@@ -1,30 +1,33 @@
 const express = require('express');
-const mongoose = require('mongoose');
+const { Pool } = require('pg'); // Importa pg per PostgreSQL
 const cors = require('cors');
 const path = require('path');
-const Corso = require('./models/corsoModel'); // Importa il modello
 
 const app = express();
 const port = process.env.PORT || 5000;
 
-// Middleware per leggere il body in formato JSON
+// Middleware
 app.use(express.json());
-
-// Usa CORS per permettere le richieste dal frontend
 app.use(cors());
 
-// Connessione a MongoDB Atlas
-const uri = "mongodb+srv://marfal:Database2025@database.tclph.mongodb.net/gestionale?retryWrites=true&w=majority&appName=DataBase";
-mongoose.connect(uri)
-  .then(() => console.log('Connected to MongoDB Atlas'))
-  .catch(err => console.log('Error connecting to MongoDB Atlas', err));
+// Stringa di connessione di Render (sostituisci con la tua stringa reale)
+const connectionString = 'postgresql://admin_maria:CU2zzZItTegzDFa9hD8VHnoMjnbmw8mO@dpg-cvik64juibrs73ftbapg-a.frankfurt-postgres.render.com/akservice';
 
+// Configura PostgreSQL con la stringa di connessione
+const pool = new Pool({
+  connectionString: connectionString, // Usa la stringa di connessione completa
+  ssl: { rejectUnauthorized: false }    // Necessario per Render
+});
+
+// Controlla la connessione
+pool.connect()
+  .then(() => console.log('Connected to PostgreSQL'))
+  .catch(err => console.error('Error connecting to PostgreSQL', err));
 
 // SOLO IN PRODUZIONE: Servire il frontend React
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, 'dist')));
 
-  // Rotta catch-all per servire index.html
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
   });
@@ -32,23 +35,37 @@ if (process.env.NODE_ENV === "production") {
 
 // Rotta per aggiungere un nuovo corso
 app.post('/api/corsi/add', async (req, res) => {
-  const nuovoCorso = new Corso(req.body);
+  const { nome, descrizione, prezzo, sconto, categoria, data_inizio, data_fine } = req.body;
 
   try {
-    await nuovoCorso.save();
-    res.status(201).send(nuovoCorso);
+    const result = await pool.query(
+      'INSERT INTO corsi (nome, descrizione, prezzo, sconto, categoria, data_inizio, data_fine) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
+      [nome, descrizione, prezzo, sconto, categoria, data_inizio, data_fine]
+    );
+    res.status(201).json(result.rows[0]);
   } catch (err) {
-    res.status(400).send(err);
+    console.error('Errore nel salvataggio del corso:', err);
+    res.status(400).send('Errore nel salvataggio del corso');
   }
 });
+
 
 // Rotta per ottenere tutti i corsi
 app.get('/api/corsi', async (req, res) => {
   try {
-    const corsi = await Corso.find();
-    res.status(200).json(corsi);
+    console.log('Richiesta GET ricevuta per corsi...');
+    const result = await pool.query('SELECT * FROM corsi');
+    
+    if (result.rows.length === 0) {
+      console.log('Nessun corso trovato.');
+    } else {
+      console.log('Corsi recuperati:', result.rows);
+    }
+
+    res.status(200).json(result.rows);
   } catch (err) {
-    res.status(400).send(err);
+    console.error('Errore nel recupero dei corsi:', err);
+    res.status(400).send('Errore nel recupero dei corsi');
   }
 });
 // Avvio del server
