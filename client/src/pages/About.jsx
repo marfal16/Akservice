@@ -1,12 +1,13 @@
+// About.jsx
 import React from 'react';
 
-function About() {
+const About = () => {
   return (
-    <div>
-      <h2>About Us</h2>
-      <p>We offer various training courses to help you grow your skills.</p>
-    </div>
+    {/* <div>
+     // <h2>Corsi Regionali</h2>
+      <p>Offriamo corsi pratici su competenze specifiche per carriere professionali nel settore tecnico.</p>
+    </div> */}
   );
-}
+};
 
-export default About;
+export default About; // Assicurati di esportare come default

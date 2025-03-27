@@ -4,22 +4,31 @@ import coverImage from '../assets/ak_copertina.png';
 import workImage from '../assets/work.jpg';  
 import payImage from '../assets/pay.jpg';  
 import studyImage from '../assets/study.jpg';  
+import languagesImage from '../assets/languages.jpg'; 
+import readImage from '../assets/read.jpg';  
 import logoImage from '../assets/logo.jpg';  
-import { Link } from 'react-router-dom';  // Importa Link da react-router-dom
+import { Link, useNavigate } from 'react-router-dom';
 
 const Home = () => {
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://cdn.shapo.io/js/embed.js';
-    script.defer = true;
-    document.body.appendChild(script);
-    script.onload = () => {
-      if (window.Shapo) {
-        window.Shapo.init();
-      }
-    };
+  const navigate = useNavigate();
 
-  }, []);
+    useEffect(() => {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.shapo.io/js/embed.js';
+      script.defer = true;
+      document.body.appendChild(script);
+      script.onload = () => {
+        if (window.Shapo) {
+          window.Shapo.init();
+        }
+      };
+  
+    }, []);
+  
+  const handleClick = (e, path) => {
+    e.preventDefault();
+    navigate(path);
+  };
 
   return (
     <div>
@@ -31,35 +40,41 @@ const Home = () => {
         <h2>Chi Siamo</h2>
         <div className="about-content">
           <img src={logoImage} alt="Immagine di AK SERVICE" className="about-image" /> 
-          <p> <br />  <br />  AK SERVICE nasce nel 2022 con l’obiettivo di offrire percorsi di formazione professionale e scolastica per preparare i giovani alle sfide del mondo del lavoro. Attraverso corsi mirati e un approccio pratico, forniamo competenze utili per una crescita personale e professionale.  
+           <p> <br /> <br /> AK SERVICE nasce nel 2022 con l’obiettivo di offrire percorsi di formazione professionale e scolastica per preparare i giovani alle sfide del mondo del lavoro. Attraverso corsi mirati e un approccio pratico, forniamo competenze utili per una crescita personale e professionale.  
           <br />  <br />   Crediamo nella formazione come chiave del successo, supportando studenti e lavoratori nella loro evoluzione con programmi innovativi e assistenza continua.
           <br />  <br /> Il nostro impegno è creare opportunità concrete per un futuro più solido e inclusivo.</p>
         </div>
       </div>
 
       <section className="services-courses" id="services">
-  <h2>I Nostri Servizi</h2>
-  <div className="services-list">
-    <div className="service-item">
-      <img src={workImage} alt="Servizio 1" className="service-icon" />
-      <h3>Certificazioni Informatiche</h3>
-      <p>Corsi pensati per preparare i giovani al mondo del lavoro, con focus su competenze pratiche e teoriche.</p>
-      <Link to="/corsi-informatici" className="shop-link">Scopri i dettagli</Link>
-    </div>
-    <div className="service-item">
-      <img src={payImage} alt="Servizio 2" className="service-icon" />
-      <h3>Supporto al Cliente</h3>
-      <p>Assistenza completa per ogni esigenza, dalle domande frequenti a consulenze personalizzate.</p>
-      <Link to="/supporto-cliente" className="shop-link">Scopri i dettagli</Link>
-    </div>
-    <div className="service-item">
-      <img src={studyImage} alt="Servizio 3" className="service-icon" />
-      <h3>Certificazioni Linguistiche</h3>
-      <p>Offriamo corsi pratici su competenze specifiche per carriere professionali nel settore tecnico.</p>
-      <Link to="/formazione-scolastica" className="shop-link">Scopri i dettagli</Link>
-    </div>
-  </div>
-</section>
+        <h2>I Nostri Servizi</h2>
+        <div className="services-list">
+          <div className="service-item">
+            <img src={workImage} alt="Servizio 1" className="service-icon" />
+            <h3>Certificazioni Informatiche</h3>
+            <p>Corsi pensati per preparare i giovani al mondo del lavoro, con focus su competenze pratiche e teoriche.</p>
+            <button onClick={(e) => handleClick(e, '/corsi-informatici')} className="card-button">Scopri i dettagli</button>
+          </div>
+          <div className="service-item">
+            <img src={languagesImage} alt="Servizio 3" className="service-icon" />
+            <h3>Certificazioni Linguistiche</h3>
+            <p>Offriamo corsi pratici su competenze specifiche per carriere professionali nel settore tecnico.</p>
+            <button onClick={(e) => handleClick(e, '/corsi-lingue')} className="card-button">Scopri i dettagli</button>
+          </div>
+          <div className="service-item">
+            <img src={readImage} alt="Servizio 2" className="service-icon" />
+            <h3>Corsi Regionali</h3>
+            <p>Offriamo corsi pratici su competenze specifiche per carriere professionali nel settore tecnico.</p>
+            <button onClick={(e) => handleClick(e, '/corsi-regionali')} className="card-button">Scopri i dettagli</button>
+          </div>
+          <div className="service-item">
+            <img src={studyImage} alt="Servizio 2" className="service-icon" />
+            <h3>Formazione Universitaria</h3>
+            <p>Offriamo corsi pratici su competenze specifiche per carriere professionali nel settore tecnico.</p>
+            <button onClick={(e) => handleClick(e, '/formazione-universitaria')} className="card-button">Scopri i dettagli</button>
+          </div>
+        </div>
+      </section>
 
       {/* Sezione Testimonianze */}
       <section className="testimonials-section" id="testimonials">
@@ -67,6 +82,7 @@ const Home = () => {
         <div id="shapo-widget-3631ed6ab32424719ed3"></div>
       </section>
 
+      {/* Sezione Contatti */}
       <section className="contact-section" id="contact">
         <h2>Contatti</h2>
         <div className="contact-container">
@@ -133,6 +149,6 @@ const Home = () => {
       </section>
     </div>
   );
-};
+}
 
 export default Home;

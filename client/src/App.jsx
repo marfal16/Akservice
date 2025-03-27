@@ -5,8 +5,9 @@ import './App.css';
 import Home from './pages/Home';  
 import About from './pages/About';  
 import CorsiInformatici from './pages/CorsiInformatici'; 
-import FormazioneScolastica from './pages/FormazioneScolastica'; 
-import SupportoCliente from './pages/SupportoCliente'; 
+import CorsiLingue from './pages/CorsiLingue'; 
+import CorsiRegionali from './pages/CorsiRegionali'; 
+import FormazioneUniversitaria from './pages/FormazioneUniversitaria'; 
 
 function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -58,17 +59,22 @@ function Navbar() {
               <ul className="dropdown-menu">
                 <li>
                   <Link to="/corsi-informatici" onClick={() => setDropdownOpen(false)}>
-                    Corsi Informatici
+                    Certificazioni Informatiche
                   </Link>
                 </li>
                 <li>
-                  <Link to="/formazione-scolastica" onClick={() => setDropdownOpen(false)}>
+                  <Link to="/corsi-lingue" onClick={() => setDropdownOpen(false)}>
                     Certificazioni Linguistiche
                   </Link>
                 </li>
                 <li>
-                  <Link to="/supporto-cliente" onClick={() => setDropdownOpen(false)}>
-                    Supporto Cliente
+                  <Link to="/corsi-regionali" onClick={() => setDropdownOpen(false)}>
+                    Corsi Regionali
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/formazione-universitaria" onClick={() => setDropdownOpen(false)}>
+                    Formazione Universitaria
                   </Link>
                 </li>
               </ul>
@@ -89,8 +95,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/corsi-informatici" element={<CorsiInformatici />} />
-          <Route path="/formazione-scolastica" element={<FormazioneScolastica />} />
-          <Route path="/supporto-cliente" element={<SupportoCliente />} />
+          <Route path="/corsi-lingue" element={<CorsiLingue />} />
+          <Route path="/corsi-regionali" element={<CorsiRegionali />} />
+          <Route path="/formazione-universitaria" element={<FormazioneUniversitaria />} />
         </Routes>
       </div>
     </Router>
