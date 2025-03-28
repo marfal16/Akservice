@@ -45,6 +45,17 @@
   border-radius: 5px;
 }
 
+/* Modifica il layout delle sottosezioni "I nostri servizi" per renderle verticali */
+.navbar .services-menu {
+  display: none; /* Nascondi per default il menu verticale */
+}
+
+.navbar .services-menu.active {
+  display: flex;
+  flex-direction: column; /* Disposizione verticale delle voci */
+  gap: 10px; /* Distanza tra le voci */
+}
+
 /* Per evitare che il contenuto della pagina si nasconda sotto la barra fissa */
 body {
   margin-top: 90px; /* Altezza della barra di navigazione */
