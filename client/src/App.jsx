@@ -8,6 +8,7 @@ import CorsiInformatici from './pages/CorsiInformatici';
 import CorsiLingue from './pages/CorsiLingue'; 
 import CorsiRegionali from './pages/CorsiRegionali'; 
 import FormazioneUniversitaria from './pages/FormazioneUniversitaria'; 
+import DettagliCorso from './pages/DettagliCorso'; // Importazione della nuova pagina dei dettagli
 
 function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -17,8 +18,6 @@ function Navbar() {
   // Funzione per gestire la navigazione alla sezione "Home"
   const goToHomeSection = (sectionId) => {
     if (location.pathname !== "/") {
-      // Se non siamo nella home (ad esempio siamo in /corsi-informatici),
-      // allora navighiamo prima alla home e dopo facciamo lo scroll alla sezione
       navigate("/");
       setTimeout(() => {
         const el = document.getElementById(sectionId);
@@ -27,7 +26,6 @@ function Navbar() {
         }
       }, 200);
     } else {
-      // Se siamo già in home, facciamo lo scroll immediatamente
       const el = document.getElementById(sectionId);
       if (el) {
         el.scrollIntoView({ behavior: "smooth" });
@@ -39,7 +37,6 @@ function Navbar() {
     <header className="navbar">
       <nav>
         <ul className="main-menu">
-          {/* Menu principale */}
           <li>
             <button onClick={() => goToHomeSection("home")}>Home</button>
           </li>
@@ -49,8 +46,6 @@ function Navbar() {
           <li>
             <button onClick={() => goToHomeSection("contact")}>Contatti</button>
           </li>
-
-          {/* Dropdown "I Nostri Servizi" per la navigazione tra pagine */}
           <li className="relative">
             <button onClick={() => setDropdownOpen(!dropdownOpen)} className="dropdown-btn">
               I Nostri Servizi
@@ -98,6 +93,8 @@ function App() {
           <Route path="/corsi-lingue" element={<CorsiLingue />} />
           <Route path="/corsi-regionali" element={<CorsiRegionali />} />
           <Route path="/formazione-universitaria" element={<FormazioneUniversitaria />} />
+          {/* Nuova rotta per i dettagli */}
+          <Route path="/dettagli/:id" element={<DettagliCorso />} />
         </Routes>
       </div>
     </Router>

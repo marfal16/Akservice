@@ -1,78 +1,56 @@
 import React, { useEffect, useState } from "react";
-import "./CorsiInformatici.css"; // Assicurati di avere questo file CSS
-import ITImage from '../assets/IT.jpg';  
+import { Link } from "react-router-dom"; // Assicuriamo di utilizzare React Router
+import "./Corsi.css";
 
-export default function CorsiInformatici() {
-  const [corsiEIPASS, setCorsiEIPASS] = useState([]); // Stato per i corsi EIPASS
+export default function CertificazioniInformatiche() {
+  const [corsi, setCorsi] = useState([]);
+  const [filtroCategoria, setFiltroCategoria] = useState('');
 
   useEffect(() => {
-    // Fai la richiesta GET per ottenere i corsi EIPASS dal backend
-    fetch('http://localhost:5000/api/corsi?categoria=EIPASS') // Passiamo il filtro per categoria
+    // Recupero di tutti i corsi dal backend
+    fetch('http://localhost:5000/api/corsi')
       .then(response => response.json())
-      .then(data => setCorsiEIPASS(data))  // Salva i corsi EIPASS nel state
-      .catch(error => {
-        console.error("Errore nel recupero dei corsi EIPASS", error);
-      });
-  }, []); // Esegui solo una volta quando il componente è caricato
+      .then(data => setCorsi(data))
+      .catch(error => console.error("Errore nel recupero dei corsi informatici", error));
+  }, []);
+
+  const categorieInformatiche = ['EIPASS', 'PEKIT', 'IDCERT'];
+
+  const corsiFiltrati = corsi.filter(corso => categorieInformatiche.includes(corso.categoria))
+    .filter(corso => !filtroCategoria || corso.categoria === filtroCategoria);
 
   return (
     <div className="container">
       <h1 className="title">Certificazioni Informatiche</h1>
-      {/* Sezione Certificazioni EIPASS */}
-      <div className="box-categoria">
-        <h2 className="categoria-titolo">Certificazioni EIPASS</h2>
-        <div className="corsi-grid">
-          {corsiEIPASS.length > 0 ? (
-            corsiEIPASS.map((corso, index) => (
-              <div key={index} className={`card ${corso.tipo === "corso" ? "card-eipass" : ""}`}>
-                <h3 className="card-titolo">{corso.nome}</h3>
-                <p className="card-prezzo">{corso.prezzo}€</p>
-                <p>{corso.descrizione}</p>
-                <button className="card-button">Scopri di più</button>
-              </div>
-            ))
-          ) : (
-            <p>Caricamento corsi in corso...</p>
-          )}
-        </div>
+      <div className="filter-container">
+        <button
+          className={`filter-button ${!filtroCategoria ? 'active' : ''}`}
+          onClick={() => setFiltroCategoria('')}
+        >
+          Tutte
+        </button>
+        {categorieInformatiche.map(categoria => (
+          <button
+            key={categoria}
+            className={`filter-button ${filtroCategoria === categoria ? 'active' : ''}`}
+            onClick={() => setFiltroCategoria(categoria)}
+          >
+            {categoria}
+          </button>
+        ))}
       </div>
-
-      {/* Box per Certificazioni PEKIT */}
-      <div className="box-categoria">
-        <h2 className="categoria-titolo">Certificazioni PEKIT</h2>
-        <div className="corsi-grid">
-          <div className="card">
-            <h3 className="card-titolo">PEKIT Expert</h3>
-            <p className="card-prezzo">130€</p>
-            <p>Corso sulla sicurezza informatica</p>
-            <button className="card-button">Scopri di più</button>
+      <div className="corsi-grid">
+        {corsiFiltrati.map((corso, index) => (
+          <div key={index} className={`card card-${corso.categoria.toLowerCase()}`}>
+            <h3 className="card-titolo">{corso.nome}</h3>
+            <p className="card-prezzo">{corso.prezzo}€</p>
+            <p className="card-descrizione">{corso.descrizione}</p>
+            {/* Reindirizza alla pagina dei dettagli */}
+            <Link to={`/dettagli/${corso.id}`} className="card-button">
+              Scopri di più
+            </Link>
           </div>
-          <div className="card">
-            <h3 className="card-titolo">PEKIT Advanced</h3>
-            <p className="card-prezzo">140€</p>
-            <p>Corso sulla sicurezza informatica</p>
-            <button className="card-button">Scopri di più</button>
-          </div>
-        </div>
-      </div>
-
-      {/* Box per Certificazioni IDCert */}
-      <div className="box-categoria">
-        <h2 className="categoria-titolo">Certificazioni IDCert</h2>
-        <div className="corsi-grid">
-          <div className="card">
-            <h3 className="card-titolo">IDCert Office</h3>
-            <p className="card-prezzo">110€</p>
-            <p>Corso sulla sicurezza informatica</p>
-            <button className="card-button">Scopri di più</button>
-          </div>
-          <div className="card">
-            <h3 className="card-titolo">IDCert Coding</h3>
-            <p className="card-prezzo">130€</p>
-            <p>Corso sulla sicurezza informatica</p>
-            <button className="card-button">Scopri di più</button>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

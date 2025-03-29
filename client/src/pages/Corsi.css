@@ -1,0 +1,99 @@
+.container {
+    margin: 0 auto;
+    padding: 50px;
+    max-width: 1200px;
+  }
+  
+  .title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #bd732a;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .filter-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  
+  .filter-button {
+    padding: 10px 20px;
+    border: 2px solid #bd732a;
+    background-color: #f7f7f7;
+    color: #333;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .filter-button.active {
+    background-color: #bd732a;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .filter-button:hover {
+    background-color: #e6a05c;
+    color: white;
+  }
+  
+  .corsi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Card più piccole */
+    gap: 15px; /* Riduce la distanza tra le card */
+  }
+  
+ /* Card individuali - versione più compatta */
+ .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: auto; /* Altezza dinamica */
+  }
+  
+  .card-descrizione {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 15px;
+    overflow: visible; /* Garantisce che il contenuto sia completamente leggibile */
+  }
+  
+  /* Titolo e prezzo più piccoli */
+  .card-titolo {
+    font-size: 1.1rem; /* Titolo compatto */
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .card-prezzo {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 10px;
+  }
+  
+  /* Bottoni più piccoli */
+  .card-button {
+    background-color: #bd732a;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .card-button:hover {
+    background-color: #8e5b1d;
+  }
+  

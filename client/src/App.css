@@ -96,6 +96,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
+  overflow-y: auto;
 }
 
 h1 {
@@ -173,20 +174,30 @@ button:hover {
   padding: 10px;
   top: 100%;
   left: 0;
+  width: auto; /* Imposta una larghezza fissa per il menu */
+  min-width: 200px;
   border-radius: 5px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-}
-
-.dropdown-menu li {
-  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column; /* Cambia la disposizione in verticale */
+  gap: 10px; /* Distanza tra le voci */
+  z-index: 1100; /* Assicura che il menu sia sopra gli altri elementi */
+  max-height: calc(100vh - 20px); /* Assicurati che stia dentro il viewport */
+  overflow-y: auto; /* Abilita lo scroll se necessario */
 }
 
 .dropdown-menu li a {
   color: white;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 14px;
   padding: 5px 10px;
-  font-weight: normal;  /* Non grassetto per i link nel dropdown */
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #bd732a; /* Cambia colore quando passi sopra */
 }
 
 .dropdown-menu li a:hover {
@@ -194,3 +205,10 @@ button:hover {
   border-radius: 5px;
 }
 
+@media (max-width: 768px) {
+  .dropdown-menu {
+    width: 90%; /* Imposta una larghezza maggiore per schermi piccoli */
+    left: 5%; /* Centra il menu nel viewport */
+  }
+
+}
