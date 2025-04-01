@@ -1,16 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "./DettagliCorso.css";
-import eipassImage from '../assets/eipass-logo.jpg'; 
+import eipassImage from '../assets/eipass-logo.jpg';
 
 export default function DettagliCorso() {
-  const { id } = useParams(); // Usa il parametro "id" dalla route
+  const { id } = useParams();
   const [corso, setCorso] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+
+  const handleAcquista = () => {
+    if (corso) {
+      navigate("/checkout", { state: { prezzo: corso.prezzo, nomeCorso: corso.nome } });
+      console.log("Dati del corso caricati:", corso);
+    }
+  };
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(`http://localhost:5000/api/corsi/${id}`) // Recupera i dettagli del corso
+    fetch(`http://localhost:5000/api/corsi/${id}`)
       .then(response => response.json())
       .then(data => {
         setCorso(data);
@@ -41,18 +49,15 @@ export default function DettagliCorso() {
   return (
     <div className="dettagli-container">
       <div className="dettagli-layout">
-        {/* Sezione immagine */}
         <div className="dettagli-immagine-container">
           <img src={eipassImage || '/assets/default-image.jpg'} alt={corso.nome} className="dettagli-immagine" />
-
         </div>
 
-        {/* Sezione contenuto */}
         <div className="dettagli-info">
           <h1>{corso.nome}</h1>
           <p>{corso.descrizione}</p>
           <p className="dettagli-prezzo">Prezzo: €{corso.prezzo}</p>
-          <button className="dettagli-acquista">Acquista</button>
+          <button onClick={handleAcquista} className="dettagli-acquista">Acquista</button>
         </div>
       </div>
     </div>

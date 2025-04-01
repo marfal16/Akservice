@@ -1,0 +1,21 @@
+.conferma-container {
+    margin: 0 auto;
+    padding: 40px;
+    max-width: 600px;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .conferma-container h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .conferma-container p {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  

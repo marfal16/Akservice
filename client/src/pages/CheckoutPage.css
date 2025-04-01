@@ -1,0 +1,92 @@
+/* Stile per il contenitore principale */
+.checkout-container {
+    margin: 0 auto;
+    padding: 40px;
+    max-width: 700px; /* Larghezza ampliata per accomodare il riepilogo */
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* Titolo principale della pagina */
+  .checkout-container h1 {
+    font-size: 2.5rem; /* Titolo più grande per maggiore enfasi */
+    margin-bottom: 30px;
+    color: #333;
+  }
+  
+  /* Stile per il riepilogo dell'ordine */
+  .riepilogo-ordine {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .riepilogo-ordine h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .riepilogo-ordine p {
+    font-size: 1rem;
+    margin: 10px 0;
+    color: #555;
+  }
+  
+  /* Stile per il form */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 0 auto;
+    max-width: 400px; /* Larghezza ridotta per il form */
+  }
+  
+  /* Etichette del form */
+  label {
+    font-size: 1.2rem;
+    color: #555;
+    text-align: left; /* Allineamento a sinistra per chiarezza */
+  }
+  
+  /* Input e select del form */
+  input,
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  input:focus,
+  select:focus {
+    border-color: #007acc;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 122, 204, 0.5);
+  }
+  
+  /* Pulsante di conferma */
+  .checkout-button {
+    background-color: #007acc;
+    color: white;
+    padding: 12px 20px; /* Più spazioso */
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .checkout-button:hover {
+    background-color: #005fa3;
+  }
+  

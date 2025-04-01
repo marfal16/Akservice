@@ -8,14 +8,21 @@ import CorsiInformatici from './pages/CorsiInformatici';
 import CorsiLingue from './pages/CorsiLingue'; 
 import CorsiRegionali from './pages/CorsiRegionali'; 
 import FormazioneUniversitaria from './pages/FormazioneUniversitaria'; 
-import DettagliCorso from './pages/DettagliCorso'; // Importazione della nuova pagina dei dettagli
+import DettagliCorso from './pages/DettagliCorso'; 
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import CheckoutPage from "./pages/CheckoutPage";
+import ConfermaPage from "./pages/ConfermaPage";
+import CheckoutStripe from "./pages/CheckoutStripe";
+
+// Carica l'istanza di Stripe
+const stripePromise = loadStripe("pk_test_51R8dlEQC5hypstY6hhCR9ndgjKR1OcqrcdCpPrzth5wOa5O9seKGiBiQYITh5NqV764nCuXHUiky3PGBBVt2VzcS00TsNluSyC");
 
 function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Funzione per gestire la navigazione alla sezione "Home"
   const goToHomeSection = (sectionId) => {
     if (location.pathname !== "/") {
       navigate("/");
@@ -93,8 +100,18 @@ function App() {
           <Route path="/corsi-lingue" element={<CorsiLingue />} />
           <Route path="/corsi-regionali" element={<CorsiRegionali />} />
           <Route path="/formazione-universitaria" element={<FormazioneUniversitaria />} />
-          {/* Nuova rotta per i dettagli */}
           <Route path="/dettagli/:id" element={<DettagliCorso />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/conferma" element={<ConfermaPage />} />
+
+          <Route
+            path="/checkout-stripe" // Non c'è bisogno del parametro id, dato che lo passiamo via state
+            element={
+              <Elements stripe={stripePromise}>
+                <CheckoutStripe />
+              </Elements>
+            }
+          />
         </Routes>
       </div>
     </Router>
