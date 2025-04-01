@@ -93,13 +93,12 @@ app.post('/api/checkout/:id', async (req, res) => {
       return res.status(400).json({ error: 'ID non valido.' });
     }
 
-    // Simulazione: recupera dettagli del corso dall'ID (database o simile)
-    console.log(`Recuperando corso con ID: ${id}`); // Debug
-    // Qui puoi utilizzare il tuo database per recuperare i dettagli del corso
-    // Ad esempio: const corso = await pool.query('SELECT * FROM corsi WHERE id = $1', [id]);
+    // Recupera i dettagli del corso, qui simulerò con l'ID, ma dovresti usare il tuo database
+    console.log(`Recuperando corso con ID: ${id}`);
 
+    // Crea un PaymentIntent con l'importo ricevuto
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: amount, // Usa l'importo ricevuto nel body
+      amount: amount * 100, // Stripe richiede l'importo in centesimi
       currency: 'eur',
       payment_method_types: ['card'],
     });
