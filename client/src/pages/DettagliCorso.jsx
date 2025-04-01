@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import "./DettagliCorso.css";
 import eipassImage from '../assets/eipass-logo.jpg';
 
-export default function DettagliCorso() {
+export default function DettagliCorso({ addToCart }) { // ⬅️ Riceve addToCart come prop
   const { id } = useParams();
   const [corso, setCorso] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -11,7 +11,13 @@ export default function DettagliCorso() {
 
   const handleAcquista = () => {
     if (corso) {
-      navigate("/checkout", { state: { prezzo: corso.prezzo, nomeCorso: corso.nome } });
+      navigate("/checkout", { 
+        state: { 
+          prezzo: corso.prezzo, 
+          nomeCorso: corso.nome, 
+          id: corso.id
+        } 
+      });
       console.log("Dati del corso caricati:", corso);
     }
   };
@@ -57,7 +63,7 @@ export default function DettagliCorso() {
           <h1>{corso.nome}</h1>
           <p>{corso.descrizione}</p>
           <p className="dettagli-prezzo">Prezzo: €{corso.prezzo}</p>
-          <button onClick={handleAcquista} className="dettagli-acquista">Acquista</button>
+          <button onClick={() => addToCart(corso)}>Aggiungi al carrello</button>
         </div>
       </div>
     </div>

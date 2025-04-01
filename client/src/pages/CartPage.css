@@ -1,0 +1,133 @@
+.cart-container {
+    padding: 40px;
+  }
+  
+  .cart-item {
+    border-top: 3px solid #28a745; /* Linea verde sopra */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-radius: 8px; /* Angoli arrotondati per coerenza */
+    padding: 15px; /* Aggiunge più spazio tra i contenuti */
+    background: #f8f9fa; /* Stesso tono dello sfondo del totale */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Aggiunge ombra sottile */
+  }
+  
+  
+  .cart-item .cart-info {
+    flex-grow: 1; /* Permette al contenuto del corso di crescere */
+    margin-right: 10px; /* Distanza tra le informazioni del corso e i tasti */
+  }
+  
+  .cart-item .cart-actions {
+    display: flex;
+    align-items: center; /* Centra meglio */
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  
+  
+  .cart-item input[type="number"] {
+    width: 40px;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 20px; /* Abbassa il campo di input */
+  }
+  
+  .cart-item button {
+    padding: 3px 6px;
+    font-size: 14px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: auto;
+    height: 30px;
+  }
+  
+  .cart-item button:hover {
+    background-color: darkred;
+  }
+  
+  .cart-item:not(:last-child) {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+  }
+  
+  
+  button {
+    padding: 8px 15px; /* Rende il padding simile agli altri pulsanti */
+    font-size: 14px; /* Imposta una dimensione del font coerente con il resto */
+    cursor: pointer; /* Mostra il cursore come una mano quando si passa sopra */
+    border-radius: 5px; /* Angoli arrotondati per un aspetto uniforme */
+    color: white; /* Colore del testo bianco */
+    border: none; /* Nessun bordo */
+    width: auto; /* Imposta il pulsante per occupare tutta la larghezza disponibile */
+    height: 40px; /* Imposta un'altezza coerente */
+    min-width: 150px; /* Larghezza minima per il pulsante */
+    margin-top: 20px; /* Spazio tra il totale e il pulsante */
+  }
+  
+  button:hover {
+    background-color: rgb(34, 124, 34); /* Colore di sfondo quando il pulsante è hoverato */
+  }
+  
+.cart-summary-container {
+  width: 100%;
+  max-width: 400px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 3px solid #28a745; /* Linea verde sopra */
+  margin: 40px ;
+}
+
+  .cart-total {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee; /* Linea divisoria sottile */
+  }
+  
+  .total-label {
+    text-align: left;
+    color: #333;
+  }
+  
+  .total-amount {
+    text-align: right;
+    color: #28a745; /* Verde per dare un tocco di eleganza */
+  }
+  
+  .checkout-button {
+    margin-top: 15px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: #28a745; /* Verde moderno */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    transition: background 0.3s ease;
+  }
+  
+  .checkout-button:hover {
+    background: #218838; /* Verde più scuro per l'hover */
+  }
+  
+  

@@ -39,11 +39,16 @@
   font-weight: normal; /* Non grassetto per i link e i tasti */
 }
 
-.navbar nav ul li button:hover,
-.navbar nav ul li a:hover {
+.navbar nav ul li button:hover {
   background-color: #bd732a;
   border-radius: 5px;
 }
+
+/* Rimuove lo sfondo dai <Link> per evitare il doppio effetto */
+.navbar nav ul li a:hover {
+  background: none;
+}
+
 
 /* Modifica il layout delle sottosezioni "I nostri servizi" per renderle verticali */
 .navbar .services-menu {
@@ -128,10 +133,12 @@ button:hover {
   list-style: none;
   padding: 0;
   margin: 0;
+  align-items: center; /* Allinea verticalmente tutti gli elementi */
 }
 
 .main-menu li {
   margin-right: 20px;
+  display: block; /* Assicura che il link non abbia spazi extra */
 }
 
 .main-menu li a, .dropdown-btn {
@@ -145,6 +152,8 @@ button:hover {
   background-color: #bd732a;
   border-radius: 5px;
 }
+
+
 
 /* Menu dropdown */
 .relative {

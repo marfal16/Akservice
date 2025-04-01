@@ -14,11 +14,12 @@ import { loadStripe } from "@stripe/stripe-js";
 import CheckoutPage from "./pages/CheckoutPage";
 import ConfermaPage from "./pages/ConfermaPage";
 import CheckoutStripe from "./pages/CheckoutStripe";
+import CartPage from './pages/CartPage';
 
 // Carica l'istanza di Stripe
 const stripePromise = loadStripe("pk_test_51R8dlEQC5hypstY6hhCR9ndgjKR1OcqrcdCpPrzth5wOa5O9seKGiBiQYITh5NqV764nCuXHUiky3PGBBVt2VzcS00TsNluSyC");
 
-function Navbar() {
+function Navbar({ cartItems }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -79,8 +80,16 @@ function Navbar() {
                     Formazione Universitaria
                   </Link>
                 </li>
+
+
               </ul>
             )}
+          </li>
+
+          <li>
+            <Link to="/cart">
+              <button>Carrello ({cartItems.length})</button>
+            </Link>
           </li>
         </ul>
       </nav>
@@ -89,26 +98,50 @@ function Navbar() {
 }
 
 function App() {
+  const [cartItems, setCartItems] = useState([]);
+
+  const addToCart = (course) => {
+    const newCartItems = [...cartItems];
+    const existingItemIndex = newCartItems.findIndex(item => item.id === course.id);
+    if (existingItemIndex === -1) {
+      newCartItems.push({ ...course, quantity: 1 });
+    } else {
+      newCartItems[existingItemIndex].quantity += 1;
+    }
+    setCartItems(newCartItems);
+  };
+
+  const removeFromCart = (index) => {
+    const newCartItems = cartItems.filter((_, i) => i !== index);
+    setCartItems(newCartItems);
+  };
+
+  const updateQuantity = (index, quantity) => {
+    const newCartItems = [...cartItems];
+    newCartItems[index].quantity = quantity;
+    setCartItems(newCartItems);
+  };
+
   return (
     <Router>
-      <Navbar />
+      <Navbar cartItems={cartItems} />
       <div className="App">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home addToCart={addToCart} />} />
           <Route path="/about" element={<About />} />
-          <Route path="/corsi-informatici" element={<CorsiInformatici />} />
-          <Route path="/corsi-lingue" element={<CorsiLingue />} />
-          <Route path="/corsi-regionali" element={<CorsiRegionali />} />
-          <Route path="/formazione-universitaria" element={<FormazioneUniversitaria />} />
-          <Route path="/dettagli/:id" element={<DettagliCorso />} />
+          <Route path="/corsi-informatici" element={<CorsiInformatici addToCart={addToCart} />} />
+          <Route path="/corsi-lingue" element={<CorsiLingue addToCart={addToCart} />} />
+          <Route path="/corsi-regionali" element={<CorsiRegionali addToCart={addToCart} />} />
+          <Route path="/formazione-universitaria" element={<FormazioneUniversitaria addToCart={addToCart} />} />
+          <Route path="/dettagli/:id" element={<DettagliCorso addToCart={addToCart} />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/conferma" element={<ConfermaPage />} />
-
+          <Route path="/cart" element={<CartPage cartItems={cartItems} removeFromCart={removeFromCart} updateQuantity={updateQuantity} />} />
           <Route
-            path="/checkout-stripe" // Non c'è bisogno del parametro id, dato che lo passiamo via state
+            path="/checkout-stripe" 
             element={
               <Elements stripe={stripePromise}>
-                <CheckoutStripe />
+                <CheckoutStripe cartItems={cartItems} />
               </Elements>
             }
           />
