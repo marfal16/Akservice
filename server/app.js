@@ -1,8 +1,9 @@
 const express = require('express');
+const Stripe = require('stripe');
 const { Pool } = require('pg'); // Importa pg per PostgreSQL
 const cors = require('cors');
 const path = require('path');
-
+const stripe = Stripe('sk_test_51R8dlEQC5hypstY6WG2oxsi8j4yZHAHdqCJFNhhD9zuhXVUMvARMJ9XxOrkd2aH18iGKdgFsOUVnRby7oKGu6wUs005iYBZC3w'); // Inserisci la tua secret key di Stripe
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -78,6 +79,75 @@ app.get('/api/corsi/:id', async (req, res) => {
     res.status(500).json({ error: "Errore del server" });
   }
 });
+
+app.post('/api/checkout/:id', async (req, res) => {
+  try {
+    const { id } = req.params; // Recupera l'ID dalla URL
+    const { amount } = req.body; // Recupera l'importo dal corpo della richiesta
+
+    if (!amount || isNaN(amount)) {
+      return res.status(400).json({ error: 'L\'importo è richiesto e deve essere valido.' });
+    }
+
+    if (!id || isNaN(id)) {
+      return res.status(400).json({ error: 'ID non valido.' });
+    }
+
+    // Simulazione: recupera dettagli del corso dall'ID (database o simile)
+    console.log(`Recuperando corso con ID: ${id}`); // Debug
+    // Qui puoi utilizzare il tuo database per recuperare i dettagli del corso
+    // Ad esempio: const corso = await pool.query('SELECT * FROM corsi WHERE id = $1', [id]);
+
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: amount, // Usa l'importo ricevuto nel body
+      currency: 'eur',
+      payment_method_types: ['card'],
+    });
+
+    res.json({ clientSecret: paymentIntent.client_secret }); // Restituisci il client secret
+  } catch (error) {
+    console.error('Errore durante la creazione del PaymentIntent:', error.message);
+    res.status(500).json({ error: 'Errore interno del server.' });
+  }
+});
+
+
+const paypal = require("@paypal/checkout-server-sdk");
+
+const environment = new paypal.core.SandboxEnvironment("CLIENT_ID", "CLIENT_SECRET");
+const client = new paypal.core.PayPalHttpClient(environment);
+
+app.post("/api/paypal/create-order", async (req, res) => {
+  const { price } = req.body; // Recupera l'importo dal body della richiesta
+
+  if (!price) {
+    return res.status(400).json({ error: "L'importo è richiesto" });
+  }
+
+  const request = new paypal.orders.OrdersCreateRequest();
+  request.prefer("return=representation");
+  request.requestBody({
+    intent: "CAPTURE",
+    purchase_units: [
+      {
+        amount: {
+          currency_code: "EUR",
+          value: price, // Usa l'importo dinamico ricevuto dal frontend
+        },
+      },
+    ],
+  });
+
+  try {
+    const order = await client.execute(request);
+    res.json({ id: order.result.id }); // Restituisci l'ID dell'ordine al frontend
+  } catch (err) {
+    console.error("Errore durante la creazione dell'ordine:", err);
+    res.status(500).json({ error: "Errore interno del server" });
+  }
+});
+
+
 // SOLO IN PRODUZIONE: Servire il frontend React
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, 'dist')));

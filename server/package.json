@@ -10,13 +10,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@paypal/checkout-server-sdk": "^1.0.3",
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.15.0",
     "mongoose": "^8.13.0",
-    "pg": "^8.14.1"
+    "pg": "^8.14.1",
+    "stripe": "^17.7.0"
   },
   "description": ""
 }
