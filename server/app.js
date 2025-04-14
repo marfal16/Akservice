@@ -145,10 +145,10 @@ app.post("/api/paypal/create-order", async (req, res) => {
 
 // SOLO IN PRODUZIONE: Servire il frontend React
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, 'dist')));
+  app.use(express.static(path.join(__dirname, '../client/dist')));
 
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+    res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
   });
 }
 
