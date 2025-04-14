@@ -80,30 +80,25 @@ app.get('/api/corsi/:id', async (req, res) => {
   }
 });
 
-app.post('/api/checkout/:id', async (req, res) => {
+// Endpoint per creare un PaymentIntent basato sull'importo totale
+app.post('/api/checkout', async (req, res) => {
   try {
-    const { id } = req.params; // Recupera l'ID dalla URL
-    const { amount } = req.body; // Recupera l'importo dal corpo della richiesta
+    const { amount } = req.body; // Recupera l'importo totale dal corpo della richiesta
 
     if (!amount || isNaN(amount)) {
       return res.status(400).json({ error: 'L\'importo è richiesto e deve essere valido.' });
     }
 
-    if (!id || isNaN(id)) {
-      return res.status(400).json({ error: 'ID non valido.' });
-    }
-
-    // Recupera i dettagli del corso, qui simulerò con l'ID, ma dovresti usare il tuo database
-    console.log(`Recuperando corso con ID: ${id}`);
-
     // Crea un PaymentIntent con l'importo ricevuto
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: amount * 100, // Stripe richiede l'importo in centesimi
+      amount: Math.round(amount * 100), // Stripe richiede l'importo in centesimi
       currency: 'eur',
       payment_method_types: ['card'],
     });
+    
+    console.log("PaymentIntent creato:", paymentIntent);  // Aggiungi log per il PaymentIntent
 
-    res.json({ clientSecret: paymentIntent.client_secret }); // Restituisci il client secret
+    res.json({ clientSecret: paymentIntent.client_secret }); // Restituisce il client secret
   } catch (error) {
     console.error('Errore durante la creazione del PaymentIntent:', error.message);
     res.status(500).json({ error: 'Errore interno del server.' });
@@ -113,7 +108,8 @@ app.post('/api/checkout/:id', async (req, res) => {
 
 const paypal = require("@paypal/checkout-server-sdk");
 
-const environment = new paypal.core.SandboxEnvironment("CLIENT_ID", "CLIENT_SECRET");
+const environment = new paypal.core.SandboxEnvironment("AbxjPZEQo6RardE0zjOjBgxVgGPILW6w1-AB8jMBPAD_oWZdBb1m-cI3FJVnVvMEMrXcWfwxp3vC5apX", 
+  "EE0f12-fIDAIpQBhSrVGr1EqCe3dyQBuz6u7CM-L-OKlF5WY0uuuQv89PhV1lWiOzyUpNsCMOPvprDmf");
 const client = new paypal.core.PayPalHttpClient(environment);
 
 app.post("/api/paypal/create-order", async (req, res) => {
