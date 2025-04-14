@@ -1,120 +1,111 @@
 /* Contenitore principale */
 .dettagli-container {
-    margin: 20px auto;
-    max-width: 1200px;
-    padding: 40px;
-    background-color: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  /* Layout: immagine a sinistra, contenuti a destra */
-  .dettagli-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Due colonne */
-    gap: 40px;
-    align-items: center;
-  }
-  
-  /* Sezione immagine */
-  .dettagli-immagine-container {
-    position: relative;
-  }
-  
-  .dettagli-immagine {
-    width: 100%;
-    max-width: 500px;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .dettagli-immagine:hover {
-    transform: scale(1.05); /* Zoom al passaggio del mouse */
-  }
-  
-  /* Badge sopra l'immagine */
-  .dettagli-badge {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: #007acc;
-    color: white;
-    padding: 10px 15px;
-    font-size: 0.9rem;
-    font-weight: bold;
-    border-radius: 5px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* Sezione contenuto */
-  .dettagli-info {
-    text-align: left;
-  }
-  
+  margin: 115px auto;
+  max-width: 900px;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Layout: ora impilato verticalmente */
+.dettagli-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Titolo */
+.dettagli-info h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+/* Sezione immagine - copertina */
+.dettagli-immagine-container {
+  width: 100%;
+  max-height: 500px;
+  overflow: hidden;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.dettagli-immagine {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease-in-out;
+}
+
+.dettagli-immagine:hover {
+  transform: scale(1.02);
+}
+
+/* Sezione contenuto */
+.dettagli-info {
+  text-align: left;
+  width: 100%;
+}
+
+.dettagli-info p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.dettagli-prezzo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #bd732a;
+  margin-bottom: 30px;
+}
+
+/* Pulsante Acquista */
+.dettagli-acquista {
+  background-color: #007acc !important;
+  color: white !important;
+  padding: 10px 30px !important;
+  font-size: 1.2rem !important;
+  font-weight: bold !important;
+  border: none !important;
+  border-radius: 50px !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease-in-out !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+.dettagli-acquista:hover {
+  background-color: #005fa3 !important;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3) !important;
+  transform: scale(1.05) !important;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
   .dettagli-info h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .dettagli-info p {
-    font-size: 1.1rem;
-    color: #555;
-    line-height: 1.8;
-    margin-bottom: 20px;
-  }
-  
-  .dettagli-prezzo {
     font-size: 2rem;
-    font-weight: bold;
-    color: #bd732a;
-    margin-bottom: 30px;
   }
-  
-  /* Pulsante Acquista */
+
+  .dettagli-prezzo {
+    font-size: 1.5rem;
+  }
+
   .dettagli-acquista {
-    background-color: #007acc;
-    color: white;
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-size: 1rem;
+    padding: 10px 25px;
   }
-  
-  .dettagli-acquista:hover {
-    background-color: #005fa3;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-    transform: scale(1.05);
+
+  .dettagli-immagine {
+    height: 200px;
   }
-  
-  /* Mobile Responsiveness */
-  @media (max-width: 768px) {
-    .dettagli-layout {
-      grid-template-columns: 1fr; /* Disposizione verticale */
-      gap: 20px;
-    }
-  
-    .dettagli-info h1 {
-      font-size: 2rem;
-    }
-  
-    .dettagli-prezzo {
-      font-size: 1.5rem;
-    }
-  
-    .dettagli-acquista {
-      font-size: 1rem;
-      padding: 10px 25px;
-    }
-  }
-  
+}

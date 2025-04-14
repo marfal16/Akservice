@@ -15,18 +15,23 @@ import CheckoutPage from "./pages/CheckoutPage";
 import ConfermaPage from "./pages/ConfermaPage";
 import CheckoutStripe from "./pages/CheckoutStripe";
 import CartPage from './pages/CartPage';
+import CheckoutPayPal from './pages/CheckoutPayPal'; 
+import logoImage from './assets/logo-ak-multicolor-1WHITE.png';
+import logoImageC from './assets/logo-ak-multicolor.png';
+import shopImage from './assets/shopping-bag.png';
 
 // Carica l'istanza di Stripe
 const stripePromise = loadStripe("pk_test_51R8dlEQC5hypstY6hhCR9ndgjKR1OcqrcdCpPrzth5wOa5O9seKGiBiQYITh5NqV764nCuXHUiky3PGBBVt2VzcS00TsNluSyC");
 
 function Navbar({ cartItems }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [logo, setLogo] = useState(logoImage);  // Stato per il logo
   const navigate = useNavigate();
   const location = useLocation();
 
   const goToHomeSection = (sectionId) => {
     if (location.pathname !== "/") {
-      navigate("/");
+      navigate("/"); 
       setTimeout(() => {
         const el = document.getElementById(sectionId);
         if (el) {
@@ -41,18 +46,42 @@ function Navbar({ cartItems }) {
     }
   };
 
+  // Funzione per determinare l'emoji in base agli articoli nel carrello
+  const getCartEmoji = () => {
+    return cartItems.length === 0 ? '🛒' : '🛍️'; // Cambia emoji a seconda se il carrello è vuoto o pieno
+  };
+
+  // Funzione per ottenere il numero totale degli articoli nel carrello
+  const getTotalQuantity = () => {
+    return cartItems.reduce((total, item) => total + item.quantity, 0); // Somma le quantità degli articoli
+  };
+
+  // Gestione hover sul logo
+  const handleLogoMouseEnter = () => {
+    setLogo(logoImageC);  // Cambia il logo al passaggio del mouse
+  };
+
+  const handleLogoMouseLeave = () => {
+    setLogo(logoImage);  // Ritorna al logo originale quando il mouse esce
+  };
+
   return (
     <header className="navbar">
       <nav>
         <ul className="main-menu">
+          {/* Logo */}
+          <img 
+            src={logo} 
+            className="logo-icon" 
+            onMouseEnter={handleLogoMouseEnter} // Aggiungi l'evento mouseEnter
+            onMouseLeave={handleLogoMouseLeave} // Aggiungi l'evento mouseLeave
+            alt="Logo"
+          />
           <li>
             <button onClick={() => goToHomeSection("home")}>Home</button>
           </li>
           <li>
             <button onClick={() => goToHomeSection("about")}>Chi Siamo</button>
-          </li>
-          <li>
-            <button onClick={() => goToHomeSection("contact")}>Contatti</button>
           </li>
           <li className="relative">
             <button onClick={() => setDropdownOpen(!dropdownOpen)} className="dropdown-btn">
@@ -80,15 +109,39 @@ function Navbar({ cartItems }) {
                     Formazione Universitaria
                   </Link>
                 </li>
-
-
               </ul>
             )}
           </li>
-
           <li>
+            <button onClick={() => goToHomeSection("contact")}>Contatti</button>
+          </li>
+          <li className="cart-container">
             <Link to="/cart">
-              <button>Carrello ({cartItems.length})</button>
+              <button>
+                <div style={{ position: 'relative', display: 'inline-block' }}>
+                  <img 
+                    src={shopImage} 
+                    alt="Shopping Bag" 
+                    style={{ width: '30px', height: '30px' }} 
+                  />
+                  {/* Numero articoli sopra l'immagine del carrello */}
+                  <span 
+                    style={{
+                      position: 'absolute',
+                      bottom: '0',
+                      right: '0',
+                      backgroundColor: '#ff4500',
+                      color: 'white',
+                      borderRadius: '50%',
+                      padding: '2px 5px',
+                      fontSize: '12px',
+                      fontWeight: 'bold'
+                    }}
+                  >
+                    {getTotalQuantity()}
+                  </span>
+                </div>
+              </button>
             </Link>
           </li>
         </ul>
@@ -137,6 +190,7 @@ function App() {
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/conferma" element={<ConfermaPage />} />
           <Route path="/cart" element={<CartPage cartItems={cartItems} removeFromCart={removeFromCart} updateQuantity={updateQuantity} />} />
+          <Route path="/checkout-paypal" element={<CheckoutPayPal />} />
           <Route
             path="/checkout-stripe" 
             element={

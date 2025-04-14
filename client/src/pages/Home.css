@@ -8,9 +8,13 @@ body {
 
   .about-us {
     background-color: #f9f9f9;
-    padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    padding: 40px 0;
+    text-align: center;
+    align-items: center; /* Allinea centralmente il contenuto */
+      scroll-margin-top: 63px; /* Aggiusta il valore come preferisci */
   }
   
   .about-content {
@@ -21,16 +25,44 @@ body {
   }
   
   .about-image {
-    max-width: 30%;
+    width: 15%;
+    height: auto;
+    margin-top: 30px;
     border-radius: 1px;
-    margin-right: 20px; /* Distanza tra l'immagine e il testo */
+    margin-right: 20px;
+    margin-left: 1.7%;
   }
+  
   
   .about-content p {
     text-align: left; /* Allinea il testo a sinistra */
     margin: 0; /* Rimuove margini indesiderati */
   }
-  
+
+  /* Centrare il titolo "Chi Siamo" */
+.about-us h2 {
+  margin-bottom: 30px; /* Spazio più ampio sotto il titolo */
+  text-align: left;
+  text-indent: 20px;        /* Aggiunge un rientro all'inizio di ogni paragrafo */
+  font-size: 2rem; /* Dimensione del font più grande */
+  font-weight: bold;
+  color: #bd732a; /* Colore interessante (puoi scegliere un altro colore) */
+  text-transform: uppercase; /* Rende il testo tutto maiuscolo */
+  letter-spacing: 2px; /* Distanza tra le lettere per renderlo più interessante */
+  position: relative; /* Per aggiungere l'effetto decorativo */
+}
+
+.about-us h2::after {
+  content: ''; /* Aggiunge una decorazione */
+  position: absolute;
+  bottom: -10px; /* Posiziona la linea sotto il titolo */
+  left: 0;
+  width: 50%;
+  height: 4px; /* Spessore della linea */
+  background-color: #bd732a; /* Colore della linea */
+  border-radius: 2px; /* Rende la linea arrotondata */
+  margin: 0 auto; /* Centra la linea sotto il titolo */
+}
 
   
 /* Sezioni principali */
@@ -47,22 +79,56 @@ body {
   
 /* Allargare la sezione "I Nostri Servizi" */
 .services-courses {
-  background-color: #f9f9f9;
+  background-color: #bd732a;
   width: 100%; /* Impostare la larghezza al 100% */
   max-width: none; /* Rimuovere la larghezza massima per evitare che venga limitata */
-  padding: 30px;
   margin: 20px auto;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 40px 0;
+  text-align: center;
+  align-items: center; /* Allinea centralmente il contenuto */
 }
   
   /* Immagine di copertura */
   .cover-img {
-    width: 100%; /* L'immagine riempie tutta la larghezza */
-    height: 100%; /* L'immagine occupa tutta l'altezza del contenitore */
-    object-fit: cover; /* L'immagine si adatta senza distorcere */
+    width: 100% !important;
+    height: 200px !important; /* Prova anche 150px per vedere l’effetto */
+    object-fit: cover !important;
+    display: block;
+  }
+  .cover-video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block;
+
   }
   
+
+  .scroll-icon {
+    width: 60px;
+    position: absolute;
+    align-items: center;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    animation: bounce 2s infinite;
+    
+  }
+
+  .top-icon {
+    width: 700px; /* Puoi cambiare la larghezza se necessario */
+    position: absolute;
+    top: 50%; /* Posiziona l'immagine al centro della pagina (verticalmente) */
+    left: 50%; /* Posiziona l'immagine al centro della pagina (orizzontalmente) */
+    transform: translate(-50%, -50%); /* Centra perfettamente l'immagine */
+    z-index: 1;
+    
+  }
+  
+
 /* Servizi e Corsi */
 .services-list {
     display: flex; /* Utilizza flexbox per allineare gli elementi in orizzontale */
@@ -71,18 +137,33 @@ body {
     flex-wrap: nowrap; /* Impedisce che i box vadano a capo su una nuova riga */
   }
   
-  /* Elementi del servizio */
-  .service-item {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 30%; /* Ogni box occupa il 30% della larghezza del contenitore */
-    text-align: center;
-    min-width: 250px;
-  }
-  
+/* Elementi del servizio */
+.service-item {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 12px; /* Aumenta il raggio per bordi più morbidi */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Leggera intensificazione dell'ombra */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 70%;
+  min-width: 225px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px;
+  background-color: #f9f9f9; /* Leggero colore di sfondo per un contrasto più morbido */
+  border: 2px solid #bd732a; /* Bordi arancioni per il brand */
+}
+
+/* Titolo dei servizi */
+.service-item h3 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
+
   /* Stile per le immagini */
   .service-item img {
     width: 100%; /* La larghezza dell'immagine è il 100% del contenitore */
@@ -90,12 +171,48 @@ body {
     height: auto; /* Mantiene le proporzioni */
     margin-bottom: 20px;
   }
-  
+
+
+/* Descrizione dei servizi */
+.service-item p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
   .service-item:hover {
     transform: translateY(-10px);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   }
+
+
+  /* Centrare il titolo "Servizi" */
+  .services-courses h2 {
+    margin-bottom: 30px; /* Spazio più ampio sotto il titolo */
+    text-align: left;
+    text-indent: 20px;        /* Aggiunge un rientro all'inizio di ogni paragrafo */
+    font-size: 2rem; /* Dimensione del font più grande */
+    font-weight: bold;
+    color: #f9f9f9; /* Colore interessante (puoi scegliere un altro colore) */
+    text-transform: uppercase; /* Rende il testo tutto maiuscolo */
+    letter-spacing: 2px; /* Distanza tra le lettere per renderlo più interessante */
+    position: relative; /* Per aggiungere l'effetto decorativo */
+  }
   
+  .services-courses h2::after {
+    content: ''; /* Aggiunge una decorazione */
+    position: absolute;
+    bottom: -10px; /* Posiziona la linea sotto il titolo */
+    left: 0;
+    width: 50%;
+    height: 4px; /* Spessore della linea */
+    background-color: #f9f9f9; /* Colore della linea */
+    border-radius: 2px; /* Rende la linea arrotondata */
+    margin: 0 auto; /* Centra la linea sotto il titolo */
+  }
+
   .shop-link {
     display: inline-block;
     background-color: #bd732a; /* Arancione */
@@ -116,12 +233,69 @@ body {
     padding: 40px 0;
     background-color: #f9f9f9;
     text-align: center;
+    align-items: center; /* Allinea centralmente il contenuto */
   }
   
   .testimonials-section h2 {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 30px; /* Spazio più ampio sotto il titolo */
+    text-align: left;
+    text-indent: 20px;        /* Aggiunge un rientro all'inizio di ogni paragrafo */
+    font-size: 2rem; /* Dimensione del font più grande */
+    font-weight: bold;
+    color: #bd732a; /* Colore interessante (puoi scegliere un altro colore) */
+    text-transform: uppercase; /* Rende il testo tutto maiuscolo */
+    letter-spacing: 2px; /* Distanza tra le lettere per renderlo più interessante */
+    position: relative; /* Per aggiungere l'effetto decorativo */
+  }
+  
+  .testimonials-section h2::after {
+    content: ''; /* Aggiunge una decorazione */
+    position: absolute;
+    bottom: -10px; /* Posiziona la linea sotto il titolo */
+    left: 0;
+    width: 50%;
+    height: 4px; /* Spessore della linea */
+    background-color: #bd732a; /* Colore della linea */
+    border-radius: 2px; /* Rende la linea arrotondata */
+    margin: 0 auto; /* Centra la linea sotto il titolo */
+  }
+  
+
+
+  .contact-section {
+    padding: 40px 0;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+    align-items: center; /* Allinea centralmente il contenuto */
+  }
+
+
+  /* Centrare il titolo "Contatti" */
+  .contact-section h2 {
+    margin-bottom: 30px; /* Spazio più ampio sotto il titolo */
+    text-align: left;
+    text-indent: 20px;        /* Aggiunge un rientro all'inizio di ogni paragrafo */
+    font-size: 2rem; /* Dimensione del font più grande */
+    font-weight: bold;
+    color: #bd732a; /* Colore interessante (puoi scegliere un altro colore) */
+    text-transform: uppercase; /* Rende il testo tutto maiuscolo */
+    letter-spacing: 2px; /* Distanza tra le lettere per renderlo più interessante */
+    position: relative; /* Per aggiungere l'effetto decorativo */
+    
+  }
+  
+  .contact-section h2::after {
+    content: ''; /* Aggiunge una decorazione */
+    position: absolute;
+    bottom: -10px; /* Posiziona la linea sotto il titolo */
+    left: 0;
+    width: 50%;
+    height: 4px; /* Spessore della linea */
+    background-color: #bd732a; /* Colore della linea */
+    border-radius: 2px; /* Rende la linea arrotondata */
+    margin: 0 auto; /* Centra la linea sotto il titolo */
+
   }
   
   /* Carosello delle testimonianze */
@@ -298,6 +472,122 @@ body {
   }
   
 
+  .card-button {
+    background: white; /* Sfondo bianco */
+    border: 2px solid #bd732a; /* Bordo arancione (stesso colore usato precedentemente) */
+    color: #bd732a; /* Testo dello stesso colore del bordo */
+    padding: 8px 15px; /* Spaziatura interna */
+    font-size: 16px; /* Dimensione testo */
+    border-radius: 20px; /* Bordo arrotondato per un design armonioso */
+    cursor: pointer; /* Cambia il cursore al passaggio */
+    transition: all 0.3s ease; /* Transizione fluida */
+  }
+  
+  .card-button:hover {
+    background: #bd732a; /* Sfondo arancione quando il mouse è sopra */
+    color: white; /* Testo bianco per contrasto */
+  }
+  
+
+  button[type="submit"] {
+    background-color: #bd732a;
+    color: white;
+    padding: 12px 25px;
+    font-size: 1rem;
+  
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #8e5b1d;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+
+  .footer-section {
+    background-color: #333; /* Colore di sfondo scuro */
+    color: white; /* Colore del testo */
+    padding: 10px 0; /* Ridotto il padding per un footer più stretto */
+    text-align: center;
+    font-family: 'Arial', sans-serif; /* Font moderno */
+  }
+  
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap; /* Supporto per schermi piccoli */
+    justify-content: space-around; /* Allineamento migliore */
+    align-items: flex-start; /* Allinea verticalmente gli elementi */
+    max-width: 1200px; /* Larghezza massima */
+    margin: 0 auto; /* Centrato */
+    padding: 10px 20px;
+  }
+  
+  .footer-links, .footer-socials, .footer-contact {
+    flex: 1 1 300px; /* Stile responsive per larghezze minime */
+    margin: 10px;
+    text-align: left; /* Allineamento del testo */
+  }
+  
+  .footer-links ul, .footer-socials ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-links li, .footer-socials li {
+    margin-bottom: 6px;
+  }
+  
+  .footer-links a, .footer-socials a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .footer-links a:hover, .footer-socials a:hover {
+    text-decoration: underline;
+    color: #f1c40f; /* Colore hover più vivace */
+  }
+  
+  .footer-contact {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  
+  .footer-bottom {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #555; /* Linea divisoria elegante */
+    font-size: 12px;
+    color: #aaa; /* Colore più chiaro per il testo secondario */
+    text-align: center;
+  }
+  
+  .footer-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .footer-icons a {
+    color: white;
+    font-size: 18px;
+    margin: 0 8px;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-icons a:hover {
+    color: #f1c40f; /* Colore hover per le icone */
+  }
+  
+  
+  
+
+  
   /* Ottimizzazioni per mobile */
   @media (max-width: 768px) {
     .cover-image {
@@ -316,4 +606,3 @@ body {
       font-size: 1rem;
     }
   }
-

@@ -1,0 +1,24 @@
+/* Stile per il pulsante PayPal */
+.paypal-button-container {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin: 20px auto; /* Aggiunge margine automatico per centrare orizzontalmente */
+    text-align: center; /* Assicura che il contenuto al suo interno sia centrato */
+  }
+  
+
+/* Aggiungi personalizzazione per il pulsante PayPal */
+.paypal-button-container .paypal-button {
+    height: 30px; /* Ridotto per farlo più sottile */
+    width: 100%; /* Imposta la larghezza al 100% del contenitore */
+    font-size: 14px; /* Impostato per una dimensione di testo più piccola */
+  }
+
+  
+  .paypal-button-container button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  

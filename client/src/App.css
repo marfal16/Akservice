@@ -1,7 +1,7 @@
 /* Barra di navigazione */
 .navbar {
   background-color: #333;
-  padding: 10px 20px;
+  padding: 5px 10px; /* ridotto da 10px a 5px */
   position: fixed;
   width: 100%;
   top: 0;
@@ -12,9 +12,8 @@
 .navbar nav ul {
   list-style: none;
   display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin: 0;
+  justify-content: right;
+  margin: 0px 50px 0px 0px;
   padding: 0;
 }
 
@@ -26,8 +25,8 @@
 .navbar nav ul li a {
   color: white;
   text-decoration: none;
-  font-size: 18px;
-  padding: 10px 20px;
+  font-size: 15px; /* eventualmente ridotto da 18px */
+  padding: 6px 14px; /* ridotto da 10px 20px */
   background: none;
   border: none;
   cursor: pointer;
@@ -36,7 +35,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 5px;
-  font-weight: normal; /* Non grassetto per i link e i tasti */
+  font-weight: normal;
 }
 
 .navbar nav ul li button:hover {
@@ -44,22 +43,21 @@
   border-radius: 5px;
 }
 
-/* Rimuove lo sfondo dai <Link> per evitare il doppio effetto */
 .navbar nav ul li a:hover {
   background: none;
 }
 
-
-/* Modifica il layout delle sottosezioni "I nostri servizi" per renderle verticali */
+/* Sottosezioni verticali */
 .navbar .services-menu {
-  display: none; /* Nascondi per default il menu verticale */
+  display: none;
 }
 
 .navbar .services-menu.active {
   display: flex;
-  flex-direction: column; /* Disposizione verticale delle voci */
-  gap: 10px; /* Distanza tra le voci */
+  flex-direction: column;
+  gap: 10px;
 }
+
 
 /* Per evitare che il contenuto della pagina si nasconda sotto la barra fissa */
 body {
@@ -115,6 +113,7 @@ button {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+
 }
 
 button:hover {
@@ -129,11 +128,14 @@ button:hover {
 /* CSS per il layout del menu */
 .main-menu {
   display: flex;
-  justify-content: flex-start;
-  list-style: none;
-  padding: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
   margin: 0;
-  align-items: center; /* Allinea verticalmente tutti gli elementi */
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  position: relative;
 }
 
 .main-menu li {
@@ -213,6 +215,28 @@ button:hover {
   background-color: #bd732a;
   border-radius: 5px;
 }
+
+.navbar-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Logo */
+.logo-icon {
+  width: 40px;
+  height: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  transition: filter 300ms;
+}
+
+.logo-icon:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+
+
 
 @media (max-width: 768px) {
   .dropdown-menu {

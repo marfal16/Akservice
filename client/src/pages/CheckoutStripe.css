@@ -1,0 +1,132 @@
+/* Popup container */
+.popup-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #ffffff;
+  width: 99%;
+  max-width: 450px; /* Ridotta la larghezza */
+  padding: 20px 40px; /* Meno padding per ridurre l'altezza */
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transform: scale(0.9);
+  animation: scaleIn 0.4s ease-out forwards;
+  margin: 0 auto; /* Centra la popup orizzontalmente */
+  max-height: 80vh; /* Imposta un'altezza massima per la popup */
+}
+
+/* Animazione di ingresso */
+@keyframes scaleIn {
+  0% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+
+/* Contenitore delle informazioni utente */
+.user-info-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+/* Etichette e input */
+.user-info-container label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.user-info-container input {
+  padding: 12px 16px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.user-info-container input:focus {
+  border-color: #007acc;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 122, 204, 0.3);
+}
+
+/* Card container */
+.stripe-card-container {
+  background-color: #f3f4f7;
+  padding: 25px;
+  border-radius: 10px;
+  margin-top: 20px;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+
+}
+
+.stripe-card-container:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Pulsante di pagamento */
+.payment-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.payment-buttons button {
+  background-color: #009cde; /* Colore blu ufficiale di PayPal */
+  color: white;
+  padding: 10px 29px; /* Aumentato leggermente per un pulsante più grande */
+  font-size: 1.2rem; /* Font leggermente più grande */
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.payment-buttons button:hover {
+  background-color: #007bb5; /* Colore blu più scuro di PayPal al passaggio del mouse */
+  transform: translateY(-2px);
+}
+
+.payment-buttons button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+
+/* Contenitore pop-up mobile */
+@media (max-width: 768px) {
+  .popup-container {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .user-info-container {
+    grid-template-columns: 1fr; /* Tutti i campi in colonna sui dispositivi più piccoli */
+    gap: 20px;
+  }
+
+  .payment-buttons button {
+    font-size: 1rem;
+  }
+
+  .paypal-option {
+    width: 100%;
+  }
+}

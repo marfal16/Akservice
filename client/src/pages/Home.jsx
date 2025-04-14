@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './Home.css';
 import coverImage from '../assets/ak_copertina.png';  
 import workImage from '../assets/work.jpg';  
@@ -6,8 +6,13 @@ import payImage from '../assets/pay.jpg';
 import studyImage from '../assets/study.jpg';  
 import languagesImage from '../assets/languages.jpg'; 
 import readImage from '../assets/read.jpg';  
-import logoImage from '../assets/logo.jpg';  
+import logoImage from '../assets/logo-ak-multicolor.png';  
+import presentation from '../assets/presentation.mp4'; 
 import { Link, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import scrollDown from '../assets/scroll-bar.png';
+import scrittaLogo from '../assets/AKSERVICE-W.png';
+import whatsappImg from '../assets/whatsapp.png';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -25,6 +30,7 @@ const Home = () => {
   
     }, []);
   
+
   const handleClick = (e, path) => {
     e.preventDefault();
     navigate(path);
@@ -32,59 +38,73 @@ const Home = () => {
 
   return (
     <div>
-      <header className="cover-image" id="home">
-        <img src={coverImage} alt="Copertura Azienda" className="cover-img" />
-      </header>
+<header className="cover-image" id="home">
+  <video
+    src={presentation}
+    className="cover-video"
+    autoPlay
+    loop
+    muted
+    playsInline
+  />
+  <img src={scrittaLogo} alt="Scritta Logo" className="top-icon" />
+  <a href="#about">
+  <img src={scrollDown} alt="Scroll Down" className="scroll-icon" />
+</a>
+
+</header>
 
       <div className="about-us" id="about">
-        <h2>Chi Siamo</h2>
+        <h2>CHI SIAMO</h2>
         <div className="about-content">
           <img src={logoImage} alt="Immagine di AK SERVICE" className="about-image" /> 
-           <p> <br /> <br /> AK SERVICE nasce nel 2022 con l’obiettivo di offrire percorsi di formazione professionale e scolastica per preparare i giovani alle sfide del mondo del lavoro. Attraverso corsi mirati e un approccio pratico, forniamo competenze utili per una crescita personale e professionale.  
-          <br />  <br />   Crediamo nella formazione come chiave del successo, supportando studenti e lavoratori nella loro evoluzione con programmi innovativi e assistenza continua.
-          <br />  <br /> Il nostro impegno è creare opportunità concrete per un futuro più solido e inclusivo.</p>
+           <p>  AK SERVICE è nata nel 2022 con la missione di trasformare il futuro professionale dei giovani, offrendo percorsi formativi di alta qualità per prepararli alle sfide del mondo del lavoro 
+          <br />  <br />   Offriamo corsi pratici e teorici, pensati per sviluppare competenze concrete, con un approccio innovativo e orientato al miglioramento continuo.
+          <br />  <br /> Crediamo fermamente che la formazione sia la chiave del successo. Per questo motivo, accompagniamo ogni studente e professionista nel suo percorso di crescita, garantendo supporto costante e programmi formativi all'avanguardia.
+          <br />  <br /> Il nostro impegno è creare un ponte tra le opportunità di oggi e il futuro che vogliamo costruire, un futuro dove inclusività e preparazione si intrecciano per dare a ogni individuo gli strumenti giusti per emergere e prosperare.
+          </p>
         </div>
       </div>
 
-      <section className="services-courses" id="services">
-        <h2>I Nostri Servizi</h2>
+      <section className="services-courses" id="services" >
+        <h2>I NOSTRI SERVIZI</h2>
         <div className="services-list">
           <div className="service-item">
             <img src={workImage} alt="Servizio 1" className="service-icon" />
             <h3>Certificazioni Informatiche</h3>
-            <p>Corsi pensati per preparare i giovani al mondo del lavoro, con focus su competenze pratiche e teoriche.</p>
-            <button onClick={(e) => handleClick(e, '/corsi-informatici')} className="card-button">Scopri i dettagli</button>
+            <p>Preparazione completa per il mondo del lavoro, con corsi che combinano teoria e pratica nel campo delle tecnologie informatiche.</p>
+            <button onClick={(e) => handleClick(e, '/corsi-informatici')} className="card-button">Scopri di più</button>
           </div>
           <div className="service-item">
             <img src={languagesImage} alt="Servizio 3" className="service-icon" />
             <h3>Certificazioni Linguistiche</h3>
-            <p>Offriamo corsi pratici su competenze specifiche per carriere professionali nel settore tecnico.</p>
-            <button onClick={(e) => handleClick(e, '/corsi-lingue')} className="card-button">Scopri i dettagli</button>
+            <p>Corsi pratici e mirati per acquisire competenze linguistiche che aprono la porta a carriere internazionali e opportunità professionali.</p>
+            <button onClick={(e) => handleClick(e, '/corsi-lingue')} className="card-button">Scopri di più</button>
           </div>
           <div className="service-item">
             <img src={readImage} alt="Servizio 2" className="service-icon" />
             <h3>Corsi Regionali</h3>
-            <p>Offriamo corsi pratici su competenze specifiche per carriere professionali nel settore tecnico.</p>
-            <button onClick={(e) => handleClick(e, '/corsi-regionali')} className="card-button">Scopri i dettagli</button>
+            <p>Programmi di formazione specifici per le esigenze del mercato locale, pensati per i settori più richiesti nella tua regione.</p>
+            <button onClick={(e) => handleClick(e, '/corsi-regionali')} className="card-button">Scopri di più</button>
           </div>
           <div className="service-item">
             <img src={studyImage} alt="Servizio 2" className="service-icon" />
             <h3>Formazione Universitaria</h3>
-            <p>Offriamo corsi pratici su competenze specifiche per carriere professionali nel settore tecnico.</p>
-            <button onClick={(e) => handleClick(e, '/formazione-universitaria')} className="card-button">Scopri i dettagli</button>
+            <p>Percorsi di studi universitari online che ti permettono di ottenere una laurea e acquisire competenze per entrare nel mondo del lavoro.</p>
+            <button onClick={(e) => handleClick(e, '/formazione-universitaria')} className="card-button">Scopri di più</button>
           </div>
         </div>
       </section>
 
       {/* Sezione Testimonianze */}
       <section className="testimonials-section" id="testimonials">
-        <h2>Dicono di noi</h2>
+        <h2>DICONO DI NOI</h2>
         <div id="shapo-widget-3631ed6ab32424719ed3"></div>
       </section>
 
       {/* Sezione Contatti */}
       <section className="contact-section" id="contact">
-        <h2>Contatti</h2>
+        <h2>CONTATTI</h2>
         <div className="contact-container">
           <div className="contact-box map-box">
             <iframe
@@ -115,7 +135,10 @@ const Home = () => {
                 08118207535
               </p>
               <p className="info-content">
-                <a href="https://wa.me/3333254691" target="_blank" className="whatsapp-link">3333254691 - WhatsApp</a>
+                <a href="https://wa.me/3333254691" target="_blank" className="whatsapp-link" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  3333254691 - WhatsApp
+                  <img src={whatsappImg} alt="WhatsApp" style={{ width: '20px', marginLeft: '8px' }} />
+                </a>
               </p>
             </div>
             <div className="info-row">
@@ -147,6 +170,40 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Sezione Footer */}
+      <footer className="footer-section">
+        <div className="footer-content">
+          <div className="footer-links">
+            <h3>Link Utili</h3>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">Chi Siamo</a></li>
+              <li><a href="#services">I Nostri Servizi</a></li>
+              <li><a href="#contact">Contatti</a></li>
+            </ul>
+          </div>
+
+          <div className="footer-socials">
+            <h3>Seguici su</h3>
+            <ul>
+              <li><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+              <li><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+              <li><a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            </ul>
+          </div>
+
+          <div className="footer-contact">
+            <h3>Contatti</h3>
+            <p>Telefono: 08118207535</p>
+            <p>Email: <a href="mailto:info@akservice.it">info@akservice.it</a></p>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p>&copy; 2025 AK SERVICE S.R.L. | Tutti i diritti riservati</p>
+        </div>
+      </footer>
+
     </div>
   );
 }
