@@ -16,6 +16,9 @@ import whatsappImg from '../assets/whatsapp.png';
 
 const Home = () => {
   const navigate = useNavigate();
+  const nameRef = useRef();
+  const emailRef = useRef();
+  const messageRef = useRef();
 
     useEffect(() => {
       const script = document.createElement('script');
@@ -36,23 +39,36 @@ const Home = () => {
     navigate(path);
   };
 
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const name = nameRef.current.value;
+    const email = emailRef.current.value;
+    const message = messageRef.current.value;
+  
+    // Creazione del link mailto con l'oggetto che include il nome
+    const mailtoLink = `mailto:info@akservice.it?subject=Richiesta%20Informazioni%20da%20${encodeURIComponent(name)}&body=${encodeURIComponent(message)}%0A%0A--%0A${encodeURIComponent(name)}`;
+  
+    // Invio dell'email
+    window.location.href = mailtoLink;
+  };
+  
+
   return (
     <div>
-<header className="cover-image" id="home">
-  <video
-    src={presentation}
-    className="cover-video"
-    autoPlay
-    loop
-    muted
-    playsInline
-  />
-  <img src={scrittaLogo} alt="Scritta Logo" className="top-icon" />
-  <a href="#about">
-  <img src={scrollDown} alt="Scroll Down" className="scroll-icon" />
-</a>
-
-</header>
+      <header className="cover-image" id="home">
+        <video
+          src={presentation}
+          className="cover-video"
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+        <img src={scrittaLogo} alt="Scritta Logo" className="top-icon" />
+        <a href="#about">
+        <img src={scrollDown} alt="Scroll Down" className="scroll-icon" />
+      </a>
+      </header>
 
       <div className="about-us" id="about">
         <h2>CHI SIAMO</h2>
@@ -76,19 +92,19 @@ const Home = () => {
             <button onClick={(e) => handleClick(e, '/corsi-informatici')} className="card-button">Scopri di più</button>
           </div>
           <div className="service-item">
-            <img src={languagesImage} alt="Servizio 3" className="service-icon" />
+            <img src={languagesImage} alt="Servizio 2" className="service-icon" />
             <h3>Certificazioni Linguistiche</h3>
             <p>Corsi pratici e mirati per acquisire competenze linguistiche che aprono la porta a carriere internazionali e opportunità professionali.</p>
             <button onClick={(e) => handleClick(e, '/corsi-lingue')} className="card-button">Scopri di più</button>
           </div>
           <div className="service-item">
-            <img src={readImage} alt="Servizio 2" className="service-icon" />
+            <img src={readImage} alt="Servizio 3" className="service-icon" />
             <h3>Corsi Regionali</h3>
             <p>Programmi di formazione specifici per le esigenze del mercato locale, pensati per i settori più richiesti nella tua regione.</p>
             <button onClick={(e) => handleClick(e, '/corsi-regionali')} className="card-button">Scopri di più</button>
           </div>
           <div className="service-item">
-            <img src={studyImage} alt="Servizio 2" className="service-icon" />
+            <img src={studyImage} alt="Servizio 4" className="service-icon" />
             <h3>Formazione Universitaria</h3>
             <p>Percorsi di studi universitari online che ti permettono di ottenere una laurea e acquisire competenze per entrare nel mondo del lavoro.</p>
             <button onClick={(e) => handleClick(e, '/formazione-universitaria')} className="card-button">Scopri di più</button>
@@ -152,22 +168,23 @@ const Home = () => {
           </div>
 
           <div className="contact-box form-box">
-            <form action="mailto:info@akservice.it" method="post" encType="text/plain">
+            <form onSubmit={handleFormSubmit}>
               <div className="form-group">
                 <label htmlFor="name">NOME</label>
-                <input type="text" id="name" name="name" required />
+                <input type="text" id="name" name="name" ref={nameRef} required />
               </div>
               <div className="form-group">
                 <label htmlFor="email">EMAIL</label>
-                <input type="email" id="email" name="email" required />
+                <input type="email" id="email" name="email" ref={emailRef} required />
               </div>
               <div className="form-group">
                 <label htmlFor="message">MESSAGGIO</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
+                <textarea id="message" name="message" rows="4" ref={messageRef} required></textarea>
               </div>
               <button type="submit">Invia</button>
             </form>
-          </div>
+        </div>
+
         </div>
       </section>
 
@@ -187,15 +204,18 @@ const Home = () => {
           <div className="footer-socials">
             <h3>Seguici su</h3>
             <ul>
-              <li><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a></li>
-              <li><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-              <li><a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+              <li><a href="https://www.facebook.com/people/Ak-Service/100091582421040/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+              <li><a href="https://www.instagram.com/ak_service_srl/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+              <li><a href="https://www.linkedin.com/company/akservice/posts/?feedView=all&viewAsMember=true" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+              <li><a href="https://www.tiktok.com/@akservicesrl?_tZN-8vY9xR0GGta&_r=1" target="_blank" rel="noopener noreferrer">TikTok</a></li>
             </ul>
           </div>
 
           <div className="footer-contact">
             <h3>Contatti</h3>
             <p>Telefono: 08118207535</p>
+            <p>WhatsApp: <a href="https://wa.me/3333254691" >
+             3333254691 </a> </p>
             <p>Email: <a href="mailto:info@akservice.it">info@akservice.it</a></p>
           </div>
         </div>

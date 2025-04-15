@@ -91,7 +91,7 @@ export default function FormazioneUniversitaria() {
                 <td data-label="Descrizione">{corso.descrizione_intro}</td>
                 <td data-label="">
                   <Link to={`/dettagli/${corso.id}`} className="action-link">
-                    Scopri
+                    SCOPRI
                   </Link>
                 </td>
               </tr>

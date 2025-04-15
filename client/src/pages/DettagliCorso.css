@@ -63,32 +63,120 @@
   margin-bottom: 20px;
 }
 
+/* Box per il prezzo e il pulsante Acquista */
+.dettagli-prezzo-e-pulsante {
+  display: flex;
+  justify-content: space-between; /* Spaziatura tra prezzo e pulsante */
+  align-items: center; /* Centra verticalmente */
+  background: #fff; /* Colore di sfondo bianco */
+  padding: 15px 25px; /* Spaziatura interna */
+  border-radius: 12px; /* Bordi arrotondati */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+  transition: box-shadow 0.3s ease, transform 0.3s ease; /* Transizione */
+  max-width: 600px; /* Stessa larghezza del box info contatti */
+  margin: 20px auto; /* Centra orizzontalmente */
+}
+
+/* Hover per il box */
+.dettagli-prezzo-e-pulsante:hover {
+  box-shadow: 0 8px 20px rgba(189, 115, 42, 0.4); /* Ombra più intensa */
+  transform: scale(1.03); /* Leggero ingrandimento */
+}
+
+/* Prezzo */
 .dettagli-prezzo {
   font-size: 2rem;
   font-weight: bold;
   color: #bd732a;
-  margin-bottom: 30px;
 }
 
-/* Pulsante Acquista */
+/* Pulsante Aggiungi al Carrello */
 .dettagli-acquista {
-  background-color: #007acc !important;
-  color: white !important;
-  padding: 10px 30px !important;
-  font-size: 1.2rem !important;
-  font-weight: bold !important;
-  border: none !important;
-  border-radius: 50px !important;
-  cursor: pointer !important;
-  transition: all 0.3s ease-in-out !important;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
+  background-color: #fff; /* Sfondo bianco */
+  color: #bd732a; /* Testo arancione per coerenza con il design */
+  padding: 12px 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: 2px solid #bd732a; /* Bordo arancione sottile */
+  border-radius: 50px; /* Bordi arrotondati */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Ombra leggera */
+  display: flex; /* Per centrare il contenuto */
+  align-items: center;
+  justify-content: center;
 }
+
 
 .dettagli-acquista:hover {
-  background-color: #005fa3 !important;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3) !important;
-  transform: scale(1.05) !important;
+  background-color: #bd732a; /* Sfondo arancione al passaggio del mouse */
+  color: white; /* Testo bianco */
+  box-shadow: 0 6px 15px rgba(189, 115, 42, 0.3); /* Ombra più intensa */
+  transform: scale(1.05); /* Leggero ingrandimento */
 }
+
+.contact-info-box {
+  background: #fff;
+  padding: 25px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.contact-info-box:hover {
+  box-shadow: 0 0 15px rgba(189, 115, 42, 0.6);
+  transform: scale(1.03);
+}
+
+.contact-info-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #bd732a;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.contact-info-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.contact-info-item {
+  width: 30%;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  padding: 15px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.contact-info-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(189, 115, 42, 0.3);
+}
+
+.contact-info-label {
+  font-size: 14px;
+  color: #555;
+  font-weight: 600;
+}
+
+.contact-info-value {
+  font-size: 16px;
+  color: #333;
+  text-decoration: none;
+  display: block;
+  margin-top: 5px;
+}
+
+.contact-info-value:hover {
+  color: #bd732a;
+}
+
+
 
 /* Mobile */
 @media (max-width: 768px) {

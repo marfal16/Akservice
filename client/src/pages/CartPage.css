@@ -1,5 +1,6 @@
 .cart-container {
     padding: 10px;
+    padding-left: 5px;  /* Riduce il padding a sinistra */
   }
   
   .cart-item {
@@ -16,26 +17,38 @@
   
   
   .cart-item .cart-info {
-    flex-grow: 1; /* Permette al contenuto del corso di crescere */
+    flex: 0 1 auto; /* non cresce, si adatta al contenuto */ /* Permette al contenuto del corso di crescere */
     margin-right: 10px; /* Distanza tra le informazioni del corso e i tasti */
   }
   
   .cart-item .cart-actions {
     display: flex;
-    align-items: center; /* Centra meglio */
-    justify-content: flex-end;
-    gap: 10px;
+    align-items: center;
+    justify-content: flex-start; /* Allinea a sinistra */
+    gap: 12px; /* Spazio tra i due elementi */
+    margin-left: 0; /* Rimuove eventuali margini a sinistra */
   }
   
+  .cart-item .cart-quantity input[type="number"] {
+    width: 50px;
+    padding: 6px 8px;
+    border: 1.5px solid #bd732a;
+    border-radius: 10px;
+    font-size: 15px;
+    text-align: center;
+    background-color: #fff;
+    color: #333;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
   
-  .cart-item input[type="number"] {
-    width: 40px;
-    padding: 5px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+  .cart-item .cart-quantity input[type="number"]:focus {
+    outline: none;
+    border-color: #8e5b1d;
+    box-shadow: 0 0 0 2px rgba(189, 115, 42, 0.2);
+  }
+  
 
-  }
   
   .cart-item button {
     padding: 3px 6px;
@@ -69,7 +82,7 @@
     border: none; /* Nessun bordo */
     width: auto; /* Imposta il pulsante per occupare tutta la larghezza disponibile */
     height: 40px; /* Imposta un'altezza coerente */
-    min-width: 100px; /* Larghezza minima per il pulsante */
+    min-width: 40px; /* Larghezza minima per il pulsante */
     margin-top: 0px; /* Spazio tra il totale e il pulsante */
   }
   
@@ -89,6 +102,8 @@
   align-items: center;
   border-top: 3px solid #bd732a; /* Linea verde sopra */
   margin: 40px ;
+  margin-left: auto;
+  margin-right: 0;
 }
 
   .cart-total {
@@ -174,15 +189,17 @@ button {
 /* Pulsante X (annulla) */
 .cancel-button {
   position: absolute;
-  top: 17px;
-  right: -40px;
-  font-size: 2.5rem;
-  color: #dc3545; /* Rosso per annullare */
+  top: 40px;
+  right: 15px; /* Invece di right */
+  font-size: 2rem;
+  color: #dc3545;
   background: none;
   border: none;
   cursor: pointer;
   padding: 5px;
+  z-index: 10;
 }
+
 
 .cancel-button:hover {
   color: #c82333;
@@ -222,6 +239,62 @@ button {
 .cta-button:hover {
   background-color: #8e5b1d;
 }
+
+.empty-cart-message {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px 20px;
+  background-color: #fffaf5;
+  border: 2px dashed #bd732a;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.empty-cart-message img {
+  max-width: 250px;
+  margin-bottom: 25px;
+}
+
+.empty-cart-message p {
+  font-size: 1.1rem;
+  color: #333;
+  margin: 8px 0;
+}
+
+.mini-services {
+  margin-top: 25px;
+}
+
+.mini-services h3 {
+  font-size: 1rem;
+  color: #bd732a;
+  margin-bottom: 12px;
+}
+
+.mini-services-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.mini-services-buttons button {
+  padding: 8px 16px;
+  font-size: 0.95rem;
+  color: #bd732a;
+  background-color: transparent;
+  border: 1.5px solid #bd732a;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mini-services-buttons button:hover {
+  background-color: #bd732a;
+  color: #fff;
+}
+
 
 
 

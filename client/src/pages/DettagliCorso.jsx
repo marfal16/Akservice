@@ -51,63 +51,66 @@ export default function DettagliCorso({ addToCart }) {
     );
   }
 
-  // Condizione per determinare se il corso proviene da FormazioneUniversitaria
-  const mostraContatti = ["CORSI DI LAUREA", "MASTER", "CORSI DI PERFEZIONAMENTO"].includes(corso.categoria);
-  
-  // Condizione per determinare se nascondere il prezzo (solo per CORSI DI LAUREA)
-  const nascondiPrezzo = corso.categoria === "CORSI DI LAUREA";
+// Condizione per determinare se nascondere il prezzo (solo per CORSI DI LAUREA o se il prezzo è vuoto)
+const nascondiPrezzo = corso.categoria === "CORSI DI LAUREA" || !corso.prezzo;
 
-  return (
-    <div className="dettagli-container">
-      <div className="dettagli-layout">
-        <h1 className="dettagli-titolo">{corso.nome}</h1>
-  
-        <div className="dettagli-immagine-container">
-          <img  
-            src={`/assets/${corso.immagine}`} 
-            alt={`Immagine del corso ${corso.nome}`} 
-            className="dettagli-immagine" 
-          />
-        </div>
-  
-        <div className="dettagli-info">
-          <p>{corso.descrizione}</p>
-          
-          {!nascondiPrezzo && (
-            <p className="dettagli-prezzo">Prezzo: €{corso.prezzo}</p>
-          )}
-  
-          {mostraContatti ? (
-            <div className="info-container">
-              <p><strong>Richiedi maggiori informazioni tramite WhatsApp o Email:</strong></p>
-              <div className="info-row">
-                <strong className="info-title">Telefono</strong>
-                <p className="info-content">08118207535</p>
-                <p className="info-content">
-                  <a href="https://wa.me/3333254691" target="_blank" className="whatsapp-link">
-                    3333254691 - WhatsApp
-                  </a>
-                </p>
+return (
+  <div className="dettagli-container">
+    <div className="dettagli-layout">
+      <h1 className="dettagli-titolo">{corso.nome}</h1>
+
+      <div className="dettagli-immagine-container">
+        <img  
+          src={`/assets/${corso.immagine}`} 
+          alt={`Immagine del corso ${corso.nome}`} 
+          className="dettagli-immagine" 
+        />
+      </div>
+
+      <div className="dettagli-info">
+        <p>{corso.descrizione}</p>
+        
+          {/* Box per il prezzo e il pulsante Acquista */}
+          {corso.prezzo && (
+              <div className="dettagli-prezzo-e-pulsante">
+                <p className="dettagli-prezzo">Prezzo: €{corso.prezzo}</p>
+
+                <button 
+                  onClick={() => addToCart(corso)} 
+                  className="dettagli-acquista"
+                >
+                  Aggiungi al carrello
+                </button>
               </div>
-              <div className="info-row">
-                <strong className="info-title">Email</strong>
-                <p className="info-content">
-                  <a href="mailto:info@akservice.it">info@akservice.it</a><br />
-                  <a href="mailto:assistenza@akservice.it">assistenza@akservice.it</a><br />
-                  <a href="mailto:segreteria@akservice.it">segreteria@akservice.it</a>
-                </p>
-              </div>
+            )}
+
+
+        {/* Sezione contatti visibile sempre */}
+        <div className="contact-info-box">
+          <p className="contact-info-title">Hai bisogno di maggiori informazioni?</p>
+
+          <div className="contact-info-row">
+            <div className="contact-info-item">
+              <span className="contact-info-label">Telefono:</span>
+              <span className="contact-info-value">08118207535</span>
             </div>
-          ) : (
-            <button 
-              onClick={() => addToCart(corso)} 
-              className="dettagli-acquista"
-            >
-              Aggiungi al carrello
-            </button>
-          )}
+
+            <div className="contact-info-item">
+              <span className="contact-info-label">WhatsApp:</span>
+              <a href="https://wa.me/3333254691" target="_blank" className="contact-info-value">
+                3333254691
+              </a>
+            </div>
+
+            <div className="contact-info-item">
+              <span className="contact-info-label">Email:</span>
+              <a href="mailto:info@akservice.it" className="contact-info-value">info@akservice.it</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  );  
+  </div>
+);  
+
 }

@@ -490,22 +490,21 @@ body {
   
 
   button[type="submit"] {
-    background-color: #bd732a;
-    color: white;
-    padding: 12px 25px;
-    font-size: 1rem;
-  
-    border: none;
-    border-radius: 5px;
+    background: white;
+    border: 2px solid #bd732a;
+    color: #bd732a;
+    padding: 8px 15px;
+    font-size: 16px;
+    border-radius: 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
   }
   
   button[type="submit"]:hover {
-    background-color: #8e5b1d;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    background: #bd732a;
+    color: white;
   }
+  
   
 
   .footer-section {
@@ -518,19 +517,22 @@ body {
   
   .footer-content {
     display: flex;
-    flex-wrap: wrap; /* Supporto per schermi piccoli */
-    justify-content: space-around; /* Allineamento migliore */
-    align-items: flex-start; /* Allinea verticalmente gli elementi */
-    max-width: 1200px; /* Larghezza massima */
-    margin: 0 auto; /* Centrato */
+    flex-wrap: wrap;
+    justify-content: center; /* Cambiato da space-around */
+    gap: 40px; /* Aggiunge spazio uniforme tra le colonne */
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 10px 20px;
   }
   
+  
   .footer-links, .footer-socials, .footer-contact {
-    flex: 1 1 300px; /* Stile responsive per larghezze minime */
+    width: 300px; /* oppure una dimensione coerente per tutti */
     margin: 10px;
-    text-align: left; /* Allineamento del testo */
+    text-align: left;
   }
+  
   
   .footer-links ul, .footer-socials ul {
     list-style: none;
@@ -550,13 +552,24 @@ body {
   
   .footer-links a:hover, .footer-socials a:hover {
     text-decoration: underline;
-    color: #f1c40f; /* Colore hover più vivace */
+    color: #bd732a; /* Colore hover più vivace */
   }
   
   .footer-contact {
     font-size: 14px;
     line-height: 1.8;
   }
+
+  .footer-contact a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .footer-contact a:hover {
+    text-decoration: underline;
+    color: #bd732a; /* oppure un colore hover a tua scelta */
+  }
+  
   
   .footer-bottom {
     margin-top: 10px;
@@ -581,12 +594,9 @@ body {
   }
   
   .footer-icons a:hover {
-    color: #f1c40f; /* Colore hover per le icone */
+    color: #bd732a; /* Colore hover per le icone */
   }
   
-  
-  
-
   
   /* Ottimizzazioni per mobile */
   @media (max-width: 768px) {

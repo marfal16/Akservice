@@ -5,12 +5,16 @@ import { loadStripe } from '@stripe/stripe-js';
 import './CartPage.css';
 import { Link } from 'react-router-dom';
 import CheckoutPayPal from './CheckoutPayPal';
+import deleteImg from '../assets/delete.png';
+import { useNavigate } from 'react-router-dom';
+import emptyCartImg from '../assets/empty-cart.png';
 
 const stripePromise = loadStripe('pk_test_51R8dlEQC5hypstY6hhCR9ndgjKR1OcqrcdCpPrzth5wOa5O9seKGiBiQYITh5NqV764nCuXHUiky3PGBBVt2VzcS00TsNluSyC');
 
 const CartPage = ({ cartItems, removeFromCart, updateQuantity }) => {
   const [clientSecret, setClientSecret] = useState(null);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const navigate = useNavigate();
 
   // Funzione per calcolare il totale
   const calculateTotal = () => {
@@ -46,9 +50,10 @@ const CartPage = ({ cartItems, removeFromCart, updateQuantity }) => {
     setIsPopupOpen(false);
   };
 
-  // Funzione per scrollare alla sezione "I Nostri Servizi"
-  const goToServicesSection = () => {
-    navigate('/', { state: { scrollTo: 'services' } });
+
+  const handleClick = (e, path) => {
+    e.preventDefault();
+    navigate(path);
   };
 
   return (
@@ -58,9 +63,20 @@ const CartPage = ({ cartItems, removeFromCart, updateQuantity }) => {
       {/* Se il carrello è vuoto */}
       {cartItems.length === 0 ? (
         <div className="empty-cart-message">
-          <p>Oops! Il carrello è vuoto. 😞</p>
-          <p>Non preoccuparti, abbiamo molti corsi disponibili!</p>
+        <img src={emptyCartImg} alt="Carrello vuoto" />
+        <p>Oops! Il carrello è vuoto. 😞</p>
+        <p>Non preoccuparti, abbiamo molti servizi disponibili!</p>
+
+        <div className="mini-services">
+          <h3>Scoprili qui:</h3>
+          <div className="mini-services-buttons">
+            <button onClick={(e) => handleClick(e, '/corsi-informatici')}> Certificazioni Informatiche </button>
+            <button onClick={(e) => handleClick(e, '/corsi-lingue')}>Certificazioni Linguistiche</button>
+            <button onClick={(e) => handleClick(e, '/corsi-regionali')}>Corsi Regionali</button>
+            <button onClick={(e) => handleClick(e, '/formazione-universitaria')}>Formazione Universitaria</button>
+          </div>
         </div>
+      </div>
       ) : (
         <ul>
           {cartItems.map((item, index) => (
@@ -71,17 +87,41 @@ const CartPage = ({ cartItems, removeFromCart, updateQuantity }) => {
               </div>
 
               <div className="cart-actions">
-                <div className="cart-quantity">
-                  Quantità:
-                  <input
-                    type="number"
-                    value={item.quantity}
-                    onChange={(e) => updateQuantity(index, parseInt(e.target.value))}
-                    min="1"
-                  />
+                  <div className="cart-quantity">
+                    
+                    <input
+                      type="number"
+                      value={item.quantity}
+                      onChange={(e) => updateQuantity(index, parseInt(e.target.value))}
+                      min="1"
+                    />
+                  </div>
+                  <button
+                    onClick={() => removeFromCart(index)}
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      padding: '3px',
+                      cursor: 'pointer',
+                      
+                      transition: 'transform 0.3s ease',
+                    }}
+                    onMouseEnter={(e) => e.target.style.transform = 'scale(1.1)'}  // Effetto hover
+                    onMouseLeave={(e) => e.target.style.transform = 'scale(1)'} 
+                  >
+                    <img
+                      src={deleteImg}
+                      alt="Rimuovi"
+                      style={{
+                        width: '22px',
+                        height: '22px',
+                        transition: 'all 0.3s ease',  // Effetto transizione fluido
+                      }}
+                    />
+                  </button>
                 </div>
-                <button onClick={() => removeFromCart(index)}>Rimuovi</button>
-              </div>
+
+
             </li>
           ))}
         </ul>

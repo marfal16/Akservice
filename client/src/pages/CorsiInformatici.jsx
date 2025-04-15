@@ -80,7 +80,7 @@ export default function CertificazioniInformatiche() {
               <th>Nome</th>
               <th>Categoria</th>
               <th>Descrizione</th>
-              <th>Azioni</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -89,9 +89,9 @@ export default function CertificazioniInformatiche() {
                 <td data-label="Nome">{corso.nome}</td>
                 <td data-label="Categoria">{corso.categoria}</td>
                 <td data-label="Descrizione">{corso.descrizione_intro}</td>
-                <td data-label="Azioni">
+                <td data-label="">
                   <Link to={`/dettagli/${corso.id}`} className="action-link">
-                    Scopri
+                    SCOPRI
                   </Link>
                 </td>
               </tr>

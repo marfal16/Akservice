@@ -89,18 +89,24 @@
 
 .action-link {
   display: inline-block;
-  padding: 8px 12px;
-  background: var(--dark);
-  color: var(--light);
+  padding: 6px 14px;
+  background: var(--grey);
+  border: 2px solid var(--orange);
+  color: var(--dark);
+  font-weight: 500;
+  font-size: 0.85rem;
+  border-radius: 20px;
   text-decoration: none;
-  border-radius: 6px;
-  font-weight: bold;
-  transition: background 0.3s;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.action-link:hover {
+.action-link:hover,
+.action-link.active {
   background: var(--orange);
+  color: var(--light);
 }
+
 
 .search-bar {
   margin-bottom: 20px;
