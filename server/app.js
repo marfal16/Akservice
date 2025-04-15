@@ -83,27 +83,32 @@ app.get('/api/corsi/:id', async (req, res) => {
 // Endpoint per creare un PaymentIntent basato sull'importo totale
 app.post('/api/checkout', async (req, res) => {
   try {
-    const { amount } = req.body; // Recupera l'importo totale dal corpo della richiesta
+    const { amount, email, name, corso } = req.body; // Prendi anche email e altri dettagli opzionali
 
     if (!amount || isNaN(amount)) {
-      return res.status(400).json({ error: 'L\'importo è richiesto e deve essere valido.' });
+      return res.status(400).json({ error: 'L importo è richiesto e deve essere valido.' });
     }
 
-    // Crea un PaymentIntent con l'importo ricevuto
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: Math.round(amount * 100), // Stripe richiede l'importo in centesimi
+      amount: Math.round(amount * 100),
       currency: 'eur',
       payment_method_types: ['card'],
+      receipt_email: email, // 👈 Permette a Stripe di inviare la ricevuta
+      metadata: {
+        nome: name || '',
+        corso: corso || '',
+      },
     });
-    
-    console.log("PaymentIntent creato:", paymentIntent);  // Aggiungi log per il PaymentIntent
 
-    res.json({ clientSecret: paymentIntent.client_secret }); // Restituisce il client secret
+    console.log("PaymentIntent creato:", paymentIntent);
+
+    res.json({ clientSecret: paymentIntent.client_secret });
   } catch (error) {
     console.error('Errore durante la creazione del PaymentIntent:', error.message);
     res.status(500).json({ error: 'Errore interno del server.' });
   }
 });
+
 
 
 const paypal = require("@paypal/checkout-server-sdk");
