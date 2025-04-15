@@ -23,7 +23,11 @@ const CartPage = ({ cartItems, removeFromCart, updateQuantity }) => {
       const response = await fetch(`http://localhost:5000/api/checkout`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ amount }), // Invia l'importo totale
+        body: JSON.stringify({
+          amount,
+          email,      // 👈 Usa il valore dell'email inserita nel form
+          nome,       // 👈 Nome dell'utente (opzionale ma utile)
+        }),
       });
 
       const data = await response.json();
