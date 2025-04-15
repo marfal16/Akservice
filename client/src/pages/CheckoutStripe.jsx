@@ -5,7 +5,7 @@ import "./CheckoutStripe.css";
 const CheckoutStripe = ({ clientSecret }) => {
   const stripe = useStripe();
   const elements = useElements();
-  
+
   // Stati per raccogliere i dati dell'utente
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -13,6 +13,10 @@ const CheckoutStripe = ({ clientSecret }) => {
   const [city, setCity] = useState('');
   const [postalCode, setPostalCode] = useState('');
   const [country, setCountry] = useState('');
+
+  // Stati per gestire esito e errori
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
+  const [paymentError, setPaymentError] = useState(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -23,7 +27,6 @@ const CheckoutStripe = ({ clientSecret }) => {
 
     const cardElement = elements.getElement(CardElement);
 
-    // Invia i dati dell'utente insieme al pagamento
     const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
         card: cardElement,
@@ -41,10 +44,15 @@ const CheckoutStripe = ({ clientSecret }) => {
     });
 
     if (error) {
-      console.error(error);
+      console.error("Errore nel pagamento:", error.message);
+      setPaymentError(error.message);       // Mostra messaggio errore
+      setPaymentSuccess(false);
     } else {
       if (paymentIntent.status === 'succeeded') {
         console.log('Pagamento effettuato con successo!');
+        setPaymentSuccess(true);
+        setPaymentError(null);              // Pulisce eventuali messaggi di errore
+        // Qui puoi anche svuotare carrello, fare redirect, inviare una mail, ecc.
       }
     }
   };
@@ -135,6 +143,19 @@ const CheckoutStripe = ({ clientSecret }) => {
         <div className="stripe-card-container">
           <CardElement options={cardElementOptions} id="card" />
         </div>
+
+        {/* Sezione messaggi feedback */}
+        {paymentSuccess && (
+          <div className="success-message">
+            🎉 Pagamento effettuato con successo!
+          </div>
+        )}
+
+        {paymentError && (
+          <div className="error-message">
+            ⚠️ Errore durante il pagamento: {paymentError}
+          </div>
+        )}
 
         <div className="payment-buttons">
           <button type="submit" disabled={!stripe}>
