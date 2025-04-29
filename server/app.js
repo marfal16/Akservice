@@ -82,8 +82,12 @@ app.get('/api/corsi/:id', async (req, res) => {
 
 // Endpoint per creare un PaymentIntent basato sull'importo totale
 app.post('/api/checkout', async (req, res) => {
+  console.log('Richiesta POST ricevuta:', req.body);  // Log iniziale
+
   try {
     const { amount, email, name, corso } = req.body; // Prendi anche email e altri dettagli opzionali
+
+    console.log("Dati ricevuti dal frontend:", req.body); // Log dei dati ricevuti
 
     if (!amount || isNaN(amount)) {
       return res.status(400).json({ error: 'L importo è richiesto e deve essere valido.' });
@@ -109,6 +113,28 @@ app.post('/api/checkout', async (req, res) => {
   }
 });
 
+app.post('/api/update-payment-info', async (req, res) => {
+  const { paymentIntentId, name, email, corso } = req.body;
+
+  try {
+    const updatedIntent = await stripe.paymentIntents.update(paymentIntentId, {
+      receipt_email: email,
+      metadata: {
+        nome: name,
+        corso: corso,
+      },
+    });
+
+    console.log("PaymentIntent aggiornato:", updatedIntent);
+    res.status(200).json({
+      message: 'PaymentIntent aggiornato con successo',
+      updatedIntent, // opzionale: utile se vuoi usarlo nel frontend
+    });
+  } catch (error) {
+    console.error('Errore aggiornamento paymentIntent:', error);
+    res.status(500).json({ error: 'Errore aggiornamento paymentIntent' });
+  }
+});
 
 
 const paypal = require("@paypal/checkout-server-sdk");
