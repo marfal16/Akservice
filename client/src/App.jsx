@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
 import './App.css';
-
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Home from './pages/Home';  
 import About from './pages/About';  
 import CorsiInformatici from './pages/CorsiInformatici'; 
@@ -19,12 +19,14 @@ import CheckoutPayPal from './pages/CheckoutPayPal';
 import logoImage from './assets/logo-ak-multicolor-1WHITE.png';
 import logoImageC from './assets/logo-ak-multicolor.png';
 import shopImage from './assets/shopping-bag.png';
+import { useEffect, useRef } from 'react';
 
 // Carica l'istanza di Stripe
 const stripePromise = loadStripe("pk_test_51R8dlEQC5hypstY6hhCR9ndgjKR1OcqrcdCpPrzth5wOa5O9seKGiBiQYITh5NqV764nCuXHUiky3PGBBVt2VzcS00TsNluSyC");
 
 function Navbar({ cartItems }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef();
   const [logo, setLogo] = useState(logoImage);  // Stato per il logo
   const navigate = useNavigate();
   const location = useLocation();
@@ -65,6 +67,19 @@ function Navbar({ cartItems }) {
     setLogo(logoImage);  // Ritorna al logo originale quando il mouse esce
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+  
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+  
   return (
     <header className="navbar">
       <nav>
@@ -75,49 +90,43 @@ function Navbar({ cartItems }) {
             className="logo-icon" 
             onMouseEnter={handleLogoMouseEnter} // Aggiungi l'evento mouseEnter
             onMouseLeave={handleLogoMouseLeave} // Aggiungi l'evento mouseLeave
-            alt="Logo"
+            alt="Logo AK Service"
+            aria-label="Logo AK Service" 
           />
+
           <li>
-            <button onClick={() => goToHomeSection("home")}>Home</button>
+            <button onClick={() => goToHomeSection("home")} aria-label="Vai alla sezione Home">Home</button>
           </li>
           <li>
-            <button onClick={() => goToHomeSection("about")}>Chi Siamo</button>
+            <button onClick={() => goToHomeSection("about")} aria-label="Vai alla sezione Chi Siamo">Chi Siamo</button>
           </li>
-          <li className="relative">
-            <button onClick={() => setDropdownOpen(!dropdownOpen)} className="dropdown-btn">
+          <li className="relative" ref={dropdownRef}>
+            <button onClick={() => setDropdownOpen(!dropdownOpen)} className="dropdown-btn" aria-label="Apri menu I Nostri Servizi">
               I Nostri Servizi
             </button>
             {dropdownOpen && (
               <ul className="dropdown-menu">
                 <li>
-                  <Link to="/corsi-informatici" onClick={() => setDropdownOpen(false)}>
-                    Certificazioni Informatiche
-                  </Link>
+                  <Link to="/corsi-informatici" onClick={() => setDropdownOpen(false)} aria-label="Certificazioni Informatiche">Certificazioni Informatiche</Link>
                 </li>
                 <li>
-                  <Link to="/corsi-lingue" onClick={() => setDropdownOpen(false)}>
-                    Certificazioni Linguistiche
-                  </Link>
+                  <Link to="/corsi-lingue" onClick={() => setDropdownOpen(false)} aria-label="Certificazioni Linguistiche">Certificazioni Linguistiche</Link>
                 </li>
                 <li>
-                  <Link to="/corsi-regionali" onClick={() => setDropdownOpen(false)}>
-                    Corsi Regionali
-                  </Link>
+                  <Link to="/corsi-regionali" onClick={() => setDropdownOpen(false)} aria-label="Corsi Regionali">Corsi Regionali</Link>
                 </li>
                 <li>
-                  <Link to="/formazione-universitaria" onClick={() => setDropdownOpen(false)}>
-                    Formazione Universitaria
-                  </Link>
+                  <Link to="/formazione-universitaria" onClick={() => setDropdownOpen(false)} aria-label="Formazione Universitaria">Formazione Universitaria</Link>
                 </li>
               </ul>
             )}
           </li>
           <li>
-            <button onClick={() => goToHomeSection("contact")}>Contatti</button>
+            <button onClick={() => goToHomeSection("contact")} aria-label="Vai alla sezione Contatti">Contatti</button>
           </li>
           <li className="cart-container">
-            <Link to="/cart">
-              <button>
+            <Link to="/cart" aria-label="Vai al carrello">
+              <button aria-label="Carrello">
                 <div style={{ position: 'relative', display: 'inline-block' }}>
                   <img 
                     src={shopImage} 
@@ -137,6 +146,7 @@ function Navbar({ cartItems }) {
                       fontSize: '12px',
                       fontWeight: 'bold'
                     }}
+                    aria-label={`Carrello con ${getTotalQuantity()} articoli`}
                   >
                     {getTotalQuantity()}
                   </span>

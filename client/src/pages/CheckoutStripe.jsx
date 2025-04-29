@@ -17,15 +17,38 @@ const CheckoutStripe = ({ clientSecret }) => {
   // Stati per gestire esito e errori
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [paymentError, setPaymentError] = useState(null);
+  const [isProcessing, setIsProcessing] = useState(false); // Stato per monitorare l'elaborazione del pagamento
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!stripe || !elements) {
-      return;
+    if (!stripe || !elements || isProcessing) {
+      return; // Se il pagamento è già in corso, non fare nulla
     }
 
+    setIsProcessing(true); // Inizia l'elaborazione del pagamento
+
     const cardElement = elements.getElement(CardElement);
+
+      // Creazione del payload da inviare al backend
+    const paymentMethodData = {
+      payment_method: {
+        card: cardElement,
+        billing_details: {
+          name: name,
+          email: email,
+          address: {
+            line1: address,
+            city: city,
+            postal_code: postalCode,
+            country: country
+          }
+        },
+      },
+    };
+
+      // Log dei dati che stai passando
+      console.log('Dati inviati al backend CheckoutStripe:', paymentMethodData);
 
     const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
@@ -51,10 +74,36 @@ const CheckoutStripe = ({ clientSecret }) => {
       if (paymentIntent.status === 'succeeded') {
         console.log('Pagamento effettuato con successo!');
         setPaymentSuccess(true);
-        setPaymentError(null);              // Pulisce eventuali messaggi di errore
-        // Qui puoi anche svuotare carrello, fare redirect, inviare una mail, ecc.
+        setPaymentError(null);
+      
+        // 👇 Invia i dati dell’utente al backend
+        try {
+          const response = await fetch('http://localhost:5000/api/update-payment-info', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              paymentIntentId: paymentIntent.id,
+              name,
+              email,
+              corso: "test", // o un prop passato
+            }),
+          });
+      
+          const data = await response.json();
+          if (!response.ok) {
+            throw new Error(data.error || 'Errore salvataggio dati');
+          }
+      
+          console.log('Dati utente aggiornati nel paymentIntent!');
+        } catch (err) {
+          console.error("Errore nell’aggiornamento del paymentIntent:", err);
+        }
+      
+        // svuota carrello, redirect, ecc.
       }
     }
+
+    setIsProcessing(false); // Fine elaborazione pagamento
   };
 
   const cardElementOptions = {
@@ -158,8 +207,8 @@ const CheckoutStripe = ({ clientSecret }) => {
         )}
 
         <div className="payment-buttons">
-          <button type="submit" disabled={!stripe}>
-            Conferma
+          <button type="submit" disabled={!stripe || isProcessing}>
+            {isProcessing ? "Elaborazione..." : "Conferma"}
           </button>
         </div>
       </div>

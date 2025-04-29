@@ -360,6 +360,8 @@ body {
     flex-wrap: wrap;
   }
   
+
+
   .contact-box {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
@@ -421,7 +423,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 600px; /* Imposta una larghezza massima per un aspetto più compatto */
+
     margin: 0px auto;
     min-height: 400px; /* Aggiungi altezza minima per uniformare */
   }
@@ -506,7 +508,7 @@ body {
   }
   
   
-
+/* Footer */
   .footer-section {
     background-color: #333; /* Colore di sfondo scuro */
     color: white; /* Colore del testo */
@@ -526,7 +528,6 @@ body {
     padding: 10px 20px;
   }
   
-  
   .footer-links, .footer-socials, .footer-contact {
     width: 300px; /* oppure una dimensione coerente per tutti */
     margin: 10px;
@@ -534,43 +535,29 @@ body {
   }
   
   
-  .footer-links ul, .footer-socials ul {
+  .footer-links ul, .footer-socials ul, .footer-contact ul {
     list-style: none;
     padding: 0;
     margin: 0;
   }
   
-  .footer-links li, .footer-socials li {
+  .footer-links li, .footer-socials li, .footer-contact li {
     margin-bottom: 6px;
   }
   
-  .footer-links a, .footer-socials a {
+  .footer-links a, .footer-socials a, .footer-contact a {
     color: #ffffff;
     text-decoration: none;
     font-size: 14px;
   }
   
-  .footer-links a:hover, .footer-socials a:hover {
+
+  .footer-links a:hover, .footer-socials a:hover, .footer-contact a:hover {
     text-decoration: underline;
     color: #bd732a; /* Colore hover più vivace */
   }
   
-  .footer-contact {
-    font-size: 14px;
-    line-height: 1.8;
-  }
 
-  .footer-contact a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  .footer-contact a:hover {
-    text-decoration: underline;
-    color: #bd732a; /* oppure un colore hover a tua scelta */
-  }
-  
-  
   .footer-bottom {
     margin-top: 10px;
     padding-top: 10px;
@@ -600,19 +587,276 @@ body {
   
   /* Ottimizzazioni per mobile */
   @media (max-width: 768px) {
-    .cover-image {
-      height: 40vh;
+    /* ABOUT */
+    .about-content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;  /* Maggiore padding laterale per schermi piccoli */
     }
   
-    .service-item {
-      width: 100%;
+    .about-image {
+      width: 35%;
+      margin: 20px auto;
     }
   
-    .contact-box.form-box {
-      padding: 15px;
+    .about-us h2 {
+      font-size: 1.8rem;
+      text-align: center;
+      text-indent: 0;
     }
   
-    input, textarea, button {
-      font-size: 1rem;
+    .about-us h2::after {
+      left: 50%;
+      transform: translateX(-50%);
     }
+  
+  /* SERVICES */
+  .services-courses {
+    padding: 20px 10px;
+    box-sizing: border-box;
+    overflow-x: hidden;
   }
+
+  .services-courses h2 {
+    font-size: 1.5rem;
+    text-align: center;
+    text-indent: 0;
+  }
+
+  .services-courses h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .services-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 0 20px; /* Aggiungi padding simmetrico a sinistra e a destra */
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 1200px; /* Imposta un max-width per limitare la larghezza massima */
+  }
+
+  
+  .service-item {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin: 0 auto;
+  }
+
+  
+    /* TESTIMONIALS */
+    .testimonials-section h2 {
+      font-size: 1.5rem;
+      text-align: center;
+      text-indent: 0;
+    }
+  
+    .testimonials-section h2::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  
+   /* CONTACT */
+.contact-section {
+  padding: 20px 10px;
+}
+
+
+.contact-box {
+  width: 100% !important; /* I riquadri prendono tutta la larghezza disponibile */
+  margin-bottom: 20px !important; /* Aggiungi uno spazio tra i riquadri */
+  padding: 15px;
+}
+
+.contact-section h2 {
+  font-size: 1.5rem;
+  text-align: center;
+  text-indent: 0;
+}
+
+.contact-section h2::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.contact-wrapper {
+  flex-direction: column;
+  gap: 15px;
+}
+
+.map-container, .contact-details {
+  width: 100%; /* Imposta la larghezza al 100% */
+}
+
+.contact-container {
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer-content {
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-links, .footer-socials, .footer-contact {
+  width: 80%;  /* Usa una percentuale per farli adattare meglio sui dispositivi mobili */
+  text-align: center;
+  margin: 10px auto; /* Centra i blocchi */
+}
+
+.footer-bottom {
+  font-size: 10px;  /* Riduci leggermente la dimensione del testo */
+  padding-top: 5px;
+}
+
+.footer-icons {
+  gap: 15px;
+}
+
+.footer-icons a {
+  font-size: 16px;  /* Riduci la dimensione delle icone */
+}
+
+}
+
+
+
+/* Ottimizzazioni per Tablet più grandi - max-width: 1024px */
+@media (max-width: 1024px) {
+  /* ABOUT */
+  .about-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 30px; /* Maggiore padding laterale */
+  }
+
+  .about-image {
+    width: 40%; /* L'immagine leggermente più grande */
+    margin: 25px auto;
+  }
+
+  .about-us h2 {
+    font-size: 2rem; /* Leggermente più grande per tablet grandi */
+    text-align: center;
+    text-indent: 0;
+  }
+
+  .about-us h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* SERVICES */
+  .services-courses {
+    padding: 50px 20px;
+  }
+
+  .services-courses h2 {
+    font-size: 1.7rem;
+  }
+
+  .services-list {
+    flex-direction: row; /* Disposizione orizzontale */
+    flex-wrap: wrap; /* Permetti il ritorno a capo */
+    gap: 25px; /* Spazio maggiore tra elementi */
+    padding: 0 20px;
+  }
+
+  .service-item {
+    width: 45%; /* Due colonne su schermi più grandi */
+    margin: 15px auto;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials-section h2 {
+    font-size: 1.7rem;
+  }
+
+  /* CONTACT */
+  .contact-box {
+    width: 80%;
+    margin-bottom: 25px;
+  }
+
+  .footer-links, .footer-socials, .footer-contact {
+    width: 60%; /* Elementi centrati su schermi medi */
+    margin: 15px auto;
+  }
+}
+
+/* Ottimizzazioni per Smartphone piccoli - max-width: 430px */
+@media (max-width: 430px) {
+  /* ABOUT */
+  .about-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 15px; /* Riduci padding per schermi piccoli */
+  }
+
+  .about-image {
+    width: 60%; /* Immagine più grande per smartphone */
+    margin: 15px auto;
+  }
+
+  .about-us h2 {
+    font-size: 1.5rem; /* Titoli più piccoli per smartphone */
+    letter-spacing: 1px; /* Riduci spaziatura lettere */
+  }
+
+  .about-us h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* SERVICES */
+  .services-courses {
+    padding: 30px 10px;
+  }
+
+  .services-list {
+    flex-direction: column; /* Disposizione verticale */
+    gap: 15px;
+  }
+
+  .service-item {
+    width: 90%; /* Ogni elemento occupa quasi tutta la larghezza */
+    margin: 10px auto;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials-section h2 {
+    font-size: 1.3rem;
+  }
+
+  /* CONTACT */
+  .contact-box {
+    width: 100%; /* Elementi a tutta larghezza */
+    margin-bottom: 15px;
+  }
+
+  .footer-links, .footer-socials, .footer-contact {
+    width: 100%; /* Elementi completamente estesi */
+  }
+
+  .footer-bottom {
+    font-size: 8px; /* Testo più piccolo per smartphone */
+  }
+}
+
+
+
+
+
+
+
+  
+  

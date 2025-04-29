@@ -240,12 +240,51 @@ button:hover {
 }
 
 
+@keyframes bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+}
+
+.cart-container span {
+  animation: bounce 0.3s ease;
+}
 
 
+/* Per tablet e dispositivi con schermi più piccoli */
 @media (max-width: 768px) {
-  .dropdown-menu {
-    width: 90%; /* Imposta una larghezza maggiore per schermi piccoli */
-    left: 5%; /* Centra il menu nel viewport */
+  body {
+    font-size: 14px;
   }
 
+  header {
+    flex-direction: column; /* Cambia la disposizione dei menu */
+  }
+
+  .main-menu li {
+    padding: 10px;
+  }
+
+  .logo-icon {
+    width: 120px; /* Adatta la dimensione del logo */
+  }
+}
+
+/* Per dispositivi mobili */
+@media (max-width: 480px) {
+  body {
+    font-size: 12px;
+  }
+
+  .main-menu li {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .logo-icon {
+    width: 100px; /* Logo ancora più piccolo su schermi piccoli */
+  }
+
+  .cart-container {
+    display: none; /* Nascondi il carrello su schermi troppo piccoli per evitare sovraffollamento */
+  }
 }

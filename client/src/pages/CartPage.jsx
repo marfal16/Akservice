@@ -28,11 +28,14 @@ const CartPage = ({ cartItems, removeFromCart, updateQuantity }) => {
     setLoading(true);
     setPaymentError(null);
 
+      // Log dei dati che stai inviando al backend
+     console.log("Dati inviati al backend CartPage:", { amount });
+
     try {
       const response = await fetch(`http://localhost:5000/api/checkout`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ amount,  receipt_email: email}),
+        body: JSON.stringify({ amount }),
       });
 
       if (!response.ok) {
@@ -40,6 +43,10 @@ const CartPage = ({ cartItems, removeFromCart, updateQuantity }) => {
       }
 
       const data = await response.json();
+
+          // Log della risposta ricevuta dal backend
+        console.log("Dati ricevuti dal backend CartPage:", data);
+
       setClientSecret(data.clientSecret);
     } catch (error) {
       console.error('Errore nel recupero del clientSecret:', error);

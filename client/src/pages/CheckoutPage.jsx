@@ -16,26 +16,48 @@ const CartPage = ({ cartItems, removeFromCart, updateQuantity }) => {
     return cartItems.reduce((total, item) => total + item.prezzo * item.quantity, 0);
   };
 
-  // Funzione per creare il PaymentIntent e ottenere il clientSecret
-  const createPaymentIntent = async () => {
-    const amount = calculateTotal(); // Totale da pagare
-    try {
-      const response = await fetch(`http://localhost:5000/api/checkout`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          amount,
-          email,      // 👈 Usa il valore dell'email inserita nel form
-          nome,       // 👈 Nome dell'utente (opzionale ma utile)
-        }),
-      });
+// Funzione per creare il PaymentIntent e ottenere il clientSecret
+const createPaymentIntent = async () => {
+  const amount = calculateTotal(); // Totale da pagare
 
-      const data = await response.json();
-      setClientSecret(data.clientSecret); // Salva il clientSecret per Stripe
-    } catch (error) {
-      console.error('Errore nel recupero del clientSecret:', error);
+  console.log('🟡 Inizio creazione PaymentIntent...');
+  console.log('📦 Dati inviati al backend:', {
+    amount,
+    email,
+    nome,
+  });
+
+  try {
+    const response = await fetch(`http://localhost:5000/api/checkout`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        amount,
+        email,   // 👈 Usa il valore dell'email inserita nel form
+        nome,    // 👈 Nome dell'utente (opzionale ma utile)
+      }),
+    });
+
+    if (!response.ok) {
+      console.error(`🔴 Errore HTTP ${response.status}:`, await response.text());
+      return;
     }
-  };
+
+    const data = await response.json();
+    console.log('✅ Risposta ricevuta dal backend:', data);
+
+    if (data.clientSecret) {
+      console.log('🔐 clientSecret ricevuto:', data.clientSecret);
+      setClientSecret(data.clientSecret); // Salva il clientSecret per Stripe
+    } else {
+      console.warn('⚠️ Nessun clientSecret nella risposta:', data);
+    }
+
+  } catch (error) {
+    console.error('❌ Errore nel recupero del clientSecret:', error);
+  }
+};
+
 
   return (
     <div className="cart-container">
