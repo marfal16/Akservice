@@ -250,41 +250,93 @@ button:hover {
 }
 
 
-/* Per tablet e dispositivi con schermi più piccoli */
+@media (max-width: 1024px) {
+  .navbar nav ul {
+    margin: 0 30px; /* Riduce il margine */
+    justify-content: center; /* Centra il menu */
+  }
+
+  .navbar nav ul li a, .navbar nav ul li button {
+    font-size: 14px; /* Riduce leggermente il testo */
+    padding: 6px 12px; /* Riduce padding */
+  }
+
+  .main-menu {
+    gap: 15px;
+  }
+
+  .dropdown-menu {
+    min-width: 180px; /* Riduce larghezza del dropdown */
+    gap: 15px;
+  }
+
+  .logo {
+    height: 5em; /* Riduce dimensione logo */
+  }
+}
+
 @media (max-width: 768px) {
-  body {
-    font-size: 14px;
+  .navbar {
+    padding: 8px; /* Riduce il padding della navbar */
   }
 
-  header {
-    flex-direction: column; /* Cambia la disposizione dei menu */
+  .navbar nav ul {
+    flex-direction: column; /* Impila il menu verticalmente */
+    align-items: center;
+    margin: 0;
   }
 
-  .main-menu li {
-    padding: 10px;
+  .navbar nav ul li {
+    display: block; /* Permette che i link occupino tutta la larghezza */
   }
 
-  .logo-icon {
-    width: 120px; /* Adatta la dimensione del logo */
+  .main-menu {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .dropdown-menu {
+    position: relative; /* Rende il dropdown più usabile */
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .logo {
+    height: 4em; /* Logo più piccolo */
+    padding: 1em;
   }
 }
 
-/* Per dispositivi mobili */
-@media (max-width: 480px) {
-  body {
-    font-size: 12px;
+@media (max-width: 430px) {
+  .navbar {
+    padding: 5px; /* Riduce il padding generale */
   }
 
-  .main-menu li {
-    font-size: 14px;
-    padding: 8px;
+  .navbar nav ul {
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
   }
 
-  .logo-icon {
-    width: 100px; /* Logo ancora più piccolo su schermi piccoli */
+  .navbar nav ul li a, .navbar nav ul li button {
+    font-size: 13px; /* Testo più piccolo */
+    padding: 5px 10px; /* Riduce padding */
   }
 
-  .cart-container {
-    display: none; /* Nascondi il carrello su schermi troppo piccoli per evitare sovraffollamento */
+  .main-menu {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .dropdown-menu {
+    position: relative; /* Assicura il corretto posizionamento */
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .logo {
+    height: 3.5em; /* Riduce il logo ancora di più */
+    padding: 0.5em;
   }
 }
+

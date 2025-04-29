@@ -668,11 +668,10 @@ body {
   padding: 20px 10px;
 }
 
-
 .contact-box {
   width: 100% !important; /* I riquadri prendono tutta la larghezza disponibile */
   margin-bottom: 20px !important; /* Aggiungi uno spazio tra i riquadri */
-  padding: 15px;
+  padding: 0px;
 }
 
 .contact-section h2 {
@@ -688,6 +687,24 @@ body {
 .contact-wrapper {
   flex-direction: column;
   gap: 15px;
+}
+
+.contact-box.form-box {
+  background-color: #f9f9f9;
+  /* padding: 10px; */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px #0000001a;
+  width: 100%;
+  margin: 0 auto;
+  min-height: 360px;
+}
+input, textarea {
+  width: 90%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
 .map-container, .contact-details {
