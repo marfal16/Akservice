@@ -270,6 +270,7 @@ button:hover {
     display: flex; /* Rende la navbar un contenitore flex */
     align-items: center;
     justify-content: space-between;
+
   }
 
   .logo-container {
@@ -309,7 +310,7 @@ button:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: fixed;
+    position: relative;
     width: 100%;
     top: 0;
     left: 0;
@@ -340,7 +341,6 @@ button:hover {
   
   .menu.active {
     display: flex !important; /* Forza la visibilità quando attivo */
-    border: 2px solid lime;   /* ti fa capire se compare */
   }
 
   .main-menu {
@@ -366,7 +366,7 @@ button:hover {
     all: unset;
     display: block;
     position: absolute;
-    top: 20px;
+    top: 10x;
     right: 70px;
     font-size: 35px;
     background: none;
@@ -454,7 +454,7 @@ button:hover {
         all: unset;
         display: block;
         position: absolute;
-        top: 20px;
+        top: 10px;
         right: 70px;
         font-size: 35px;
         background: none;

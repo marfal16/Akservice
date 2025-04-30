@@ -125,6 +125,7 @@ function Navbar({ cartItems }) {
               Chi Siamo
             </button>
           </li>
+          {/*
           <li className="relative" ref={dropdownRef}>
             <button 
               onClick={() => setDropdownOpen(!dropdownOpen)} 
@@ -173,6 +174,15 @@ function Navbar({ cartItems }) {
                 </li>
               </ul>
             )}
+          </li> 
+          */}
+          <li>
+            <button 
+              onClick={() => { goToHomeSection("services"); setMenuOpen(false); }} 
+              aria-label="Vai alla sezione I Nostri Servizi"
+            >
+              I Nostri Servizi
+            </button>
           </li>
           <li>
             <button 

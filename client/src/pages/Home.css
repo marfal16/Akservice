@@ -6,7 +6,7 @@ body {
     padding: 0;
   }
 
-  .container, .navbar, .main-menu {
+  .container, .main-menu {
     max-width: 100vw; /* Evita che questi elementi superino il viewport */
     overflow-x: hidden;
   }
