@@ -1,3 +1,8 @@
+.container, .navbar, .main-menu {
+  max-width: 100vw; /* Evita che questi elementi superino il viewport */
+  overflow-x: hidden;
+}
+
 /* Barra di navigazione */
 .navbar {
   background-color: #333;
@@ -258,8 +263,14 @@ button:hover {
 
 /* Logo su desktop: dentro la navbar */
 @media (min-width: 769px) {
+  .navbar {
+    display: flex; /* Rende la navbar un contenitore flex */
+    align-items: center;
+    justify-content: space-between;
+  }
+
   .logo-container {
-    order: -1; /* Il logo appare prima del menu */
+    order: -1; /* Sposta il logo a sinistra */
   }
 }
 

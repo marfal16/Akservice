@@ -8,6 +8,12 @@ body {
     width: 100vw; /* Assicura che il body non vada oltre il viewport */
   }
 
+  .container, .navbar, .main-menu {
+    max-width: 100vw; /* Evita che questi elementi superino il viewport */
+    overflow-x: hidden;
+  }
+
+  
   .about-us {
     background-color: #f9f9f9;
     border-radius: 8px;
