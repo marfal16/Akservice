@@ -72,7 +72,7 @@ const CartPage = ({ cartItems, removeFromCart, updateQuantity }) => {
 
   return (
     <div className="cart-container">
-      <h2>Il tuo Carrello</h2>
+
 
       {cartItems.length === 0 ? (
         <div className="empty-cart-message">
