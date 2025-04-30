@@ -194,7 +194,8 @@ function Navbar({ cartItems }) {
           </li>
           <li className="cart-container">
             <Link to="/cart" aria-label="Vai al carrello">
-              <button aria-label="Carrello">
+              <button aria-label="Carrello"
+              onClick={() => setMenuOpen(false)} >
                 <div style={{ position: 'relative', display: 'inline-block' }}>
                   <img 
                     src={shopImage} 

@@ -241,14 +241,14 @@ button {
 }
 
 .empty-cart-message {
-  max-width: 900px;
+ /* max-width: 900px; */
   margin: 40px auto;
   padding: 30px 20px;
-  background-color: #fffaf5;
-  border: 2px dashed #bd732a;
-  border-radius: 20px;
+/*  background-color: #fffaf5; */
+/*  border: 2px dashed #bd732a; */
+/*  border-radius: 20px; */
   text-align: center;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  /* box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05); */
 }
 
 .empty-cart-message img {

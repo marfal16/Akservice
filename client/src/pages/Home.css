@@ -828,6 +828,10 @@ input, textarea {
   }
 
   /* CONTACT */
+  #contact {
+    scroll-margin-top: 80px;
+  }
+  
   .contact-box {
     width: 80%;
     margin-bottom: 25px;
@@ -894,6 +898,10 @@ input, textarea {
   }
 
   /* CONTACT */
+  #contact {
+    scroll-margin-top: 80px;
+  }
+
   .contact-box {
     width: 100%; /* Elementi a tutta larghezza */
     margin-bottom: 15px;
