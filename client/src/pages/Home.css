@@ -4,6 +4,8 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
+    overflow-x: hidden; /* Nasconde la scroll bar orizzontale */
+    width: 100vw; /* Assicura che il body non vada oltre il viewport */
   }
 
   .about-us {
@@ -93,13 +95,14 @@ body {
   /* Immagine di copertura */
   .cover-img {
     width: 100% !important;
-    height: 200px !important; /* Prova anche 150px per vedere l’effetto */
+    height: 200px !important; 
     object-fit: cover !important;
     display: block;
   }
   .cover-video {
     width: 100% !important;
-    height: 100% !important;
+    /* height: 100% !important; */
+    height: 100vh !important;
     object-fit: cover !important;
     display: block;
 
@@ -587,9 +590,9 @@ body {
   /* Ottimizzazioni per mobile */
   @media (max-width: 768px) {
     .top-icon {
-      width: 90%;
+      width: 100%;
       position: absolute;
-      top: 15vh;
+      top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       z-index: 2;
@@ -756,9 +759,9 @@ input, textarea {
 /* Ottimizzazioni per Tablet più grandi - max-width: 1024px */
 @media (max-width: 1024px) {
   .top-icon {
-    width: 90%;
+    width: 100%;
     position: absolute;
-    top: 23vh;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
@@ -829,14 +832,14 @@ input, textarea {
 /* Ottimizzazioni per Smartphone piccoli - max-width: 430px */
 @media (max-width: 430px) {
   .top-icon {
-    width: 90%;
+    width: 100%;
     position: absolute;
-    top: 13vh;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
   }
-  
+
   /* ABOUT */
   .about-content {
     flex-direction: column;
@@ -846,7 +849,7 @@ input, textarea {
   }
 
   .about-image {
-    width: 60%; /* Immagine più grande per smartphone */
+    width: 40%; /* Immagine più grande per smartphone */
     margin: 15px auto;
   }
 

@@ -89,6 +89,7 @@ function Navbar({ cartItems }) {
   return (
     <header className="navbar">
           {/* Logo */}
+          <div className="logo-container">
           <img 
             src={logo} 
             className="logo-icon" 
@@ -97,6 +98,7 @@ function Navbar({ cartItems }) {
             alt="Logo AK Service"
             aria-label="Logo AK Service" 
           />
+          </div>
 
       {/* Pulsante hamburger per mobile */}
       <button className="hamburger-btn" onClick={toggleMenu}>
