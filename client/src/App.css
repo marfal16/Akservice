@@ -314,7 +314,7 @@ button:hover {
     top: 0;
     left: 0;
     z-index: 1000;
-    padding: 20px;
+    padding: 40px;
   }
 
 
@@ -326,7 +326,7 @@ button:hover {
   }
 
   .menu {
-    display: none;
+    display: none; /* Nasconde il menu quando inattivo */
     position: absolute;
     top: 60px;
     left: 0;
@@ -337,13 +337,19 @@ button:hover {
     padding: 15px 0;
     z-index: 1100; /* Assicura che sia sopra gli altri elementi */
   }
-
+  
   .menu.active {
     display: flex !important; /* Forza la visibilità quando attivo */
   }
 
-  .main-menu.active {
+  .main-menu {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
 
   .main-menu li {
@@ -394,7 +400,7 @@ button:hover {
     top: 0;
     left: 0;
     z-index: 1000;
-    padding: 20px;
+    padding: 40px;
   }
 
 
@@ -407,7 +413,7 @@ button:hover {
 
 
   .menu {
-    display: none;
+    display: none; /* Nasconde il menu quando inattivo */
     position: absolute;
     top: 60px;
     left: 0;
@@ -418,22 +424,19 @@ button:hover {
     padding: 15px 0;
     z-index: 1100; /* Assicura che sia sopra gli altri elementi */
   }
-
   
   .menu.active {
     display: flex !important; /* Forza la visibilità quando attivo */
   }
+
   .main-menu {
     display: flex;
-    flex-direction: column; /* Disposizione verticale */
-    align-items: center; /* Centra gli elementi */
-    width: 100%;
-    padding: 10px 0;
-    gap: 15px; /* Aggiunge spazio tra i tab */
-  }
-
-  .main-menu.active {
-    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
 
   .main-menu li {
