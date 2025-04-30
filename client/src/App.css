@@ -9,7 +9,7 @@
   justify-content: space-between; /* Separa logo e hamburger menu */
   padding: 5px 10px; /* ridotto da 10px a 5px */
   position: fixed;
-  width: 100%;
+  margin: 0 auto; /* Assicura il centraggio corretto */
   top: 0;
   left: 0;
   z-index: 1000;
@@ -68,9 +68,13 @@
 /* Per evitare che il contenuto della pagina si nasconda sotto la barra fissa */
 body {
   margin-top: 90px; /* Altezza della barra di navigazione */
-  overflow-x: hidden; /* Nasconde la scroll bar orizzontale */
-  width: 100vw; /* Assicura che il body non vada oltre il viewport */
 }
+
+html, body {
+  max-width: 100vw; /* Impedisce l'estensione oltre il viewport */
+  overflow-x: hidden; /* Nasconde lo scroll orizzontale */
+}
+
 section{
   padding-top: 90px; /* Altezza della barra di navigazione */
 }
@@ -311,7 +315,7 @@ button:hover {
     top: 0;
     left: 0;
     z-index: 1000;
-    padding: 10px;
+    padding: 20px;
   }
 
 
@@ -339,7 +343,7 @@ button:hover {
   }
 
   .menu.active {
-    display: flex;
+    display: flex !important; /* Forza la visibilità quando attivo */
   }
 
   .main-menu.active {
@@ -356,18 +360,23 @@ button:hover {
   }
 
 
+
   .hamburger-btn {
     all: unset;
     display: block;
-    position: relative; /* Evita sovrapposizioni */
+    position: absolute; /* Posizione assoluta per controllare meglio il posizionamento */
+    top: 15px;
+    right: 15px; /* Sposta il pulsante verso destra */
     font-size: 24px;
-    color: white;
+    background: none;
+    border: none;
+    color: #fff;
     cursor: pointer;
-  }
+}
 
 /* Effetto hover solo per l'hamburger */
 .hamburger-btn:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: #bd732a;
 }
 
 .logo-container {
@@ -388,11 +397,11 @@ button:hover {
     align-items: center;
     justify-content: space-between;
     position: fixed;
-    width: 100%;
+    margin: 0 auto; /* Assicura il centraggio corretto */
     top: 0;
     left: 0;
     z-index: 1000;
-    padding: 10px;
+    padding: 20px;
   }
 
 
@@ -416,7 +425,7 @@ button:hover {
   }
 
   .menu.active {
-    display: flex;
+    display: flex !important; /* Forza la visibilità quando attivo */
   }
   .main-menu {
     display: flex;
@@ -440,18 +449,23 @@ button:hover {
     text-align: center;
   }
 
-  .hamburger-btn {
-    all: unset;
-    display: block;
-    position: relative; /* Evita sovrapposizioni */
-    font-size: 24px;
-    color: white;
-    cursor: pointer;
-  }
+
+    .hamburger-btn {
+        all: unset;
+        display: block;
+        position: absolute; /* Posizione assoluta per controllare meglio il posizionamento */
+        top: 15px;
+        right: 15px; /* Sposta il pulsante verso destra */
+        font-size: 24px;
+        background: none;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+    }
 
   /* Effetto hover solo per l'hamburger */
 .hamburger-btn:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: #bd732a;
 }
 
 .logo-container {
