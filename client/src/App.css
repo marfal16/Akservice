@@ -8,7 +8,6 @@
   background-color: #333;
   justify-content: space-between; /* Separa logo e hamburger menu */
   padding: 5px 10px; /* ridotto da 10px a 5px */
-  position: fixed;
   margin: 0 auto; /* Assicura il centraggio corretto */
   top: 0;
   left: 0;
@@ -327,10 +326,6 @@ button:hover {
   }
 
   .menu {
-    display: none; /* Nasconde il menu quando inattivo */
-  }
-
-  .menu {
     display: none;
     position: absolute;
     top: 60px;
@@ -340,6 +335,7 @@ button:hover {
     flex-direction: column;
     align-items: center;
     padding: 15px 0;
+    z-index: 1100; /* Assicura che sia sopra gli altri elementi */
   }
 
   .menu.active {
@@ -359,21 +355,18 @@ button:hover {
     text-align: center;
   }
 
-
-
   .hamburger-btn {
     all: unset;
     display: block;
-    position: absolute; /* Posizione assoluta per controllare meglio il posizionamento */
-    top: 15px;
-    right: 15px; /* Sposta il pulsante verso destra */
-    font-size: 24px;
+    position: absolute;
+    top: 10px;
+    right: 115px;
+    font-size: 35px;
     background: none;
     border: none;
     color: #fff;
     cursor: pointer;
 }
-
 /* Effetto hover solo per l'hamburger */
 .hamburger-btn:hover {
   background-color: #bd732a;
@@ -411,7 +404,8 @@ button:hover {
     display: flex;
     justify-content: flex-start; /* Mantiene il logo a sinistra */
   }
-  
+
+
   .menu {
     display: none;
     position: absolute;
@@ -422,8 +416,10 @@ button:hover {
     flex-direction: column;
     align-items: center;
     padding: 15px 0;
+    z-index: 1100; /* Assicura che sia sopra gli altri elementi */
   }
 
+  
   .menu.active {
     display: flex !important; /* Forza la visibilità quando attivo */
   }
@@ -449,14 +445,13 @@ button:hover {
     text-align: center;
   }
 
-
     .hamburger-btn {
         all: unset;
         display: block;
-        position: absolute; /* Posizione assoluta per controllare meglio il posizionamento */
-        top: 15px;
-        right: 15px; /* Sposta il pulsante verso destra */
-        font-size: 24px;
+        position: absolute;
+        top: 10px;
+        right: 115px;
+        font-size: 35px;
         background: none;
         border: none;
         color: #fff;

@@ -34,6 +34,7 @@ function Navbar({ cartItems }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+    console.log("menuOpen:", !menuOpen); // Debug per verificare il cambiamento
   };
   
   const goToHomeSection = (sectionId) => {
