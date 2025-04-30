@@ -239,6 +239,9 @@ button:hover {
   filter: drop-shadow(0 0 2em #ffffffaa);
 }
 
+.hamburger-btn {
+  display: none; /* Nasconde il pulsante su desktop */
+} 
 
 @keyframes bounce {
   0%, 100% { transform: scale(1); }
@@ -270,56 +273,49 @@ button:hover {
     gap: 15px;
   }
 
+  .top-icon {
+    width: 90%;
+    position: absolute;
+    top: 23vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
   .logo {
     height: 5em; /* Riduce dimensione logo */
   }
 }
 
 @media (max-width: 768px) {
- /*  .navbar {
-    padding: 8px; 
-  }
-
-  .navbar nav ul {
-    flex-direction: column; 
-    align-items: center;
-    margin: 0;
-  }
-
-  .navbar nav ul li {
-    display: block; 
-  }
-
-  .main-menu {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .dropdown-menu {
-    position: relative; 
-    width: 100%;
-    max-width: 250px;
-  } */
 
   .hamburger-btn {
+    all: unset;
     display: block; /* Mostra il pulsante su mobile */
-  }
-
-  .menu {
-    display: none;
-    flex-direction: column;
     position: absolute;
-    top: 60px;
-    left: 0;
-    background-color: #333;
-    width: 100%;
-    padding: 10px 0;
-  }
+    top: 15px;
+    right: 20px; /* Posiziona il pulsante in alto a destra */
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
 
-  .menu.active {
-    display: flex;
-  }
-  
+/* Effetto hover solo per l'hamburger */
+.hamburger-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.top-icon {
+  width: 90%;
+  position: absolute;
+  top: 15vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
   .logo {
     height: 4em; /* Logo più piccolo  */
     padding: 1em;
@@ -327,50 +323,33 @@ button:hover {
 }
 
 @media (max-width: 430px) {
- /* .navbar {
-    padding: 5px; 
-  }
-
-  .navbar nav ul {
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-  }
-
-  .navbar nav ul li a, .navbar nav ul li button {
-    font-size: 13px; 
-    padding: 5px 10px; 
-  }
-
-  .main-menu {
-    flex-direction: column;
-    gap: 8px;
-  } 
-
-  .dropdown-menu {
-    position: relative; 
-    width: 100%;
-    max-width: 200px;
-  } */
 
   .hamburger-btn {
-    display: block; /* Mostra il pulsante su mobile */
+      all: unset;
+      display: block; /* Mostra il pulsante su mobile */
+      position: absolute;
+      top: 15px;
+      right: 20px; /* Posiziona il pulsante in alto a destra */
+      font-size: 24px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
   }
 
-  .menu {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    background-color: #333;
-    width: 100%;
-    padding: 10px 0;
-  }
+  /* Effetto hover solo per l'hamburger */
+.hamburger-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
 
-  .menu.active {
-    display: flex;
-  }
+.top-icon {
+  width: 90%;
+  position: absolute;
+  top: 13vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
 
   .logo {
     height: 3.5em; /* Riduce il logo ancora di più */

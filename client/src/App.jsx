@@ -88,13 +88,6 @@ function Navbar({ cartItems }) {
   
   return (
     <header className="navbar">
-      {/* Pulsante hamburger per mobile */}
-      <button className="hamburger-btn" onClick={toggleMenu}>
-        ☰
-      </button>
-  
-      <nav className={`menu ${menuOpen ? "active" : ""}`}>
-        <ul className="main-menu">
           {/* Logo */}
           <img 
             src={logo} 
@@ -104,7 +97,16 @@ function Navbar({ cartItems }) {
             alt="Logo AK Service"
             aria-label="Logo AK Service" 
           />
-  
+
+      <nav className={`menu ${menuOpen ? "active" : ""}`}>
+        <ul className="main-menu">
+
+
+      {/* Pulsante hamburger per mobile */}
+    <button className="hamburger-btn" onClick={toggleMenu}>
+      ☰
+    </button>
+
           <li>
             <button 
               onClick={() => { goToHomeSection("home"); setMenuOpen(false); }} 
