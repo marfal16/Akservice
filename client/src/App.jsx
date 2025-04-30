@@ -98,14 +98,13 @@ function Navbar({ cartItems }) {
             aria-label="Logo AK Service" 
           />
 
-      <nav className={`menu ${menuOpen ? "active" : ""}`}>
-        <ul className="main-menu">
-
-
       {/* Pulsante hamburger per mobile */}
-    <button className="hamburger-btn" onClick={toggleMenu}>
+      <button className="hamburger-btn" onClick={toggleMenu}>
       ☰
     </button>
+
+      <nav className={`menu ${menuOpen ? "active" : ""}`}>
+        <ul className="main-menu">
 
           <li>
             <button 

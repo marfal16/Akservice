@@ -1,6 +1,7 @@
 /* Barra di navigazione */
 .navbar {
   background-color: #333;
+  justify-content: space-between; /* Separa logo e hamburger menu */
   padding: 5px 10px; /* ridotto da 10px a 5px */
   position: fixed;
   width: 100%;
@@ -273,14 +274,7 @@ button:hover {
     gap: 15px;
   }
 
-  .top-icon {
-    width: 90%;
-    position: absolute;
-    top: 23vh;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-}
+
 
   .logo {
     height: 5em; /* Riduce dimensione logo */
@@ -307,15 +301,6 @@ button:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-.top-icon {
-  width: 90%;
-  position: absolute;
-  top: 15vh;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-}
-
   .logo {
     height: 4em; /* Logo più piccolo  */
     padding: 1em;
@@ -340,15 +325,6 @@ button:hover {
   /* Effetto hover solo per l'hamburger */
 .hamburger-btn:hover {
   background-color: rgba(255, 255, 255, 0.2);
-}
-
-.top-icon {
-  width: 90%;
-  position: absolute;
-  top: 13vh;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
 }
 
   .logo {

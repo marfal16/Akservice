@@ -586,6 +586,15 @@ body {
   
   /* Ottimizzazioni per mobile */
   @media (max-width: 768px) {
+    .top-icon {
+      width: 90%;
+      position: absolute;
+      top: 15vh;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+    }
+
     /* ABOUT */
     .about-content {
       flex-direction: column;
@@ -746,6 +755,15 @@ input, textarea {
 
 /* Ottimizzazioni per Tablet più grandi - max-width: 1024px */
 @media (max-width: 1024px) {
+  .top-icon {
+    width: 90%;
+    position: absolute;
+    top: 23vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
   /* ABOUT */
   .about-content {
     flex-direction: column;
@@ -810,6 +828,15 @@ input, textarea {
 
 /* Ottimizzazioni per Smartphone piccoli - max-width: 430px */
 @media (max-width: 430px) {
+  .top-icon {
+    width: 90%;
+    position: absolute;
+    top: 13vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+  
   /* ABOUT */
   .about-content {
     flex-direction: column;
