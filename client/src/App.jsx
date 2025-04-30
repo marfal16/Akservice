@@ -31,6 +31,11 @@ function Navbar({ cartItems }) {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const [menuOpen, setMenuOpen] = useState(false);
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+  
   const goToHomeSection = (sectionId) => {
     if (location.pathname !== "/") {
       navigate("/"); 
@@ -46,6 +51,7 @@ function Navbar({ cartItems }) {
         el.scrollIntoView({ behavior: "smooth" });
       }
     }
+    setMenuOpen(false); // Chiude il menu dopo il click
   };
 
   // Funzione per determinare l'emoji in base agli articoli nel carrello
@@ -82,47 +88,95 @@ function Navbar({ cartItems }) {
   
   return (
     <header className="navbar">
-      <nav>
+      {/* Pulsante hamburger per mobile */}
+      <button className="hamburger-btn" onClick={toggleMenu}>
+        ☰
+      </button>
+  
+      <nav className={`menu ${menuOpen ? "active" : ""}`}>
         <ul className="main-menu">
           {/* Logo */}
           <img 
             src={logo} 
             className="logo-icon" 
-            onMouseEnter={handleLogoMouseEnter} // Aggiungi l'evento mouseEnter
-            onMouseLeave={handleLogoMouseLeave} // Aggiungi l'evento mouseLeave
+            onMouseEnter={handleLogoMouseEnter} 
+            onMouseLeave={handleLogoMouseLeave} 
             alt="Logo AK Service"
             aria-label="Logo AK Service" 
           />
-
+  
           <li>
-            <button onClick={() => goToHomeSection("home")} aria-label="Vai alla sezione Home">Home</button>
+            <button 
+              onClick={() => { goToHomeSection("home"); setMenuOpen(false); }} 
+              aria-label="Vai alla sezione Home"
+            >
+              Home
+            </button>
           </li>
           <li>
-            <button onClick={() => goToHomeSection("about")} aria-label="Vai alla sezione Chi Siamo">Chi Siamo</button>
+            <button 
+              onClick={() => { goToHomeSection("about"); setMenuOpen(false); }} 
+              aria-label="Vai alla sezione Chi Siamo"
+            >
+              Chi Siamo
+            </button>
           </li>
           <li className="relative" ref={dropdownRef}>
-            <button onClick={() => setDropdownOpen(!dropdownOpen)} className="dropdown-btn" aria-label="Apri menu I Nostri Servizi">
+            <button 
+              onClick={() => setDropdownOpen(!dropdownOpen)} 
+              className="dropdown-btn" 
+              aria-label="Apri menu I Nostri Servizi"
+            >
               I Nostri Servizi
             </button>
             {dropdownOpen && (
               <ul className="dropdown-menu">
                 <li>
-                  <Link to="/corsi-informatici" onClick={() => setDropdownOpen(false)} aria-label="Certificazioni Informatiche">Certificazioni Informatiche</Link>
+                  <Link 
+                    to="/corsi-informatici" 
+                    onClick={() => setDropdownOpen(false)} 
+                    aria-label="Certificazioni Informatiche"
+                  >
+                    Certificazioni Informatiche
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/corsi-lingue" onClick={() => setDropdownOpen(false)} aria-label="Certificazioni Linguistiche">Certificazioni Linguistiche</Link>
+                  <Link 
+                    to="/corsi-lingue" 
+                    onClick={() => setDropdownOpen(false)} 
+                    aria-label="Certificazioni Linguistiche"
+                  >
+                    Certificazioni Linguistiche
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/corsi-regionali" onClick={() => setDropdownOpen(false)} aria-label="Corsi Regionali">Corsi Regionali</Link>
+                  <Link 
+                    to="/corsi-regionali" 
+                    onClick={() => setDropdownOpen(false)} 
+                    aria-label="Corsi Regionali"
+                  >
+                    Corsi Regionali
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/formazione-universitaria" onClick={() => setDropdownOpen(false)} aria-label="Formazione Universitaria">Formazione Universitaria</Link>
+                  <Link 
+                    to="/formazione-universitaria" 
+                    onClick={() => setDropdownOpen(false)} 
+                    aria-label="Formazione Universitaria"
+                  >
+                    Formazione Universitaria
+                  </Link>
                 </li>
               </ul>
             )}
           </li>
           <li>
-            <button onClick={() => goToHomeSection("contact")} aria-label="Vai alla sezione Contatti">Contatti</button>
+            <button 
+              onClick={() => { goToHomeSection("contact"); setMenuOpen(false); }} 
+              aria-label="Vai alla sezione Contatti"
+            >
+              Contatti
+            </button>
           </li>
           <li className="cart-container">
             <Link to="/cart" aria-label="Vai al carrello">
