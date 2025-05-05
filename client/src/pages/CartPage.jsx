@@ -7,7 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import CheckoutPayPal from './CheckoutPayPal';
 import deleteImg from '../assets/delete.png';
 import emptyCartImg from '../assets/empty-cart.png';
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_ID_KEY);
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_ID_KEY);
 
 const CartPage = ({ cartItems, removeFromCart, updateQuantity }) => {
   const [clientSecret, setClientSecret] = useState(null);
