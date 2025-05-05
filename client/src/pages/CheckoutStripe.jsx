@@ -78,7 +78,7 @@ const CheckoutStripe = ({ clientSecret }) => {
       
         // 👇 Invia i dati dell’utente al backend
         try {
-          const response = await fetch('${import.meta.env.VITE_API_BASE_URL}/update-payment-info', {
+          const response = await fetch(`${import.meta.env.VITE_API_URL}/update-payment-info`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

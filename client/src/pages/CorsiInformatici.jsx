@@ -9,7 +9,7 @@ export default function CertificazioniInformatiche() {
   const location = useLocation();
 
   useEffect(() => {
-    fetch('${import.meta.env.VITE_API_BASE_URL}/corsi')
+    fetch(`${import.meta.env.VITE_API_URL}/corsi`)
       .then(response => response.json())
       .then(data => setCorsi(data))
       .catch(error => console.error("Errore nel recupero dei corsi informatici", error));

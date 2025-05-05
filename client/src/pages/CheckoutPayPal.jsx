@@ -27,7 +27,7 @@ const CheckoutPayPal = ({ totalAmount }) => {
           tagline: false, // Disabilita il tagline (slogan)
         },
         createOrder: (data, actions) => {
-          return fetch("${import.meta.env.VITE_API_BASE_URL}/paypal/create-order", {
+          return fetch(`${import.meta.env.VITE_API_URL}/paypal/create-order`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
