@@ -8,8 +8,7 @@ import CheckoutPayPal from './CheckoutPayPal';
 import deleteImg from '../assets/delete.png';
 import emptyCartImg from '../assets/empty-cart.png';
 require('dotenv').config();
-const stripePromise = loadStripe(process.env.STRIPE_ID_KEY);  // Usa la chiave segreta di Stripe dal .env
-
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_ID_KEY);
 
 const CartPage = ({ cartItems, removeFromCart, updateQuantity }) => {
   const [clientSecret, setClientSecret] = useState(null);

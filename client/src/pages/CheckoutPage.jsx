@@ -4,8 +4,6 @@ import CheckoutStripe from './CheckoutStripe'; // Il tuo componente di pagamento
 import { loadStripe } from '@stripe/stripe-js';
 import "./CartPage.css";
 
-const stripePromise = loadStripe(process.env.STRIPE_ID_KEY);  // Usa la chiave segreta di Stripe dal .env
-
 const CartPage = ({ cartItems, removeFromCart, updateQuantity }) => {
   const [clientSecret, setClientSecret] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState('creditCard');
