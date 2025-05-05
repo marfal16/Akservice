@@ -3,16 +3,19 @@ const Stripe = require('stripe');
 const { Pool } = require('pg'); // Importa pg per PostgreSQL
 const cors = require('cors');
 const path = require('path');
-const stripe = Stripe('sk_test_51R8dlEQC5hypstY6WG2oxsi8j4yZHAHdqCJFNhhD9zuhXVUMvARMJ9XxOrkd2aH18iGKdgFsOUVnRby7oKGu6wUs005iYBZC3w'); // Inserisci la tua secret key di Stripe
+const stripe = Stripe(process.env.STRIPE_SECRET_KEY);  // Usa la chiave segreta di Stripe dal .env
 const app = express();
 const port = process.env.PORT || 5000;
+require('dotenv').config();
+
 
 // Middleware
 app.use(express.json());
 app.use(cors());
 
 // Stringa di connessione di Render (sostituisci con la tua stringa reale)
-const connectionString = 'postgresql://admin_maria:CU2zzZItTegzDFa9hD8VHnoMjnbmw8mO@dpg-cvik64juibrs73ftbapg-a.frankfurt-postgres.render.com/akservice';
+const connectionString = process.env.DB_CONNECTION_STRING; // Usa la stringa di connessione dal .env
+
 
 // Configura PostgreSQL con la stringa di connessione
 const pool = new Pool({
