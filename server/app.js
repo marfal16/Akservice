@@ -9,7 +9,6 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 
-
 // Middleware
 app.use(express.json());
 app.use(cors());
@@ -143,8 +142,11 @@ app.post('/api/update-payment-info', async (req, res) => {
 
 const paypal = require("@paypal/checkout-server-sdk");
 
-const environment = new paypal.core.SandboxEnvironment("AbxjPZEQo6RardE0zjOjBgxVgGPILW6w1-AB8jMBPAD_oWZdBb1m-cI3FJVnVvMEMrXcWfwxp3vC5apX", 
-  "EE0f12-fIDAIpQBhSrVGr1EqCe3dyQBuz6u7CM-L-OKlF5WY0uuuQv89PhV1lWiOzyUpNsCMOPvprDmf");
+const environment = new paypal.core.SandboxEnvironment(
+  process.env.PAYPAL_CLIENT_ID, 
+  process.env.PAYPAL_CLIENT_SECRET
+);
+
 const client = new paypal.core.PayPalHttpClient(environment);
 
 app.post("/api/paypal/create-order", async (req, res) => {
