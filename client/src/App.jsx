@@ -22,7 +22,8 @@ import shopImage from './assets/shopping-bag.png';
 import { useEffect, useRef } from 'react';
 
 // Carica l'istanza di Stripe
-const stripePromise = loadStripe("pk_test_51R8dlEQC5hypstY6hhCR9ndgjKR1OcqrcdCpPrzth5wOa5O9seKGiBiQYITh5NqV764nCuXHUiky3PGBBVt2VzcS00TsNluSyC");
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
+
 
 function Navbar({ cartItems }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);

@@ -4,8 +4,7 @@ import CheckoutStripe from './CheckoutStripe'; // Il tuo componente di pagamento
 import { loadStripe } from '@stripe/stripe-js';
 import "./CartPage.css";
 
-// Carica la chiave pubblica Stripe
-const stripePromise = loadStripe('pk_test_51R8dlEQC5hypstY6hhCR9ndgjKR1OcqrcdCpPrzth5wOa5O9seKGiBiQYITh5NqV764nCuXHUiky3PGBBVt2VzcS00TsNluSyC');
+const stripePromise = loadStripe(process.env.STRIPE_ID_KEY);  // Usa la chiave segreta di Stripe dal .env
 
 const CartPage = ({ cartItems, removeFromCart, updateQuantity }) => {
   const [clientSecret, setClientSecret] = useState(null);

@@ -7,8 +7,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import CheckoutPayPal from './CheckoutPayPal';
 import deleteImg from '../assets/delete.png';
 import emptyCartImg from '../assets/empty-cart.png';
+require('dotenv').config();
+const stripePromise = loadStripe(process.env.STRIPE_ID_KEY);  // Usa la chiave segreta di Stripe dal .env
 
-const stripePromise = loadStripe('pk_test_51R8dlEQC5hypstY6hhCR9ndgjKR1OcqrcdCpPrzth5wOa5O9seKGiBiQYITh5NqV764nCuXHUiky3PGBBVt2VzcS00TsNluSyC');
 
 const CartPage = ({ cartItems, removeFromCart, updateQuantity }) => {
   const [clientSecret, setClientSecret] = useState(null);

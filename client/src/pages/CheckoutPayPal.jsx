@@ -64,8 +64,7 @@ const CheckoutPayPal = ({ totalAmount }) => {
       renderPayPalButton();
     } else {
       const script = document.createElement("script");
-      script.src =
-        "https://www.paypal.com/sdk/js?client-id=AbxjPZEQo6RardE0zjOjBgxVgGPILW6w1-AB8jMBPAD_oWZdBb1m-cI3FJVnVvMEMrXcWfwxp3vC5apX&components=buttons&disable-funding=card,mybank,venmo&currency=EUR";
+      script.src = "https://www.paypal.com/sdk/js?client-id=${process.env.REACT_APP_PAYPAL_CLIENT_ID}&components=buttons&disable-funding=card,mybank,venmo&currency=EUR";
       script.addEventListener("load", renderPayPalButton);
       document.body.appendChild(script);
     }
