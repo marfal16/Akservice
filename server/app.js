@@ -11,7 +11,15 @@ const port = process.env.PORT || 5000;
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+
+const corsOptions = {
+  origin: 'https://www.akservice.it', // Permetti solo richieste dal dominio www.akservice.it
+  methods: ['GET', 'POST'],           // Metodi HTTP permessi
+  allowedHeaders: ['Content-Type', 'Authorization'], // Header che vuoi accettare
+};
+
+app.use(cors(corsOptions));  // Usa questa configurazione
+
 
 // Stringa di connessione di Render (sostituisci con la tua stringa reale)
 const connectionString = process.env.DB_CONNECTION_STRING; // Usa la stringa di connessione dal .env
