@@ -23,7 +23,7 @@ export default function DettagliCorso({ addToCart }) {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(`http://localhost:5000/api/corsi/${id}`) // Recupera i dettagli del corso dal backend
+    fetch(`${import.meta.env.VITE_API_BASE_URL}/corsi/${id}`) // Recupera i dettagli del corso dal backend
       .then(response => response.json())
       .then(data => {
         setCorso(data); // Imposta il corso nello stato

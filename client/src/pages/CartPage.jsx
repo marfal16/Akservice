@@ -31,7 +31,7 @@ const CartPage = ({ cartItems, removeFromCart, updateQuantity }) => {
      console.log("Dati inviati al backend CartPage:", { amount });
 
     try {
-      const response = await fetch(`http://localhost:5000/api/checkout`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/checkout`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ amount }),
@@ -157,7 +157,7 @@ const CartPage = ({ cartItems, removeFromCart, updateQuantity }) => {
             <div className="payment-options">
               <div className="stripe-section">
                 {clientSecret && (
-                  <Elements stripe={stripePromise}>
+                  <Elements stripe={stripePromise} options={{ clientSecret }}>
                     <CheckoutStripe clientSecret={clientSecret} />
                   </Elements>
                 )}
