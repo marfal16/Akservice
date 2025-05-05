@@ -8,7 +8,6 @@ import CheckoutPayPal from './CheckoutPayPal';
 import deleteImg from '../assets/delete.png';
 import emptyCartImg from '../assets/empty-cart.png';
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_ID_KEY);
-console.log("Chiave Stripe:", import.meta.env.VITE_STRIPE_ID_KEY);
 
 
 const CartPage = ({ cartItems, removeFromCart, updateQuantity }) => {
