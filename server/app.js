@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const Stripe = require('stripe');
 const { Pool } = require('pg'); // Importa pg per PostgreSQL
@@ -6,7 +7,7 @@ const path = require('path');
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY);  // Usa la chiave segreta di Stripe dal .env
 const app = express();
 const port = process.env.PORT || 5000;
-require('dotenv').config();
+
 
 
 // Middleware
