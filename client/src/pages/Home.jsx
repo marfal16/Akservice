@@ -13,26 +13,34 @@ import { useLocation } from 'react-router-dom';
 import scrollDown from '../assets/scroll-bar.png';
 import scrittaLogo from '../assets/AKSERVICE-W.png';
 import whatsappImg from '../assets/whatsapp.png';
+import React, { useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const Home = () => {
+  const location = useLocation(); // per rilevare cambiamenti di percorso
   const navigate = useNavigate();
   const nameRef = useRef();
   const emailRef = useRef();
   const messageRef = useRef();
 
-    useEffect(() => {
-      const script = document.createElement('script');
-      script.src = 'https://cdn.shapo.io/js/embed.js';
-      script.defer = true;
-      document.body.appendChild(script);
-      script.onload = () => {
-        if (window.Shapo) {
-          window.Shapo.init();
-        }
-      };
-  
-    }, []);
-  
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://cdn.shapo.io/js/embed.js';
+    script.defer = true;
+    document.body.appendChild(script);
+    
+    script.onload = () => {
+      if (window.Shapo) {
+        window.Shapo.init();
+      }
+    };
+
+    // Cleanup function per rimuovere il vecchio script quando il componente è smontato o quando cambia la location
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, [location]); // Ricarica lo script ogni volta che cambia la pagina
+
 
   const handleClick = (e, path) => {
     e.preventDefault();
