@@ -20,6 +20,7 @@ import logoImage from './assets/logo-ak-multicolor-1WHITE.png';
 import logoImageC from './assets/logo-ak-multicolor.png';
 import shopImage from './assets/shopping-bag.png';
 import { useEffect, useRef } from 'react';
+import CookieConsentManager from './CookieConsentManager';
 
 // Carica l'istanza di Stripe
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_ID_KEY);
@@ -90,6 +91,9 @@ function Navbar({ cartItems }) {
   
   return (
     <header className="navbar">
+
+      <CookieConsentManager />
+      
           {/* Logo */}
           <div className="logo-container">
           <img 
