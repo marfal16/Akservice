@@ -21,44 +21,93 @@ const Home = () => {
   const nameRef = useRef();
   const emailRef = useRef();
   const messageRef = useRef();
-  const shapoRef = useRef(null);
+  // Stato per controllare se il widget deve essere renderizzato
+  const [shapoLoaded, setShapoLoaded] = useState(false);
+  
+  // Funzione per inizializzare Shapo in modo sicuro
+  const initShapo = () => {
+    // Prima rimuoviamo qualsiasi iFrame esistente che potrebbe causare problemi
+    const existingIframes = document.querySelectorAll('iframe[id^="shapo-widget-iframe"]');
+    existingIframes.forEach(iframe => iframe.remove());
+    
+    // Reinizializziamo Shapo se esiste
+    if (window.Shapo) {
+      window.Shapo.init();
+    }
+  };
 
   useEffect(() => {
-    // Verifica se esiste già uno script Shapo
-    const existingScript = document.querySelector('script[src="https://cdn.shapo.io/js/embed.js"]');
+    // Impostiamo shapoLoaded a false quando cambia la pagina
+    setShapoLoaded(false);
     
-    if (!existingScript) {
-      // Se lo script non esiste, lo crea e lo aggiunge
-      const script = document.createElement('script');
-      script.src = 'https://cdn.shapo.io/js/embed.js';
-      script.defer = true;
-      script.id = 'shapo-script';
-      document.body.appendChild(script);
+    // Piccolo timeout per assicurarci che il DOM sia aggiornato
+    setTimeout(() => {
+      // Verifica se esiste già uno script Shapo
+      let shapoScript = document.querySelector('script[src="https://cdn.shapo.io/js/embed.js"]');
       
-      script.onload = () => {
-        if (window.Shapo) {
-          window.Shapo.init();
-          shapoRef.current = true;
-        }
-      };
-    } else {
-      // Se lo script esiste già, reinizializza solo il widget
-      if (window.Shapo) {
-        setTimeout(() => {
-          window.Shapo.init();
-          shapoRef.current = true;
-        }, 500); // Un breve timeout per assicurarsi che il DOM sia pronto
-      }
-    }
-
-        // Cleanup function migliorata
-        return () => {
-          // Non rimuoviamo più lo script, lo lasciamo nel DOM
-          // Ma possiamo fare un cleanup di eventuali elementi generati da Shapo
-          // Questo dipende da come funziona specificamente Shapo
-          shapoRef.current = false;
+      if (!shapoScript) {
+        // Se lo script non esiste, lo crea e lo aggiunge
+        shapoScript = document.createElement('script');
+        shapoScript.src = 'https://cdn.shapo.io/js/embed.js';
+        shapoScript.defer = true;
+        shapoScript.id = 'shapo-script';
+        
+        shapoScript.onload = () => {
+          initShapo();
+          setShapoLoaded(true);
         };
-      }, [location.pathname]); // Rilevare solo cambiamenti nel percorso, non nell'intero oggetto location
+        
+        document.body.appendChild(shapoScript);
+      } else {
+        // Se lo script esiste già, reinizializziamo solo il widget
+        initShapo();
+        setShapoLoaded(true);
+      }
+    }, 300);
+    
+    // Cleanup function
+    return () => {
+      // Non rimuoviamo lo script, ma possiamo fare un cleanup degli elementi iFrame
+      const shapoIframes = document.querySelectorAll('iframe[id^="shapo-widget-iframe"]');
+      shapoIframes.forEach(iframe => {
+        // Rimuoviamo gli event listener dell'iFrame prima di rimuoverlo
+        if (iframe.contentWindow) {
+          try {
+            iframe.contentWindow.removeEventListener('resize', () => {});
+          } catch (e) {
+            // Ignoriamo errori di cross-origin
+          }
+        }
+      });
+    };
+  }, [location.pathname]);
+
+  // Effetto aggiuntivo per reinizializzare quando il componente è visibile
+  useEffect(() => {
+    // Funzione per controllare se la sezione testimonianze è visibile
+    const isTestimonialVisible = () => {
+      const testimonialSection = document.getElementById('testimonials');
+      if (!testimonialSection) return false;
+      
+      const rect = testimonialSection.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+    };
+    
+    // Reinizializza Shapo quando la sezione testimonianze diventa visibile
+    const handleScroll = () => {
+      if (isTestimonialVisible() && window.Shapo && shapoLoaded) {
+        initShapo();
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [shapoLoaded]);
 
   const handleClick = (e, path) => {
     e.preventDefault();
@@ -141,10 +190,8 @@ const Home = () => {
       {/* Sezione Testimonianze */}
       <section className="testimonials-section" id="testimonials">
         <h2>DICONO DI NOI</h2>
-        <div 
-          id="shapo-widget-3631ed6ab32424719ed3" 
-          key={location.pathname} // Aggiunto key per forzare il re-render quando cambia percorso
-        ></div>
+        {/* Ricrea completamente il div del widget con un ID univoco basato sul timestamp */}
+        <div id={`shapo-widget-3631ed6ab32424719ed3`} key={Date.now()}></div>
       </section>
 
       {/* Sezione Contatti */}
