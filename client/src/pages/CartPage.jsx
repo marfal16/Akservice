@@ -10,7 +10,7 @@ import emptyCartImg from '../assets/empty-cart.png';
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_ID_KEY);
 
 
-const CartPage = ({ cartItems, removeFromCart, updateQuantity }) => {
+const CartPage = ({ cartItems, removeFromCart, updateQuantity, setCartItem }) => {
   const [clientSecret, setClientSecret] = useState(null);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [loading, setLoading] = useState(false);

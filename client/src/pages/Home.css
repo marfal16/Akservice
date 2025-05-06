@@ -608,6 +608,16 @@ html, body {
   margin-bottom: 6px; /* Spazio tra i link */
 }
 
+.footer-socials ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-socials li {
+  margin-bottom: 6px; /* Spazio tra i link */
+}
+
   
   /* Ottimizzazioni per mobile */
   @media (max-width: 768px) {
