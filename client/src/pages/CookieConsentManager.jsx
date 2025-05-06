@@ -40,26 +40,15 @@ const CookieConsentManager = () => {
           console.log("Analytics non consentito o non trovato");
         }
       };
-
-      // Registra l'evento per l'inizializzazione dell'interfaccia
-      window.addEventListener("UC_UI_INITIALIZED", onUCReady);
       
       // Timeout per gestire il caso in cui Usercentrics non si inizializzi
-      const timeoutId = setTimeout(() => {
-        if (!isLoaded) {
-          console.error("Usercentrics non si è inizializzato entro 5 secondi");
-          
-          // Possibile workaround per forzare la reinizializzazione
-          if (window.UC_UI && !window.UsercentricsAPI) {
-            try {
-              window.UC_UI.reset();
-              console.log("Tentativo di reset Usercentrics eseguito");
-            } catch (e) {
-              console.error("Errore nel reset Usercentrics:", e);
-            }
-          }
+      setTimeout(() => {
+        if (!u && (console.error("Usercentrics non si è inizializzato entro 5 secondi"),
+          window.UC_UI && !window.UsercentricsAPI)) {
+          console.warn("UC_UI presente ma UsercentricsAPI mancante: non posso forzare nulla.");
         }
       }, 5000);
+      
 
       // Pulizia
       return () => {

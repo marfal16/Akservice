@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import './CheckoutPayPal.css';
+import { useNavigate } from "react-router-dom";
+
 
 const CheckoutPayPal = ({ totalAmount }) => {
   const [orderId, setOrderId] = useState(null);
   const [paymentStatus, setPaymentStatus] = useState(null); // Stato per il pagamento
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     const containerId = "paypal-button-container";
@@ -48,9 +52,10 @@ const CheckoutPayPal = ({ totalAmount }) => {
         },
         onApprove: (data, actions) => {
           return actions.order.capture().then((details) => {
-            alert("Pagamento completato da " + details.payer.name.given_name);
+            //alert("Pagamento completato da " + details.payer.name.given_name);
             setPaymentStatus("success"); // Aggiorna stato pagamento a successo
             localStorage.removeItem('cart');  // Rimuovi il carrello dal localStorage
+            navigate("/conferma");
           });
         },
         onError: (err) => {

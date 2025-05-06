@@ -1,10 +1,14 @@
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { useState } from "react";
 import "./CheckoutStripe.css";
+import { useNavigate } from "react-router-dom";
+
 
 const CheckoutStripe = ({ clientSecret }) => {
   const stripe = useStripe();
   const elements = useElements();
+  const navigate = useNavigate();
+
 
   // Stati per raccogliere i dati dell'utente
   const [name, setName] = useState('');
@@ -45,7 +49,6 @@ const CheckoutStripe = ({ clientSecret }) => {
           }
         },
       },
-      locale: 'it',  // Aggiungi la lingua italiana
     };
 
       // Log dei dati che stai passando
@@ -101,7 +104,7 @@ const CheckoutStripe = ({ clientSecret }) => {
         }
       
         localStorage.removeItem('cart');  // Rimuovi il carrello dal localStorage
-        // svuota carrello, redirect, ecc.
+        navigate("/conferma");
       }
     }
 

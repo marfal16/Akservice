@@ -540,35 +540,25 @@ html, body {
     padding: 10px 20px;
   }
   
-  .footer-links, .footer-socials, .footer-contact {
-    width: 300px; /* oppure una dimensione coerente per tutti */
-    margin: 10px;
-    text-align: left;
-  }
+/* Link del footer */
+.footer-links ul li a,
+.footer-socials ul li a,
+.footer-contact a,
+.footer-privacy a {
+  color: #bbbbbb; /* Grigio chiaro */
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: inline-block;
+}
   
-  
-  .footer-links ul, .footer-socials ul, .footer-contact ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .footer-links li, .footer-socials li, .footer-contact li {
-    margin-bottom: 6px;
-  }
-  
-  .footer-links a, .footer-socials a, .footer-contact a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 14px;
-  }
-  
-
-  .footer-links a:hover, .footer-socials a:hover, .footer-contact a:hover {
-    text-decoration: underline;
-    color: #bd732a; /* Colore hover più vivace */
-  }
-  
+.footer-links ul li a:hover,
+.footer-socials ul li a:hover,
+.footer-contact a:hover,
+.footer-privacy a:hover {
+  color: #ffffff; /* Bianco al passaggio */
+  text-decoration: underline;
+}
 
   .footer-bottom {
     margin-top: 10px;
