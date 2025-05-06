@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './Home.css';
 import coverImage from '../assets/ak_copertina.png';  
 import workImage from '../assets/work.jpg';  
