@@ -45,6 +45,7 @@ const CheckoutStripe = ({ clientSecret }) => {
           }
         },
       },
+      locale: 'it',  // Aggiungi la lingua italiana
     };
 
       // Log dei dati che stai passando
@@ -99,12 +100,11 @@ const CheckoutStripe = ({ clientSecret }) => {
           console.error("Errore nell’aggiornamento del paymentIntent:", err);
         }
       
+        localStorage.removeItem('cart');  // Rimuovi il carrello dal localStorage
         // svuota carrello, redirect, ecc.
       }
     }
 
-    localStorage.removeItem('cart');  // Rimuovi il carrello dal localStorage
-    
     setIsProcessing(false); // Fine elaborazione pagamento
   };
 

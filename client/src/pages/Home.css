@@ -596,6 +596,18 @@ html, body {
     color: #bd732a; /* Colore hover per le icone */
   }
   
+  .footer-links ul li a {
+    color: #bbbbbb; /* grigio chiaro */
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-links ul li a:hover {
+    color: #ffffff; /* bianco pieno al passaggio del mouse */
+    text-decoration: underline;
+  }
+  
   
   /* Ottimizzazioni per mobile */
   @media (max-width: 768px) {
