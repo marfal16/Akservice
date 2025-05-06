@@ -21,25 +21,44 @@ const Home = () => {
   const nameRef = useRef();
   const emailRef = useRef();
   const messageRef = useRef();
+  const shapoRef = useRef(null);
 
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://cdn.shapo.io/js/embed.js';
-    script.defer = true;
-    document.body.appendChild(script);
+    // Verifica se esiste già uno script Shapo
+    const existingScript = document.querySelector('script[src="https://cdn.shapo.io/js/embed.js"]');
     
-    script.onload = () => {
+    if (!existingScript) {
+      // Se lo script non esiste, lo crea e lo aggiunge
+      const script = document.createElement('script');
+      script.src = 'https://cdn.shapo.io/js/embed.js';
+      script.defer = true;
+      script.id = 'shapo-script';
+      document.body.appendChild(script);
+      
+      script.onload = () => {
+        if (window.Shapo) {
+          window.Shapo.init();
+          shapoRef.current = true;
+        }
+      };
+    } else {
+      // Se lo script esiste già, reinizializza solo il widget
       if (window.Shapo) {
-        window.Shapo.init();
+        setTimeout(() => {
+          window.Shapo.init();
+          shapoRef.current = true;
+        }, 500); // Un breve timeout per assicurarsi che il DOM sia pronto
       }
-    };
+    }
 
-    // Cleanup function per rimuovere il vecchio script quando il componente è smontato o quando cambia la location
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, [location]); // Ricarica lo script ogni volta che cambia la pagina
-
+        // Cleanup function migliorata
+        return () => {
+          // Non rimuoviamo più lo script, lo lasciamo nel DOM
+          // Ma possiamo fare un cleanup di eventuali elementi generati da Shapo
+          // Questo dipende da come funziona specificamente Shapo
+          shapoRef.current = false;
+        };
+      }, [location.pathname]); // Rilevare solo cambiamenti nel percorso, non nell'intero oggetto location
 
   const handleClick = (e, path) => {
     e.preventDefault();
@@ -122,7 +141,10 @@ const Home = () => {
       {/* Sezione Testimonianze */}
       <section className="testimonials-section" id="testimonials">
         <h2>DICONO DI NOI</h2>
-        <div id="shapo-widget-3631ed6ab32424719ed3"></div>
+        <div 
+          id="shapo-widget-3631ed6ab32424719ed3" 
+          key={location.pathname} // Aggiunto key per forzare il re-render quando cambia percorso
+        ></div>
       </section>
 
       {/* Sezione Contatti */}
