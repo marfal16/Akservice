@@ -12,20 +12,8 @@ const CookieConsentManager = () => {
       );
 
       if (analyticsConsent?.consent?.status === "CONSENTED") {
-        // Carica il tuo script Google Analytics solo se l'utente ha accettato
-        const script = document.createElement("script");
-        script.src = "https://www.googletagmanager.com/gtag/js?id=G-GP2NQHK61R";
-        script.async = true;
-        document.head.appendChild(script);
-
-        script.onload = () => {
-          window.dataLayer = window.dataLayer || [];
-          function gtag() {
-            window.dataLayer.push(arguments);
-          }
-          gtag("js", new Date());
-          gtag("config", "G-GP2NQHK61R");
-        };
+        // Google Analytics è già stato caricato nel <head> del tuo HTML principale
+        // Qui puoi comunque eseguire altre azioni se necessario, ma non c'è bisogno di caricare il tag.
       }
     };
 
