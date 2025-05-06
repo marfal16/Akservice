@@ -235,7 +235,10 @@ function Navbar({ cartItems }) {
 }
 
 function App() {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(() => {
+    const savedCart = localStorage.getItem('cart');
+    return savedCart ? JSON.parse(savedCart) : []; // Se c'è un carrello salvato, lo usiamo, altrimenti un array vuoto
+  });
 
   const addToCart = (course) => {
     const newCartItems = [...cartItems];
@@ -258,6 +261,13 @@ function App() {
     newCartItems[index].quantity = quantity;
     setCartItems(newCartItems);
   };
+
+    // Ogni volta che cambia il carrello, salvalo nel localStorage
+    useEffect(() => {
+      if (cartItems.length > 0) {
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+      }
+    }, [cartItems]); // Rileva i cambiamenti del carrello
 
   return (
     <Router>
