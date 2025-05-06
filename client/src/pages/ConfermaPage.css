@@ -1,22 +1,89 @@
 .conferma-container {
-    margin: 0 auto;
-    padding: 40px;
-    max-width: 600px;
-    background-color: #f9f9f9;
-    border-radius: 15px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .conferma-container h1 {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 15px;
-  }
-  
-  .conferma-container p {
-    font-size: 1.2rem;
-    color: #555;
+  margin: 80px auto;
+  padding: 40px 30px;
+  max-width: 600px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  border: 2px solid #ff7a00;
+}
+
+.conferma-container h1 {
+  font-size: 2.4rem;
+  color: #000;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.conferma-container p {
+  font-size: 1.2rem;
+  color: #444;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.conferma-container::before {
+  content: "🧡";
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 20px;
+}
+
+/* --------- Responsive --------- */
+
+/* Smartphone piccoli (≤ 430px) */
+@media (max-width: 430px) {
+  .conferma-container {
+    padding: 30px 20px;
+    margin: 50px 15px;
   }
 
-  
+  .conferma-container h1 {
+    font-size: 1.8rem;
+  }
+
+  .conferma-container p {
+    font-size: 1rem;
+  }
+
+  .conferma-container::before {
+    font-size: 2.5rem;
+  }
+}
+
+/* Tablet (≤ 768px) */
+@media (max-width: 768px) {
+  .conferma-container {
+    padding: 35px 25px;
+    margin: 60px 20px;
+  }
+
+  .conferma-container h1 {
+    font-size: 2rem;
+  }
+
+  .conferma-container p {
+    font-size: 1.05rem;
+  }
+
+  .conferma-container::before {
+    font-size: 2.7rem;
+  }
+}
+
+/* Laptop piccoli (≤ 1024px) */
+@media (max-width: 1024px) {
+  .conferma-container {
+    padding: 40px 30px;
+  }
+
+  .conferma-container h1 {
+    font-size: 2.2rem;
+  }
+
+  .conferma-container p {
+    font-size: 1.1rem;
+  }
+}

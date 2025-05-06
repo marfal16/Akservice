@@ -102,7 +102,8 @@ const CheckoutStripe = ({ clientSecret }) => {
         } catch (err) {
           console.error("Errore nell’aggiornamento del paymentIntent:", err);
         }
-      
+        
+        setCartItems([]);
         localStorage.removeItem('cart');  // Rimuovi il carrello dal localStorage
         navigate("/conferma");
       }
@@ -201,7 +202,7 @@ const CheckoutStripe = ({ clientSecret }) => {
         {/* Sezione messaggi feedback */}
         {paymentSuccess && (
           <div className="success-message">
-            🎉 Pagamento effettuato con successo!
+           {/*  🎉 Pagamento effettuato con successo! */}
           </div>
         )}
 

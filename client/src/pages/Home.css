@@ -521,28 +521,28 @@ html, body {
   
   
 /* Footer */
-  .footer-section {
-    background-color: #333; /* Colore di sfondo scuro */
-    color: white; /* Colore del testo */
-    padding: 10px 0; /* Ridotto il padding per un footer più stretto */
-    text-align: center;
-    font-family: 'Arial', sans-serif; /* Font moderno */
-  }
-  
-  .footer-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Cambiato da space-around */
-    gap: 40px; /* Aggiunge spazio uniforme tra le colonne */
-    align-items: flex-start;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 10px 20px;
-  }
-  
+.footer-section {
+  background-color: #333; /* Colore di sfondo scuro */
+  color: white; /* Colore del testo */
+  padding: 10px 0; /* Ridotto il padding per un footer più stretto */
+  text-align: center;
+  font-family: 'Arial', sans-serif; /* Font moderno */
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:  center;
+  gap: 40px; /* Aggiunge spazio uniforme tra le colonne */
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+
 /* Link del footer */
-.footer-links ul li a,
-.footer-socials ul li a,
+.footer-links a,
+.footer-socials a,
 .footer-contact a,
 .footer-privacy a {
   color: #bbbbbb; /* Grigio chiaro */
@@ -551,52 +551,53 @@ html, body {
   transition: color 0.3s ease;
   display: inline-block;
 }
-  
-.footer-links ul li a:hover,
-.footer-socials ul li a:hover,
+
+.footer-links a:hover,
+.footer-socials a:hover,
 .footer-contact a:hover,
 .footer-privacy a:hover {
   color: #ffffff; /* Bianco al passaggio */
   text-decoration: underline;
 }
 
-  .footer-bottom {
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid #555; /* Linea divisoria elegante */
-    font-size: 12px;
-    color: #aaa; /* Colore più chiaro per il testo secondario */
-    text-align: center;
-  }
-  
-  .footer-icons {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-  }
-  
-  .footer-icons a {
-    color: white;
-    font-size: 18px;
-    margin: 0 8px;
-    transition: color 0.3s ease;
-  }
-  
-  .footer-icons a:hover {
-    color: #bd732a; /* Colore hover per le icone */
-  }
-  
-  .footer-links ul li a {
-    color: #bbbbbb; /* grigio chiaro */
-    font-size: 0.9rem;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  
-  .footer-links ul li a:hover {
-    color: #ffffff; /* bianco pieno al passaggio del mouse */
-    text-decoration: underline;
-  }
+.footer-bottom {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #555; /* Linea divisoria elegante */
+  font-size: 12px;
+  color: #aaa; /* Colore più chiaro per il testo secondario */
+  text-align: center;
+}
+
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.footer-icons a {
+  color: white;
+  font-size: 18px;
+  margin: 0 8px;
+  transition: color 0.3s ease;
+}
+
+.footer-icons a:hover {
+  color: #bd732a; /* Colore hover per le icone */
+}
+
+.footer-section p {
+  color: #bbbbbb; /* Colore del testo (grigio chiaro) */
+  font-size: 0.9rem;
+  margin: 10px 0; /* Aggiungi un po' di spazio sopra e sotto ogni paragrafo */
+  text-align: center; /* Centra il testo */
+  transition: color 0.3s ease; /* Transizione per il colore al passaggio del mouse */
+}
+
+.footer-section p:hover {
+  color: #ffffff; /* Colore bianco al passaggio del mouse */
+}
+
   
   
   /* Ottimizzazioni per mobile */
