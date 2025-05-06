@@ -13,8 +13,7 @@ import { useLocation } from 'react-router-dom';
 import scrollDown from '../assets/scroll-bar.png';
 import scrittaLogo from '../assets/AKSERVICE-W.png';
 import whatsappImg from '../assets/whatsapp.png';
-import React, { useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+
 
 const Home = () => {
   const location = useLocation(); // per rilevare cambiamenti di percorso
