@@ -103,6 +103,8 @@ const CheckoutStripe = ({ clientSecret }) => {
       }
     }
 
+    localStorage.removeItem('cart');  // Rimuovi il carrello dal localStorage
+    
     setIsProcessing(false); // Fine elaborazione pagamento
   };
 

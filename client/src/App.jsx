@@ -236,10 +236,26 @@ function Navbar({ cartItems }) {
 
 function App() {
   const [cartItems, setCartItems] = useState(() => {
+    // Recupera il carrello dal localStorage
     const savedCart = localStorage.getItem('cart');
-    return savedCart ? JSON.parse(savedCart) : []; // Se c'è un carrello salvato, lo usiamo, altrimenti un array vuoto
+    try {
+      const parsedCart = savedCart ? JSON.parse(savedCart) : [];
+  
+      // Verifica che il carrello sia un array valido
+      if (Array.isArray(parsedCart)) {
+        return parsedCart; // Se è valido, restituisci il carrello
+      } else {
+        // Se i dati nel localStorage non sono validi, rimuovili e ritorna un array vuoto
+        localStorage.removeItem('cart');
+        return [];
+      }
+    } catch (error) {
+      // In caso di errore (ad esempio, JSON non valido), rimuovi il carrello dal localStorage
+      localStorage.removeItem('cart');
+      return [];
+    }
   });
-
+  
   const addToCart = (course) => {
     const newCartItems = [...cartItems];
     const existingItemIndex = newCartItems.findIndex(item => item.id === course.id);
@@ -254,6 +270,15 @@ function App() {
   const removeFromCart = (index) => {
     const newCartItems = cartItems.filter((_, i) => i !== index);
     setCartItems(newCartItems);
+  
+      // Se il carrello è vuoto, rimuovilo dal localStorage
+      if (newCartItems.length === 0) {
+        localStorage.removeItem('cart');
+      } else {
+        // Altrimenti aggiorna il carrello nel localStorage
+        localStorage.setItem('cart', JSON.stringify(newCartItems));
+      }
+  
   };
 
   const updateQuantity = (index, quantity) => {
