@@ -532,7 +532,7 @@ html, body {
 .footer-content {
   display: flex;
   flex-wrap: wrap;
-  justify-content:  center;
+  justify-content:  space-around;
   gap: 40px; /* Aggiunge spazio uniforme tra le colonne */
   align-items: flex-start;
   max-width: 1200px;
@@ -598,7 +598,16 @@ html, body {
   color: #ffffff; /* Colore bianco al passaggio del mouse */
 }
 
-  
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 6px; /* Spazio tra i link */
+}
+
   
   /* Ottimizzazioni per mobile */
   @media (max-width: 768px) {
