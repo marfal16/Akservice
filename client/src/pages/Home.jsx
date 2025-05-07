@@ -13,6 +13,8 @@ import { useLocation } from 'react-router-dom';
 import scrollDown from '../assets/scroll-bar.png';
 import scrittaLogo from '../assets/AKSERVICE-W.png';
 import whatsappImg from '../assets/whatsapp.png';
+import { Helmet } from 'react-helmet';
+
 
 
 const Home = () => {
@@ -55,6 +57,17 @@ const Home = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>AK SERVICE - Formazione e Supporto</title>
+        <meta name="description" content="Corsi e servizi per il tuo futuro professionale. Scopri di più su AK SERVICE!" />
+        <meta property="og:title" content="AK SERVICE - Formazione e Supporto" />
+        <meta property="og:description" content="Corsi pratici e teorici pensati per crescere insieme." />
+        <meta property="og:image" content="https://www.akservice.it/assets/logo-ak-multicolor.png" />
+        <meta property="og:url" content="https://akservice.it" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://www.akservice.it/assets/logo-ak-multicolor.png" />
+      </Helmet>
       <header className="cover-image" id="home">
         <video
           src={presentation}

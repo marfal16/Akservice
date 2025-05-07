@@ -22,6 +22,7 @@ import shopImage from './assets/shopping-bag.png';
 import { useEffect, useRef } from 'react';
 import CookieConsentManager from './pages/CookieConsentManager';
 
+
 // Carica l'istanza di Stripe
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_ID_KEY);
 
