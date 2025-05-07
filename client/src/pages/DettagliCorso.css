@@ -1,10 +1,10 @@
 /* Contenitore principale */
 .dettagli-container {
-  margin: 115px auto;
-  max-width: 900px;
-  padding: 40px;
+  margin: 5%, auto;
+  max-width: 100%;
+  /* padding: 40px;  */
   background-color: #ffffff;
-  border-radius: 20px;
+  /* border-radius: 20px;  */
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
@@ -33,7 +33,6 @@
   width: 100%;
   max-height: 500px;
   overflow: hidden;
-  border-radius: 15px;
   margin-bottom: 30px;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
@@ -53,7 +52,7 @@
 /* Sezione contenuto */
 .dettagli-info {
   text-align: left;
-  width: 100%;
+  width: auto;
   max-height: 500px;
 }
 
@@ -70,7 +69,6 @@
   justify-content: space-between; /* Spaziatura tra prezzo e pulsante */
   align-items: center; /* Centra verticalmente */
   background: #fff; /* Colore di sfondo bianco */
-  border-radius: 12px; /* Bordi arrotondati */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Ombra leggera */
   transition: box-shadow 0.3s ease, transform 0.3s ease; /* Transizione */
   width: 100%; /* 👈 aggiornata */
@@ -81,7 +79,6 @@
 /* Hover per il box */
 .dettagli-prezzo-e-pulsante:hover {
   box-shadow: 0 8px 20px rgba(189, 115, 42, 0.4); /* Ombra più intensa */
-  transform: scale(1.03); /* Leggero ingrandimento */
 }
 
 /* Prezzo */
@@ -121,7 +118,6 @@
 .contact-info-box {
   background: #fff;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   width: 100%; /* 👈 aggiornata */
   margin: 30px auto;
@@ -129,7 +125,6 @@
 
 .contact-info-box:hover {
   box-shadow: 0 0 15px rgba(189, 115, 42, 0.6);
-  transform: scale(1.03);
 }
 
 .contact-info-title {
@@ -180,13 +175,9 @@
 }
 
 
-
 /* Mobile (max-width: 768px) */
 @media (max-width: 768px) {
-  .dettagli-container {
-    margin: 50px auto;
-    padding: 20px;
-  }
+
 
   .dettagli-info h1 {
     font-size: 2rem;
@@ -218,10 +209,6 @@
 
 /* Tablet (max-width: 1024px) */
 @media (max-width: 1024px) {
-  .dettagli-container {
-    margin: 80px auto;
-    padding: 30px;
-  }
 
   .dettagli-info h1 {
     font-size: 2.2rem;
@@ -252,11 +239,7 @@
 
 /* Desktop (min-width: 1025px) */
 @media (min-width: 1025px) {
-  .dettagli-container {
-    margin: 115px auto;
-    max-width: 900px;
-    padding: 40px;
-  }
+
 
   .dettagli-info h1 {
     font-size: 2.5rem;

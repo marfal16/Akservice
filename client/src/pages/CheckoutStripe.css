@@ -124,6 +124,7 @@
 
   .payment-buttons button {
     font-size: 1rem;
+    width: 50%;
   }
 
   .paypal-option {
@@ -162,5 +163,10 @@
 
   .payment-buttons button {
     font-size: 1rem;
+    width: 50%;
+  }
+
+  .stripe-card-container {
+    width: 80%;
   }
 }
