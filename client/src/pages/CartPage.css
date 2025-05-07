@@ -295,7 +295,170 @@ button {
   color: #fff;
 }
 
+/* Media query per dispositivi 768px (tablet) */
+@media (max-width: 768px) {
+  .cart-container {
+    padding: 15px;
+  }
 
+  .cart-item {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .cart-item .cart-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cart-item button {
+    width: 100%;
+    height: 35px;
+  }
+
+  .cart-summary-container {
+    max-width: 90%;
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  .checkout-button {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+
+  .popup-content {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .cancel-button {
+    font-size: 1.5rem;
+  }
+
+  .empty-cart-message {
+    margin: 20px auto;
+    padding: 20px 10px;
+  }
+
+  .cta-button {
+    font-size: 14px;
+    padding: 8px 15px;
+  }
+
+  .mini-services h3 {
+    font-size: 0.9rem;
+  }
+
+  .mini-services-buttons button {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+  }
+}
+
+/* Media query per dispositivi 1024px (desktop di dimensioni medie) */
+@media (max-width: 1024px) {
+  .cart-container {
+    padding: 20px;
+  }
+
+  .cart-item {
+    padding: 12px;
+  }
+
+  .cart-item .cart-actions {
+    gap: 10px;
+  }
+
+  .cart-item button {
+    height: 35px;
+  }
+
+  .cart-summary-container {
+    margin: 30px auto;
+    padding: 18px;
+  }
+
+  .checkout-button {
+    padding: 10px 18px;
+  }
+
+  .popup-content {
+    width: 70%;
+    padding: 25px;
+  }
+
+  .empty-cart-message {
+    padding: 25px 15px;
+  }
+
+  .cta-button {
+    padding: 10px 18px;
+  }
+
+  .mini-services-buttons button {
+    padding: 7px 14px;
+  }
+}
+
+/* Media query per dispositivi 430px (smartphone piccoli) */
+@media (max-width: 430px) {
+  .cart-container {
+    padding: 10px;
+  }
+
+  .cart-item {
+    padding: 8px;
+  }
+
+  .cart-item .cart-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cart-item button {
+    width: 100%;
+    height: 30px;
+  }
+
+  .cart-summary-container {
+    max-width: 100%;
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  .checkout-button {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .popup-content {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .cancel-button {
+    font-size: 1.25rem;
+  }
+
+  .empty-cart-message {
+    padding: 20px 10px;
+  }
+
+  .cta-button {
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+
+  .mini-services h3 {
+    font-size: 0.85rem;
+  }
+
+  .mini-services-buttons button {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+}
 
 
 

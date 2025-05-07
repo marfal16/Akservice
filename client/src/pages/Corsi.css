@@ -125,8 +125,44 @@
 }
 
 
-/* Responsive table */
+
+/* Per schermi più piccoli di 430px */
+@media screen and (max-width: 430px) {
+  .corsi-title {
+    font-size: 1.5rem; /* Ridurre la dimensione del titolo */
+  }
+
+  .search-input {
+    font-size: 0.9rem;
+    max-width: 300px;
+  }
+
+  .filter-btn {
+    font-size: 0.75rem;
+    padding: 4px 12px;
+  }
+
+  .action-link {
+    font-size: 0.75rem;
+    padding: 4px 12px;
+  }
+}
+
+/* Per schermi tra 431px e 768px */
 @media screen and (max-width: 768px) {
+  .corsi-container {
+    padding: 4rem 1rem;
+  }
+
+  .corsi-title {
+    font-size: 1.75rem; /* Ridurre leggermente la dimensione */
+  }
+
+  .filter-btn {
+    font-size: 0.8rem;
+    padding: 5px 12px;
+  }
+
   .modern-table thead {
     display: none;
   }
@@ -160,5 +196,31 @@
     font-weight: bold;
     text-align: left;
     color: var(--dark);
+  }
+
+  .search-input {
+    font-size: 0.95rem;
+    max-width: 350px;
+  }
+}
+
+/* Per schermi tra 769px e 1024px */
+@media screen and (max-width: 1024px) {
+  .corsi-container {
+    padding: 4rem 2rem;
+  }
+
+  .corsi-title {
+    font-size: 1.8rem; /* Ancora un po' più piccolo */
+  }
+
+  .filter-btn {
+    font-size: 0.85rem;
+    padding: 5px 12px;
+  }
+
+  .search-input {
+    font-size: 1rem;
+    max-width: 380px;
   }
 }

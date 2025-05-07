@@ -21,4 +21,42 @@
     background-color: #ccc;
     cursor: not-allowed;
   }
-  
+
+  /* Media query per dispositivi 768px (tablet) */
+@media (max-width: 768px) {
+  .paypal-button-container {
+    width: 90%; /* Aumenta la larghezza per i dispositivi mobili più grandi */
+    margin-top: 15px; /* Riduci il margine superiore */
+  }
+
+  .paypal-button-container .paypal-button {
+    height: 35px; /* Aumenta leggermente l'altezza del pulsante per una maggiore visibilità */
+    font-size: 16px; /* Font un po' più grande per i dispositivi mobili */
+  }
+}
+
+/* Media query per dispositivi 1024px (desktop di dimensioni medie) */
+@media (max-width: 1024px) {
+  .paypal-button-container {
+    width: 85%; /* Riduce leggermente la larghezza per adattarsi meglio su schermi medi */
+    margin-top: 20px;
+  }
+
+  .paypal-button-container .paypal-button {
+    height: 30px; /* Mantieni l'altezza originale */
+    font-size: 15px; /* Font leggermente più grande per la visibilità */
+  }
+}
+
+/* Media query per dispositivi 430px (smartphone piccoli) */
+@media (max-width: 430px) {
+  .paypal-button-container {
+    width: 100%; /* Adatta il contenitore per schermi molto piccoli */
+    margin-top: 10px; /* Riduce il margine superiore per ottimizzare lo spazio */
+  }
+
+  .paypal-button-container .paypal-button {
+    height: 30px; /* Mantieni l'altezza ridotta */
+    font-size: 14px; /* Font più piccolo per schermi stretti */
+  }
+}

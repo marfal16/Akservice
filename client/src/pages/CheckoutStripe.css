@@ -110,7 +110,7 @@
 }
 
 
-/* Contenitore pop-up mobile */
+/* Contenitore pop-up per dispositivi 768px */
 @media (max-width: 768px) {
   .popup-container {
     width: 100%;
@@ -118,7 +118,7 @@
   }
 
   .user-info-container {
-    grid-template-columns: 1fr; /* Tutti i campi in colonna sui dispositivi più piccoli */
+    grid-template-columns: 1fr;
     gap: 20px;
   }
 
@@ -128,5 +128,39 @@
 
   .paypal-option {
     width: 100%;
+  }
+}
+
+/* Contenitore pop-up per dispositivi 1024px */
+@media (max-width: 1024px) {
+  .popup-container {
+    max-width: 400px;
+    padding: 20px 30px;
+  }
+
+  .user-info-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+
+  .payment-buttons button {
+    font-size: 1.1rem;
+  }
+}
+
+/* Contenitore pop-up per dispositivi 430px */
+@media (max-width: 430px) {
+  .popup-container {
+    padding: 15px;
+    max-width: 100%;
+  }
+
+  .user-info-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .payment-buttons button {
+    font-size: 1rem;
   }
 }

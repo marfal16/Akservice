@@ -9,7 +9,31 @@
   text-align: center;
 }
 
+/* Media query per dispositivi 768px (tablet) */
+@media (max-width: 768px) {
+  .checkout-container {
+    width: 90%; /* Adatta la larghezza per tablet */
+    padding: 30px; /* Riduci il padding per dispositivi di dimensioni medie */
+    max-width: 100%; /* Massima larghezza per tablet */
+  }
+}
 
+/* Media query per dispositivi 1024px (desktop di dimensioni medie) */
+@media (max-width: 1024px) {
+  .checkout-container {
+    width: 85%; /* Riduci la larghezza per desktop medi */
+    padding: 35px; /* Mantieni un buon padding anche su desktop */
+  }
+}
+
+/* Media query per dispositivi 430px (smartphone piccoli) */
+@media (max-width: 430px) {
+  .checkout-container {
+    width: 100%; /* Imposta la larghezza a 100% per schermi piccoli */
+    padding: 20px; /* Riduci ulteriormente il padding su schermi stretti */
+    max-width: 100%; /* Forza il 100% della larghezza */
+  }
+}
 
 
 
