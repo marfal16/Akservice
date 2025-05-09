@@ -43,11 +43,11 @@ const CookieConsentManager = () => {
       
       // Timeout per gestire il caso in cui Usercentrics non si inizializzi
       setTimeout(() => {
-        if (!u && (console.error("Usercentrics non si è inizializzato entro 5 secondi"),
+        if (!isLoaded && (console.error("Usercentrics non si è inizializzato entro 5 secondi"),
           window.UC_UI && !window.UsercentricsAPI)) {
           console.warn("UC_UI presente ma UsercentricsAPI mancante: non posso forzare nulla.");
         }
-      }, 5000);
+      }, 5000);      
       
 
       // Pulizia

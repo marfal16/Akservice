@@ -3,7 +3,7 @@ import './CheckoutPayPal.css';
 import { useNavigate } from "react-router-dom";
 
 
-const CheckoutPayPal = ({ totalAmount }) => {
+const CheckoutPayPal = ({ totalAmount, setCartItems }) => {
   const [orderId, setOrderId] = useState(null);
   const [paymentStatus, setPaymentStatus] = useState(null); // Stato per il pagamento
   const navigate = useNavigate();
