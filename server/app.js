@@ -13,7 +13,11 @@ const port = process.env.PORT || 5000;
 app.use(express.json());
 
 const corsOptions = {
-  origin: 'https://www.akservice.it', // Permetti solo richieste dal dominio www.akservice.it
+  origin: [
+    'https://www.akservice.it', // Permetti il dominio principale
+    'https://akservicenew.vercel.app',  // Aggiungi il dominio di staging
+    "http://localhost:5173"
+  ],
   methods: ['GET', 'POST'],           // Metodi HTTP permessi
   allowedHeaders: ['Content-Type', 'Authorization'], // Header che vuoi accettare
 };
