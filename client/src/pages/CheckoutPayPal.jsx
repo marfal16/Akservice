@@ -54,7 +54,7 @@ const CheckoutPayPal = ({ totalAmount, cartItems }) => {
           return actions.order.capture().then((details) => {
             //alert("Pagamento completato da " + details.payer.name.given_name);
             setPaymentStatus("success"); // Aggiorna stato pagamento a successo
-            cartItems([]);
+
             localStorage.removeItem('cart');  // Rimuovi il carrello dal localStorage
             navigate("/conferma");
           });

@@ -103,7 +103,7 @@ const CheckoutStripe = ({ clientSecret,  cartItems,  setCartItems}) => {
           console.error("Errore nell'aggiornamento del paymentIntent:", err);
         }
 
-        setCartItems([]);
+
         localStorage.removeItem('cart');  // Rimuovi il carrello dal localStorage
         navigate("/conferma");
       }
