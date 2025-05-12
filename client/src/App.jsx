@@ -295,6 +295,9 @@ function App() {
       }
     }, [cartItems]); // Rileva i cambiamenti del carrello
 
+    console.log("Valore di setCartItems prima di passarlo a CheckoutStripe:", setCartItems);
+    console.log("Valore di setCartItems prima di passarlo a CheckoutPayPal:", setCartItems);
+
   return (
     <Router>
       <Navbar cartItems={cartItems} />
