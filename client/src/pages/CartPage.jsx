@@ -140,7 +140,9 @@ const CartPage = ({ cartItems, removeFromCart, updateQuantity, setCartItem }) =>
         <div className="cart-summary-container">
           <div className="cart-total">
             <div className="total-label">TOTALE</div>
-            <div className="total-amount">{totalAmount}.00 €</div>
+            <div className="total-amount">
+              {Number.isInteger(totalAmount) ? `${totalAmount}.00 €` : `${totalAmount} €`}
+            </div>
           </div>
 
           {paymentError && <p className="payment-error">{paymentError}</p>}

@@ -6,7 +6,8 @@ import Home from './pages/Home';
 import About from './pages/About';  
 import CorsiInformatici from './pages/CorsiInformatici'; 
 import CorsiLingue from './pages/CorsiLingue'; 
-import CorsiRegionali from './pages/CorsiRegionali'; 
+import CorsiRegionali from './pages/CorsiRegionali';
+import Footer from './pages/Footer';  
 import FormazioneUniversitaria from './pages/FormazioneUniversitaria'; 
 import DettagliCorso from './pages/DettagliCorso'; 
 import { Elements } from "@stripe/react-stripe-js";
@@ -65,9 +66,8 @@ function Navbar({ cartItems }) {
 
   // Funzione per ottenere il numero totale degli articoli nel carrello
   const getTotalQuantity = () => {
-    return cartItems.reduce((total, item) => total + Number(item.quantity), 0).toFixed(2); // ✅ Mantiene due decimali
+    return cartItems.reduce((total, item) => total + item.quantity, 0); // Somma le quantità degli articoli
   };
-  
 
   // Gestione hover sul logo
   const handleLogoMouseEnter = () => {
@@ -345,6 +345,7 @@ const [isMessageVisible, setIsMessageVisible] = useState(false);
           />
         </Routes>
       </div>
+      <Footer />
     </Router>
     </div> 
   );

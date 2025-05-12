@@ -79,7 +79,7 @@
 
 .modern-table tbody tr {
   background: var(--light);
-  border-bottom: 4px solid var(--orange);
+  border-bottom: 1px solid var(--grey);
   transition: background 0.2s;
 }
 
@@ -146,6 +146,12 @@
     font-size: 0.75rem;
     padding: 4px 12px;
   }
+
+  .modern-table tbody tr {
+    background: var(--light);
+    border-bottom: 1px solid var(--orange);
+    transition: background 0.2s;
+  }
 }
 
 /* Per schermi tra 431px e 768px */
@@ -201,6 +207,12 @@
   .search-input {
     font-size: 0.95rem;
     max-width: 350px;
+  }
+
+  .modern-table tbody tr {
+    background: var(--light);
+    border-bottom: 1px solid var(--orange);
+    transition: background 0.2s;
   }
 }
 
