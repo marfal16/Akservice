@@ -295,9 +295,7 @@ function App() {
       }
     }, [cartItems]); // Rileva i cambiamenti del carrello
 
-    console.log("Valore di setCartItems prima di passarlo a CheckoutStripe:", setCartItems);
-    console.log("Valore di CartItems prima di passarlo a CheckoutStripe:", cartItems);
-    console.log("Valore di setCartItems prima di passarlo a CheckoutPayPal:", setCartItems);
+    console.log("Valore di CartItems prima di passarlo a Checkout:", cartItems);
 
   return (
     <Router>
@@ -314,12 +312,12 @@ function App() {
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/conferma" element={<ConfermaPage />} />
           <Route path="/cart" element={<CartPage cartItems={cartItems} removeFromCart={removeFromCart} updateQuantity={updateQuantity} />} />
-          <Route path="/checkout-paypal" element={<CheckoutPayPal setCartItems={setCartItems} />} />
+          <Route path="/checkout-paypal" element={<CheckoutPayPal CartItems={cartItems} />} />
           <Route
             path="/checkout-stripe" 
             element={
               <Elements stripe={stripePromise}>
-                <CheckoutStripe cartItems={cartItems} setCartItems={setCartItems} />
+                <CheckoutStripe cartItems={cartItems} />
               </Elements>
             }
           />

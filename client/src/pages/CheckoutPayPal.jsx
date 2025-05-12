@@ -3,7 +3,7 @@ import './CheckoutPayPal.css';
 import { useNavigate } from "react-router-dom";
 
 
-const CheckoutPayPal = ({ totalAmount, setCartItems }) => {
+const CheckoutPayPal = ({ totalAmount, cartItems }) => {
   const [orderId, setOrderId] = useState(null);
   const [paymentStatus, setPaymentStatus] = useState(null); // Stato per il pagamento
   const navigate = useNavigate();
@@ -54,7 +54,7 @@ const CheckoutPayPal = ({ totalAmount, setCartItems }) => {
           return actions.order.capture().then((details) => {
             //alert("Pagamento completato da " + details.payer.name.given_name);
             setPaymentStatus("success"); // Aggiorna stato pagamento a successo
-            setCartItems([]);
+            cartItems([]);
             localStorage.removeItem('cart');  // Rimuovi il carrello dal localStorage
             navigate("/conferma");
           });
