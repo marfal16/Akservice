@@ -113,7 +113,7 @@
 /* Contenitore pop-up per dispositivi 768px */
 @media (max-width: 768px) {
   .popup-container {
-    width: 100%;
+    width: 90%;
     padding: 20px;
   }
 

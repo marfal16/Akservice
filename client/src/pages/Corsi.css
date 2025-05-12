@@ -79,7 +79,7 @@
 
 .modern-table tbody tr {
   background: var(--light);
-  border-bottom: 1px solid var(--grey);
+  border-bottom: 4px solid var(--orange);
   transition: background 0.2s;
 }
 
@@ -138,7 +138,7 @@
   }
 
   .filter-btn {
-    font-size: 0.75rem;
+    font-size: 1rem;
     padding: 4px 12px;
   }
 
@@ -184,7 +184,7 @@
 
   .modern-table td {
     padding: 1rem;
-    text-align: right;
+    /*text-align: right;*/
     position: relative;
   }
 

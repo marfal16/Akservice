@@ -197,7 +197,7 @@
   }
 
   .dettagli-immagine {
-    height: 180px;
+    height: 150px;
   }
 
   .contact-info-row {
@@ -213,7 +213,7 @@
 
 
 /* Mobile (max-width: 768px) */
-@media (max-width: 768px) {
+@media (min-width: 768px) {
 
 
   .dettagli-info h1 {
@@ -245,7 +245,7 @@
 }
 
 /* Tablet (max-width: 1024px) */
-@media (max-width: 1024px) {
+@media (min-width: 1024px) {
 
   .dettagli-info h1 {
     font-size: 2.2rem;

@@ -399,7 +399,7 @@ button {
 @media (max-width: 430px) {
   
   ul {
-    margin-block-start: 20% !important;
+    /* margin-block-start: 20% !important; */
     margin-inline-end: 1% !important;
     padding-inline-start: inherit !important;
 }
@@ -424,16 +424,19 @@ button {
 
   .checkout-button {
     padding: 10px 12px;
-    font-size: 12px;
+    /*font-size: 12px;*/
   }
 
   .popup-content {
     width: 90%;
     padding: 20px;
+    height: 70vh;
+    overflow-y: auto;
   }
 
   .cancel-button {
-    font-size: 1.25rem;
+    font-size: 2rem;
+    top: 0px;
   }
 
   .empty-cart-message {

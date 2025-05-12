@@ -65,8 +65,9 @@ function Navbar({ cartItems }) {
 
   // Funzione per ottenere il numero totale degli articoli nel carrello
   const getTotalQuantity = () => {
-    return cartItems.reduce((total, item) => total + item.quantity, 0); // Somma le quantità degli articoli
+    return cartItems.reduce((total, item) => total + Number(item.quantity), 0).toFixed(2); // ✅ Mantiene due decimali
   };
+  
 
   // Gestione hover sul logo
   const handleLogoMouseEnter = () => {
