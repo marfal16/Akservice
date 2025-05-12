@@ -264,132 +264,26 @@ button:hover {
   animation: bounce 0.3s ease;
 }
 
-/* Logo su desktop: dentro la navbar */
-@media (min-width: 769px) {
-  .navbar {
-    display: flex; /* Rende la navbar un contenitore flex */
-    align-items: center;
-    justify-content: space-between;
-
-  }
-
-  .logo-container {
-    order: -1; /* Sposta il logo a sinistra */
-  }
+.cart-message {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+  animation: fadeInOut 2s ease-in-out;
 }
 
-@media (max-width: 1024px) {
-
-  .navbar nav ul {
-    margin: 0 30px; /* Riduce il margine */
-    justify-content: center; /* Centra il menu */
-  }
-
-  .navbar nav ul li a, .navbar nav ul li button {
-    font-size: 14px; /* Riduce leggermente il testo */
-    padding: 6px 12px; /* Riduce padding */
-  }
-
-  .main-menu {
-    gap: 15px;
-  }
-
-  .dropdown-menu {
-    min-width: 180px; /* Riduce larghezza del dropdown */
-    gap: 15px;
-  }
-
-  .logo {
-    height: 5em; /* Riduce dimensione logo */
-  }
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
-
-@media (max-width: 768px) {
-  .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    padding: 10px 20px;       /* padding più contenuto */
-    height: 60px;             /* altezza fissa */
-  }
-
-  .logo-container {
-    position: relative; /* Rimuove absolute e consente un flusso naturale */
-    flex-grow: 1; /* Permette al logo di occupare spazio */
-    display: flex;
-    justify-content: flex-start; /* Mantiene il logo a sinistra */
-  }
-
-  .menu {
-    display: none; /* Nasconde il menu quando inattivo */
-    position: absolute;
-    left: 0;
-    width: 100%;
-    background-color: #333;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px 0;
-    z-index: 1100; /* Assicura che sia sopra gli altri elementi */
-    top: 100%;                /* si posiziona subito sotto la navbar */
-  }
-  
-  .menu.active {
-    display: flex !important; /* Forza la visibilità quando attivo */
-  }
-
-  .main-menu {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .main-menu li {
-    display: block; /* Assicura che i tab siano visibili */
-  }
-
-  .main-menu li a, .main-menu li button {
-    width: 100%; /* Espande i tab per migliorare la leggibilità */
-    text-align: center;
-  }
-
-  .hamburger-btn {
-    all: unset;
-    display: block;
-    position: absolute;
-    top: 10x;
-    right: 70px;
-    font-size: 35px;
-    background: none;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-}
-/* Effetto hover solo per l'hamburger */
-.hamburger-btn:hover {
-  background-color: #bd732a;
-}
-
-.logo-container {
-  position: absolute;
-  left: 20px;
-  top: 15px;
-}
-
-  .logo {
-    height: 4em; /* Logo più piccolo  */
-    padding: 1em;
-  } 
-}
 
 @media (max-width: 430px) {
   .navbar {
@@ -478,5 +372,159 @@ button:hover {
     height: 3.5em; /* Riduce il logo ancora di più */
     padding: 0.5em;
   }
+
+  .cart-message {
+    bottom: 10px;
+    right: 10px;
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+  
 }
+
+
+/* Logo su desktop: dentro la navbar */
+@media (min-width: 769px) {
+  .navbar {
+    display: flex; /* Rende la navbar un contenitore flex */
+    align-items: center;
+    justify-content: space-between;
+
+  }
+
+  .logo-container {
+    order: -1; /* Sposta il logo a sinistra */
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 10px 20px;       /* padding più contenuto */
+    height: 60px;             /* altezza fissa */
+  }
+
+  .logo-container {
+    position: relative; /* Rimuove absolute e consente un flusso naturale */
+    flex-grow: 1; /* Permette al logo di occupare spazio */
+    display: flex;
+    justify-content: flex-start; /* Mantiene il logo a sinistra */
+  }
+
+  .menu {
+    display: none; /* Nasconde il menu quando inattivo */
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 0;
+    z-index: 1100; /* Assicura che sia sopra gli altri elementi */
+    top: 100%;                /* si posiziona subito sotto la navbar */
+  }
+  
+  .menu.active {
+    display: flex !important; /* Forza la visibilità quando attivo */
+  }
+
+  .main-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .main-menu li {
+    display: block; /* Assicura che i tab siano visibili */
+  }
+
+  .main-menu li a, .main-menu li button {
+    width: 100%; /* Espande i tab per migliorare la leggibilità */
+    text-align: center;
+  }
+
+  .hamburger-btn {
+    all: unset;
+    display: block;
+    position: absolute;
+    top: 10x;
+    right: 70px;
+    font-size: 35px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+/* Effetto hover solo per l'hamburger */
+.hamburger-btn:hover {
+  background-color: #bd732a;
+}
+
+.logo-container {
+  position: absolute;
+  left: 20px;
+  top: 15px;
+}
+
+  .logo {
+    height: 4em; /* Logo più piccolo  */
+    padding: 1em;
+  } 
+
+  .cart-message {
+    bottom: 15px;
+    right: 15px;
+    font-size: 15px;
+    padding: 9px 13px;
+  }
+
+}
+
+@media (max-width: 1024px) {
+
+  .cart-message {
+    bottom: 18px;
+    right: 18px;
+    font-size: 16px;
+    padding: 10px 14px;
+  }
+
+  .navbar nav ul {
+    margin: 0 30px; /* Riduce il margine */
+    justify-content: center; /* Centra il menu */
+  }
+
+  .navbar nav ul li a, .navbar nav ul li button {
+    font-size: 14px; /* Riduce leggermente il testo */
+    padding: 6px 12px; /* Riduce padding */
+  }
+
+  .main-menu {
+    gap: 15px;
+  }
+
+  .dropdown-menu {
+    min-width: 180px; /* Riduce larghezza del dropdown */
+    gap: 15px;
+  }
+
+  .logo {
+    height: 5em; /* Riduce dimensione logo */
+  }
+}
+
+
+
+
 

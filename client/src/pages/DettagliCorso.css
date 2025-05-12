@@ -61,7 +61,10 @@
   color: #555;
   line-height: 1.8;
   margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
+
 
 /* Box per il prezzo e il pulsante Acquista */
 .dettagli-prezzo-e-pulsante {
@@ -172,6 +175,40 @@
 
 .contact-info-value:hover {
   color: #bd732a;
+}
+
+/* Smartphone piccoli (max-width: 430px) */
+@media (max-width: 430px) {
+
+  .dettagli-titolo {
+    font-size: 1.8rem;
+    margin-top: 70px; /* regola questo valore in base all'altezza della navbar */
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  .dettagli-prezzo {
+    font-size: 1.4rem;
+  }
+
+  .dettagli-acquista {
+    font-size: 0.9rem;
+    padding: 8px 20px;
+  }
+
+  .dettagli-immagine {
+    height: 180px;
+  }
+
+  .contact-info-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-info-item {
+    width: 90%;
+    margin-bottom: 10px;
+  }
 }
 
 

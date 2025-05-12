@@ -89,6 +89,9 @@ function Navbar({ cartItems }) {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+
+
+
   
   return (
     <header className="navbar">
@@ -236,6 +239,8 @@ function Navbar({ cartItems }) {
 }
 
 function App() {
+  const [cartMessage, setCartMessage] = useState("");
+const [isMessageVisible, setIsMessageVisible] = useState(false);
   const [cartItems, setCartItems] = useState(() => {
     // Recupera il carrello dal localStorage
     const savedCart = localStorage.getItem('cart');
@@ -266,6 +271,16 @@ function App() {
       newCartItems[existingItemIndex].quantity += 1;
     }
     setCartItems(newCartItems);
+  
+    // Mostra la modal con il messaggio
+    setCartMessage('Articolo aggiunto al carrello!');
+    setIsMessageVisible(true);
+
+    // Nascondi la modal dopo 2 secondi
+    setTimeout(() => {
+      setIsMessageVisible(false);
+    }, 2000);
+
   };
 
   const removeFromCart = (index) => {
@@ -298,6 +313,12 @@ function App() {
     console.log("Valore di CartItems prima di passarlo a Checkout:", cartItems);
 
   return (
+    <div>
+    {isMessageVisible && (
+      <div className="cart-message">
+        {cartMessage}
+      </div>
+    )}
     <Router>
       <Navbar cartItems={cartItems} />
       <div className="App">
@@ -312,7 +333,7 @@ function App() {
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/conferma" element={<ConfermaPage />} />
           <Route path="/cart" element={<CartPage cartItems={cartItems} removeFromCart={removeFromCart} updateQuantity={updateQuantity} />} />
-          <Route path="/checkout-paypal" element={<CheckoutPayPal CartItems={cartItems} setCartItems={setCartItems} />} />
+          <Route path="/checkout-paypal" element={<CheckoutPayPal cartItems={cartItems} setCartItems={setCartItems} />} />
           <Route
             path="/checkout-stripe" 
             element={
@@ -324,6 +345,7 @@ function App() {
         </Routes>
       </div>
     </Router>
+    </div> 
   );
 }
 
