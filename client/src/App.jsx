@@ -312,12 +312,12 @@ function App() {
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/conferma" element={<ConfermaPage />} />
           <Route path="/cart" element={<CartPage cartItems={cartItems} removeFromCart={removeFromCart} updateQuantity={updateQuantity} />} />
-          <Route path="/checkout-paypal" element={<CheckoutPayPal CartItems={cartItems} />} />
+          <Route path="/checkout-paypal" element={<CheckoutPayPal CartItems={cartItems} setCartItems={setCartItems} />} />
           <Route
             path="/checkout-stripe" 
             element={
               <Elements stripe={stripePromise}>
-                <CheckoutStripe cartItems={cartItems} />
+                <CheckoutStripe cartItems={cartItems} setCartItems={setCartItems} />
               </Elements>
             }
           />

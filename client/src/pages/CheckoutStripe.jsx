@@ -4,7 +4,7 @@ import "./CheckoutStripe.css";
 import { useNavigate } from "react-router-dom";
 
 
-const CheckoutStripe = ({ clientSecret,  cartItems }) => {
+const CheckoutStripe = ({ clientSecret,  cartItems,  setCartItems}) => {
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate();
@@ -102,8 +102,8 @@ const CheckoutStripe = ({ clientSecret,  cartItems }) => {
         } catch (err) {
           console.error("Errore nell'aggiornamento del paymentIntent:", err);
         }
-        console.log("Tipo di setCartItems:", typeof cartItems);
-        cartItems([]);
+        console.log("cartItems:", cartItems);
+        setCartItems([]);
         localStorage.removeItem('cart');  // Rimuovi il carrello dal localStorage
         navigate("/conferma");
       }
