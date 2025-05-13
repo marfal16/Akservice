@@ -1,6 +1,6 @@
 // In un nuovo file StripeWrapper.jsx
 import { Elements } from '@stripe/react-stripe-js';
-import CheckoutStripe from './path/to/CheckoutStripe'; // Aggiusta il percorso in base al tuo progetto
+import CheckoutStripe from './pages/CheckoutStripe'; // Aggiusta il percorso in base al tuo progetto
 
 const StripeWrapper = ({ cartItems, setCartItems, stripePromise }) => {
   console.log("StripeWrapper - setCartItems è una funzione:", typeof setCartItems === "function");
