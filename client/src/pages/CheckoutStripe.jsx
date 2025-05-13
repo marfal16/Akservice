@@ -102,10 +102,12 @@ const CheckoutStripe = ({ clientSecret,  cartItems,  setCartItems}) => {
         } catch (err) {
           console.error("Errore nell'aggiornamento del paymentIntent:", err);
         }
-
-
-        localStorage.removeItem('cart');  // Rimuovi il carrello dal localStorage
         navigate("/conferma");
+          // Poi, dopo un attimo, svuoti il carrello (sia stato che localStorage)
+          setTimeout(() => {
+            localStorage.removeItem('cart');
+            setCartItems([]);
+          }, 300); // piccolo delay per sicurezza
       }
     }
 
