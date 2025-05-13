@@ -27,6 +27,31 @@ import CookieConsentManager from './pages/CookieConsentManager';
 // Carica l'istanza di Stripe
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_ID_KEY);
 
+// Componente funzionale per passare le props a CheckoutStripe
+const StripeCheckoutWithProps = () => {
+  // Utilizziamo uno stato locale che si aggiorna quando il componente App cambia
+  const [localCartItems, setLocalCartItems] = useState([]);
+  
+  // Funzione per svuotare il carrello che è accessibile dal contesto globale
+  window.clearCart = () => {
+    // Pulisci il localStorage
+    localStorage.removeItem('cart');
+    
+    // Aggiorna il carrello nell'app principale - questo verrà usato al prossimo render
+    if (window.updateGlobalCart) {
+      window.updateGlobalCart([]);
+    }
+    
+    console.log("Carrello svuotato con successo tramite window.clearCart");
+  };
+
+  return (
+    <Elements stripe={stripePromise}>
+      <CheckoutStripe />
+    </Elements>
+  );
+};
+
 
 function Navbar({ cartItems }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -263,6 +288,20 @@ const [isMessageVisible, setIsMessageVisible] = useState(false);
     }
   });
   
+    // Rendi disponibile la funzione setCartItems a livello globale
+    useEffect(() => {
+      window.updateGlobalCart = (newCart) => {
+        console.log("Aggiornamento carrello globale con:", newCart);
+        setCartItems(newCart);
+      };
+      
+      // Cleanup per evitare memory leak
+      return () => {
+        delete window.updateGlobalCart;
+        delete window.clearCart;
+      };
+    }, []);
+
   const addToCart = (course) => {
     const newCartItems = [...cartItems];
     const existingItemIndex = newCartItems.findIndex(item => item.id === course.id);
@@ -313,6 +352,16 @@ const [isMessageVisible, setIsMessageVisible] = useState(false);
 
     console.log("Valore di CartItems prima di passarlo a Checkout:", cartItems);
 
+     // Aggiungi un effetto per aggiornare il localStorage quando il carrello cambia
+  useEffect(() => {
+    console.log("Carrello aggiornato:", cartItems);
+    if (cartItems.length > 0) {
+      localStorage.setItem('cart', JSON.stringify(cartItems));
+    } else {
+      localStorage.removeItem('cart');
+    }
+  }, [cartItems]);
+  
   return (
     <div>
     {isMessageVisible && (
@@ -336,22 +385,9 @@ const [isMessageVisible, setIsMessageVisible] = useState(false);
           <Route path="/cart" element={<CartPage cartItems={cartItems} removeFromCart={removeFromCart} updateQuantity={updateQuantity} />} />
           <Route path="/checkout-paypal" element={<CheckoutPayPal cartItems={cartItems} setCartItems={setCartItems} />} />
           <Route
-            path="/checkout-stripe" 
-            element={
-              <Elements stripe={stripePromise}>
-              {/* Utilizzo di una funzione di render per passare le props */}
-              {() => (
-                <CheckoutStripe 
-                  cartItems={cartItems} 
-                  setCartItems={(newCart) => {
-                    console.log("Svuotamento carrello chiamato con:", newCart);
-                    setCartItems(newCart);
-                  }} 
-                />
-              )}
-            </Elements>
-            }
-          />
+              path="/checkout-stripe"
+              element={<StripeCheckoutWithProps />}
+            />
         </Routes>
       </div>
       <Footer />

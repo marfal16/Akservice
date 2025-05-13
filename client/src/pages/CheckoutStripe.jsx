@@ -102,27 +102,23 @@ const CheckoutStripe = ({ clientSecret,  cartItems,  setCartItems  }) => {
         } catch (err) {
           console.error("Errore nell'aggiornamento del paymentIntent:", err);
         }
-
-         // Gestione del carrello
-        console.log("Verifica setCartItems prima di usarlo:", setCartItems);
-        console.log("Tipo di setCartItems:", typeof setCartItems);
-
-        if (typeof setCartItems === 'function') {
-          try {
-            // Pulisci il carrello (sia stato che localStorage)
+        
+        // Utilizza la funzione globale per pulire il carrello
+        try {
+          if (typeof window.clearCart === 'function') {
+            window.clearCart();
+            console.log("Carrello svuotato con successo usando window.clearCart");
+          } else {
+            console.error("window.clearCart non è una funzione, pulisco solo il localStorage");
             localStorage.removeItem('cart');
-            setCartItems([]);
-            console.log("Carrello svuotato con successo");
-          } catch (err) {
-            console.error("Errore durante lo svuotamento del carrello:", err);
           }
-        } else {
-          console.error("setCartItems non è una funzione:", setCartItems);
-          // Assicurati comunque di pulire il localStorage
+        } catch (err) {
+          console.error("Errore durante lo svuotamento del carrello:", err);
+          // Fallback: rimuovi almeno il localStorage
           localStorage.removeItem('cart');
-          console.log("LocalStorage pulito ma stato del carrello non aggiornato");
         }
         
+        // Naviga alla pagina di conferma
         navigate("/conferma");
       }
     }
