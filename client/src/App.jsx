@@ -22,7 +22,6 @@ import logoImageC from './assets/logo-ak-multicolor.png';
 import shopImage from './assets/shopping-bag.png';
 import { useEffect, useRef } from 'react';
 import CookieConsentManager from './pages/CookieConsentManager';
-import StripeWrapper from './pages/StripeWrapper'; 
 
 
 // Carica l'istanza di Stripe
@@ -337,15 +336,22 @@ const [isMessageVisible, setIsMessageVisible] = useState(false);
           <Route path="/cart" element={<CartPage cartItems={cartItems} removeFromCart={removeFromCart} updateQuantity={updateQuantity} />} />
           <Route path="/checkout-paypal" element={<CheckoutPayPal cartItems={cartItems} setCartItems={setCartItems} />} />
           <Route
-              path="/checkout-stripe" 
-              element={
-                <StripeWrapper 
+            path="/checkout-stripe" 
+            element={
+              <Elements stripe={stripePromise}>
+              {/* Utilizzo di una funzione di render per passare le props */}
+              {() => (
+                <CheckoutStripe 
                   cartItems={cartItems} 
-                  setCartItems={setCartItems}
-                  stripePromise={stripePromise}
+                  setCartItems={(newCart) => {
+                    console.log("Svuotamento carrello chiamato con:", newCart);
+                    setCartItems(newCart);
+                  }} 
                 />
-              }
-            />
+              )}
+            </Elements>
+            }
+          />
         </Routes>
       </div>
       <Footer />
