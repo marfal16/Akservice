@@ -321,6 +321,14 @@ button {
 
 /* Media query per dispositivi 768px (tablet) */
 @media (max-width: 768px) {
+
+  ul {
+    /* margin-block-start: 20% !important; */
+    margin-inline-end: 1% !important;
+    padding-inline-start: inherit !important;
+}
+
+
   .cart-container {
     padding: 15px;
   }

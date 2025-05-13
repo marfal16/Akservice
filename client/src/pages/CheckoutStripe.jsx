@@ -4,7 +4,7 @@ import "./CheckoutStripe.css";
 import { useNavigate } from "react-router-dom";
 
 
-const CheckoutStripe = ({ clientSecret,  cartItems,  setCartItems}) => {
+const CheckoutStripe = ({ clientSecret,  cartItems,  setCartItems  }) => {
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate();
@@ -102,12 +102,28 @@ const CheckoutStripe = ({ clientSecret,  cartItems,  setCartItems}) => {
         } catch (err) {
           console.error("Errore nell'aggiornamento del paymentIntent:", err);
         }
-        navigate("/conferma");
-          // Poi, dopo un attimo, svuoti il carrello (sia stato che localStorage)
-          setTimeout(() => {
+
+         // Gestione del carrello
+        console.log("Verifica setCartItems prima di usarlo:", setCartItems);
+        console.log("Tipo di setCartItems:", typeof setCartItems);
+
+        if (typeof setCartItems === 'function') {
+          try {
+            // Pulisci il carrello (sia stato che localStorage)
             localStorage.removeItem('cart');
             setCartItems([]);
-          }, 300); // piccolo delay per sicurezza
+            console.log("Carrello svuotato con successo");
+          } catch (err) {
+            console.error("Errore durante lo svuotamento del carrello:", err);
+          }
+        } else {
+          console.error("setCartItems non è una funzione:", setCartItems);
+          // Assicurati comunque di pulire il localStorage
+          localStorage.removeItem('cart');
+          console.log("LocalStorage pulito ma stato del carrello non aggiornato");
+        }
+        
+        navigate("/conferma");
       }
     }
 

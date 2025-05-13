@@ -336,13 +336,15 @@ const [isMessageVisible, setIsMessageVisible] = useState(false);
           <Route path="/cart" element={<CartPage cartItems={cartItems} removeFromCart={removeFromCart} updateQuantity={updateQuantity} />} />
           <Route path="/checkout-paypal" element={<CheckoutPayPal cartItems={cartItems} setCartItems={setCartItems} />} />
           <Route
-            path="/checkout-stripe" 
-            element={
-              <Elements stripe={stripePromise}>
-                <CheckoutStripe cartItems={cartItems} setCartItems={setCartItems} />
-              </Elements>
-            }
-          />
+              path="/checkout-stripe" 
+              element={
+                <StripeWrapper 
+                  cartItems={cartItems} 
+                  setCartItems={setCartItems}
+                  stripePromise={stripePromise}
+                />
+              }
+            />
         </Routes>
       </div>
       <Footer />
