@@ -1,6 +1,6 @@
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { useState } from "react";
-import "./pages/CheckoutStripe";
+import "./CheckoutStripe.css";
 import { useNavigate } from "react-router-dom";
 
 
