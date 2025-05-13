@@ -22,6 +22,7 @@ import logoImageC from './assets/logo-ak-multicolor.png';
 import shopImage from './assets/shopping-bag.png';
 import { useEffect, useRef } from 'react';
 import CookieConsentManager from './pages/CookieConsentManager';
+import StripeWrapper from './pages/StripeWrapper'; 
 
 
 // Carica l'istanza di Stripe
