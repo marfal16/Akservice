@@ -185,7 +185,7 @@ const CheckoutStripe = ({ clientSecret,  cartItems,  setCartItems}) => {
             />
           </label>
           <label>
-            Paese
+          Paese (es. IT, FR)
             <input
               type="text"
               value={country}

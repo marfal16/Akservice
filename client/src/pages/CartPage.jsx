@@ -153,29 +153,40 @@ const CartPage = ({ cartItems, removeFromCart, updateQuantity, setCartItem }) =>
         </div>
       )}
 
-      {isPopupOpen && (
-        <div className="payment-popup">
-          <div className="popup-content">
-            <h3>Inserisci i dati di fatturazione</h3>
-            <div className="payment-options">
-              <div className="stripe-section">
-                {clientSecret && (
-                  <Elements stripe={stripePromise} options={{ clientSecret }}>
-                    <CheckoutStripe clientSecret={clientSecret} />
-                  </Elements>
-                )}
-              </div>
+          {isPopupOpen && (
+            <div className="payment-popup">
+              <div className="popup-content">
+                <h3>Inserisci i dati di fatturazione</h3>
+                <div className="payment-options">
+                
+                 {loading ? (
+                  <div className="loading-message">
+                    <div className="spinner" />
+                    <p>Caricamento in corso...</p>
+                  </div>
+                ) : (
+                  <>
+                    <div className="stripe-section">
+                      {clientSecret && (
+                        <Elements stripe={stripePromise} options={{ clientSecret }}>
+                          <CheckoutStripe clientSecret={clientSecret} />
+                        </Elements>
+                      )}
+                    </div>
 
-              <div className="paypal-section">
-                <h3>Oppure</h3>
-                <CheckoutPayPal totalAmount={totalAmount} />
+                    <div className="paypal-section">
+                      <h3>Oppure</h3>
+                      <CheckoutPayPal totalAmount={totalAmount} />
+                    </div>
+                  </>
+                )}
+
+                </div>
+                <button className="cancel-button" onClick={closePopup}>×</button>
               </div>
             </div>
-
-            <button className="cancel-button" onClick={closePopup}>×</button>
-          </div>
-        </div>
-      )}
+          )}
+      
     </div>
   );
 };
