@@ -11,7 +11,6 @@ const CorsiRegionali = () => {
       <div className="dettagli-container">
         <div className="dettagli-layout">
           <div className="dettagli-info">
-            <h1>Corsi Regionali</h1>
             <p>
               Stai cercando un percorso pratico e riconosciuto? I nostri corsi regionali ti preparano con competenze specifiche per entrare subito nel mondo del lavoro.
               <br /><br />
