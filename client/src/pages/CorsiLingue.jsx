@@ -9,7 +9,8 @@ export default function CertificazioniLinguistiche() {
   const location = useLocation();
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/corsi`)
+    //fetch(`${import.meta.env.VITE_API_URL}/corsi`)
+    fetch('/api/corsi/corsi')
       .then(response => response.json())
       .then(data => setCorsi(data))
       .catch(error => console.error("Errore nel recupero delle certificazioni linguistiche", error));
