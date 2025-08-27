@@ -6,7 +6,12 @@ const CorsiRegionali = () => {
   return (
     <div>
       <h2>Corsi Regionali</h2>
-      <p>Offriamo corsi pratici su competenze specifiche per carriere professionali nel settore tecnico.</p>
+      <p>Espandi le tue competenze con i nostri corsi regionali, pensati per darti le abilità pratiche 
+        e certificate che il mercato del lavoro richiede. 
+        Dai settori tecnici all'innovazione, i nostri percorsi ti aprono nuove opportunità professionali.
+        <br></br>
+        Per scoprire quali corsi sono attivi e trovare quello giusto per te, non esitare a contattarci.
+        </p>
       {/* Aggiungi l'elenco dei corsi o contenuti specifici qui */}
     </div>
   );
