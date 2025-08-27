@@ -9,8 +9,10 @@ const CorsiRegionali = () => {
       <div class="dettagli-info">
         <h1>Corsi Regionali</h1>
         <p>
-          Offriamo corsi pratici su competenze specifiche per carriere professionali nel settore tecnico. Contattaci per avere più informazioni sui corsi disponibili.
-        </p>
+              Stai cercando un percorso pratico e riconosciuto? I nostri corsi regionali ti preparano con competenze specifiche per entrare subito nel mondo del lavoro.
+              <br /><br />
+              Contattaci per una consulenza personalizzata e scopri l'offerta formativa disponibile.
+         </p>
       </div>
     </div>
   </div>
