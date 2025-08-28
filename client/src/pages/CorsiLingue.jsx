@@ -9,7 +9,7 @@ export default function CertificazioniLinguistiche() {
   const location = useLocation();
 
   useEffect(() => {
-    //fetch(`${import.meta.env.VITE_API_URL}/corsi`) * vecchio url di render
+    //fetch(`${import.meta.env.VITE_API_URL}/corsi`) *vecchio url di render
     fetch('/api/corsi/corsi')
       .then(response => response.json())
       .then(data => setCorsi(data))
