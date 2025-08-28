@@ -9,10 +9,7 @@ const CorsiRegionali = () => {
 
   return (
     <div className="corsi-container full-height">
-    <div className="corsi-container">
       <h1 className="corsi-title">Corsi Regionali</h1>
-      
-      {/* Contenitore che usa le classi del tuo CSS esistente */}
       <div className="dettagli-container">
         <div className="dettagli-layout">
           <div className="dettagli-info">
@@ -24,7 +21,6 @@ const CorsiRegionali = () => {
           </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };

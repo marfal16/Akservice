@@ -22,6 +22,7 @@ export default function DettagliCorso({ addToCart }) {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0); // Forza lo scorrimento in alto immediatamente
     setIsLoading(true);
    // fetch(`${import.meta.env.VITE_API_URL}/corsi/${id}`) // Recupera i dettagli del corso dal backend
    fetch(`/api/corsi/${id}`)
