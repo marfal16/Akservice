@@ -38,9 +38,9 @@ export default function DettagliCorso({ addToCart }) {
 
   if (isLoading) {
     return (
-      <div className="loading-container">
-        <p>Caricamento dettagli...</p>
-      </div>
+    <div className="loader-container">
+      <div className="spinner"></div>
+    </div>
     );
   }
 
