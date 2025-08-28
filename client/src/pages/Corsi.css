@@ -55,7 +55,6 @@
 }
 
 
-
 .modern-table {
   width: 100%;
   border-collapse: collapse;
@@ -150,6 +149,10 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.full-height {
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
 }
 
 /* Per schermi più piccoli di 430px */

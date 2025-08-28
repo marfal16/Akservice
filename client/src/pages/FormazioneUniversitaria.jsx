@@ -4,16 +4,27 @@ import "./Corsi.css";
 
 export default function FormazioneUniversitaria() {
   const [corsi, setCorsi] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [filtroCategoria, setFiltroCategoria] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const location = useLocation();
 
   useEffect(() => {
-    //fetch(`${import.meta.env.VITE_API_URL}/corsi`)
+    window.scrollTo(0, 0); // Forza lo scorrimento in alto immediatamente
+    // Prima della fetch, imposta il loading a true
+    setLoading(true);
     fetch('/api/corsi')
       .then(response => response.json())
-      .then(data => setCorsi(data))
-      .catch(error => console.error("Errore nel recupero dei corsi universitari", error));
+      .then(data => {
+        // Dati ricevuti, imposta il loading a false
+        setCorsi(data);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error("Errore nel recupero dei corsi universitari", error);
+        // In caso di errore, imposta il loading a false
+        setLoading(false);
+      });
   }, []);
 
   useEffect(() => {
@@ -44,8 +55,13 @@ export default function FormazioneUniversitaria() {
 
   return (
     <div className="corsi-container">
+              {loading ? (
+        <div className="loader-container">
+          <div className="spinner"></div>
+        </div>
+      ) : (
+        <>
       <h1 className="corsi-title">Formazione Universitaria</h1>
-
       <div className="search-bar">
         <input 
           type="text" 
@@ -99,7 +115,9 @@ export default function FormazioneUniversitaria() {
             ))}
           </tbody>
         </table>
-      </div>
+        </div>
+      </>
+      )}
     </div>
   );
 }

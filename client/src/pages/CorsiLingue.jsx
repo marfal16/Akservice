@@ -10,6 +10,7 @@ export default function CertificazioniLinguistiche() {
   const location = useLocation();
 
   useEffect(() => {
+    window.scrollTo(0, 0); // Forza lo scorrimento in alto immediatamente
     // Prima della fetch, imposta il loading a true
     setLoading(true);
     fetch('/api/corsi')

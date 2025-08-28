@@ -1,9 +1,14 @@
 // CorsiRegionali.jsx
 import React from 'react';
-import "./DettagliCorso.css";
+import "./Corsi.css";
 
 const CorsiRegionali = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0); // Forza lo scorrimento in alto
+  }, []); // L'array vuoto garantisce che l'effetto si esegua solo una volta
+  
   return (
+    <div className="corsi-container full-height">
     <div className="corsi-container">
       <h1 className="corsi-title">Corsi Regionali</h1>
       
@@ -19,6 +24,7 @@ const CorsiRegionali = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

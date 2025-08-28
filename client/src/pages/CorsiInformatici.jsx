@@ -27,6 +27,7 @@ export default function CertificazioniInformatiche() {
   }, []);
 
     useEffect(() => {
+      window.scrollTo(0, 0); // Forza lo scorrimento in alto immediatamente
       // Prima della fetch, imposta il loading a true
       setLoading(true);
       fetch('/api/corsi')
@@ -69,8 +70,13 @@ export default function CertificazioniInformatiche() {
 
   return (
     <div className="corsi-container">
+        {loading ? (
+        <div className="loader-container">
+          <div className="spinner"></div>
+        </div>
+      ) : (
+        <>
       <h1 className="corsi-title">Certificazioni Informatiche</h1>
-
       <div className="search-bar">
         <input 
           type="text" 
@@ -125,6 +131,8 @@ export default function CertificazioniInformatiche() {
           </tbody>
         </table>
       </div>
+      </>
+      )}
     </div>
   );
 }
