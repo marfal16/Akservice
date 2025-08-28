@@ -27,6 +27,7 @@ module.exports = async (req, res) => {
     res.json({ clientSecret: paymentIntent.client_secret });
   } catch (error) {
     console.error('Errore durante la creazione del PaymentIntent:', error.message);
-    res.status(500).json({ error: 'Errore  interno del server.' });
+    console.error(error.stack); 
+    res.status(500).json({ error: 'Errore interno del server.' });
   }
 };
