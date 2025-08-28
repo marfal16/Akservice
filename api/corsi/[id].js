@@ -1,5 +1,5 @@
-//const pool = require('../../utils/db');
-const pool = require('../utils/db');
+const pool = require('../../utils/db');
+//const pool = require('../utils/db');
 
 module.exports = async (req, res) => {
   if (req.method !== 'GET') {
