@@ -72,7 +72,7 @@ const Footer = () => {
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; 2025 AK SERVICE S.R.L. | Tutti i diritti riservati</p>
+        <p>&copy; 2025 AK SERVICE S.R.L. | Tutti i diritti riservati | P.IVA: 10024911215 </p>
       </div>
     </footer>
   );
