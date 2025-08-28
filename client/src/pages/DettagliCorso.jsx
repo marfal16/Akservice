@@ -32,7 +32,7 @@ export default function DettagliCorso({ addToCart }) {
         setIsLoading(false); // Conclude il caricamento
       })
       .catch(error => {
-        console.error("Errore nel recupero del corso", error);
+        console.error("Errore nel recupero del corso!", error);
         setIsLoading(false);
       });
   }, [id]);
