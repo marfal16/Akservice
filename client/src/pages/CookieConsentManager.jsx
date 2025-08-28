@@ -1,6 +1,6 @@
 // Modifica al componente CookieConsentManager.jsx
 
-/*
+
 import { useEffect, useState } from "react";
 
 const CookieConsentManager = () => {
@@ -75,4 +75,4 @@ const CookieConsentManager = () => {
   );
 };
 
-export default CookieConsentManager; */
+export default CookieConsentManager; 

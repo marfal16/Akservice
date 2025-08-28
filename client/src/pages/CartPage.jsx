@@ -32,7 +32,8 @@ const CartPage = ({ cartItems, removeFromCart, updateQuantity, setCartItem }) =>
      console.log("Dati inviati al backend CartPage:", { amount });
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/checkout`, {
+      //const response = await fetch(`${import.meta.env.VITE_API_URL}/checkout`, {
+        const response = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ amount }),

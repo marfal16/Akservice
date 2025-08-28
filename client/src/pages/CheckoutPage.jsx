@@ -25,7 +25,8 @@ const createPaymentIntent = async () => {
   });
 
   try {
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/checkout`, {
+    // const response = await fetch(`${import.meta.env.VITE_API_URL}/checkout`, {
+      const response = await fetch('/api/checkout', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
