@@ -2,6 +2,6 @@
   "dependencies": {
     "pg": "^8.16.3",
     "stripe": "^16.5.0",
-    "@paypal/checkout-server-sdk": "^1.0.2"
+    "@paypal/paypal-server-sdk": "^1.0.0"
   }
 }
