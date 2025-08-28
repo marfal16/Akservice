@@ -6,7 +6,17 @@
     },
     {
       "source": "/(.*)",
-      "destination": "/index.html"
+      "destination": "/client/dist/index.html"
+    }
+  ],
+  "builds": [
+    {
+      "src": "client/package.json",
+      "use": "@vercel/static-build"
+    },
+    {
+      "src": "api/*.js",
+      "use": "@vercel/node"
     }
   ]
 }
