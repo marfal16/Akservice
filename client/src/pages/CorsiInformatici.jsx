@@ -4,17 +4,42 @@ import "./Corsi.css";
 
 export default function CertificazioniInformatiche() {
   const [corsi, setCorsi] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [filtroCategoria, setFiltroCategoria] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const location = useLocation();
 
   useEffect(() => {
-    //fetch(`${import.meta.env.VITE_API_URL}/corsi`)
+    // 1. Imposta lo stato di caricamento su 'true' prima della fetch
+    setLoading(true);
     fetch('/api/corsi')
       .then(response => response.json())
-      .then(data => setCorsi(data))
-      .catch(error => console.error("Errore nel recupero dei corsi informatici", error));
+      .then(data => {
+        // 2. Imposta lo stato di caricamento su 'false' una volta ricevuti i dati
+        setCorsi(data);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error("Errore nel recupero dei corsi informatici", error);
+        // 3. Imposta lo stato di caricamento su 'false' anche in caso di errore
+        setLoading(false);
+      });
   }, []);
+
+    useEffect(() => {
+      // Prima della fetch, imposta il loading a true
+      setLoading(true);
+      fetch('/api/corsi')
+        .then(response => response.json())
+        .then(data => {
+          setCorsi(data);
+          setLoading(false); // Dati ricevuti, imposta il loading a false
+        })
+        .catch(error => {
+          console.error("Errore nel recupero delle certificazioni linguistiche", error);
+          setLoading(false); // In caso di errore, imposta il loading a false
+        });
+    }, []);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);

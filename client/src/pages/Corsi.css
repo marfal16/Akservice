@@ -124,7 +124,33 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* Stile per il contenitore del loader */
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px; /* O un'altezza che preferisci */
+}
 
+/* Stile per lo spinner */
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: var(--orange); /* Colore principale dello spinner, puoi cambiarlo */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite; /* Animazione di rotazione */
+}
+
+/* Definizione dell'animazione */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 /* Per schermi più piccoli di 430px */
 @media screen and (max-width: 430px) {
