@@ -9,7 +9,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 50px;
+  padding-top: 40px;
+  padding-bottom: 80px;
 }
 
 /* Layout: ora impilato verticalmente */
@@ -209,6 +210,11 @@
 /* Smartphone piccoli (max-width: 430px) */
 @media (max-width: 430px) {
 
+  .dettagli-info p {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
   .dettagli-titolo {
     font-size: 1.8rem;
     margin-top: 70px; /* regola questo valore in base all'altezza della navbar */

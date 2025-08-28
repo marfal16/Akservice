@@ -132,7 +132,7 @@
       }
     }
 
-    /* Ottimizzazioni per Smartphone piccoli - max-width: 430px */
+/* Ottimizzazioni per Smartphone piccoli - max-width: 430px */
 @media (max-width: 430px) {
     
   .footer-links, .footer-socials, .footer-contact {
