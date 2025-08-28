@@ -1,6 +1,6 @@
 /* Contenitore principale */
 .dettagli-container {
-  margin: 5%, auto;
+  margin: 5% auto;
   max-width: 100%;
   /* padding: 40px;  */
   background-color: #ffffff;
@@ -10,7 +10,7 @@
   flex-direction: column;
   align-items: center;
   padding-top: 40px;
-  padding-bottom: 80px;
+  margin-bottom: 100px;
 }
 
 /* Layout: ora impilato verticalmente */
@@ -214,7 +214,7 @@
     margin-left: 10px;
     margin-right: 10px;
   }
-  
+
   .dettagli-titolo {
     font-size: 1.8rem;
     margin-top: 70px; /* regola questo valore in base all'altezza della navbar */
