@@ -32,7 +32,7 @@ export default function DettagliCorso({ addToCart }) {
         setIsLoading(false); // Conclude il caricamento
       })
       .catch(error => {
-        console.error("Errore nel recupero del corso", error);
+        console.error("errore nel recupero del corso", error);
         setIsLoading(false);
       });
   }, [id]);
@@ -48,7 +48,7 @@ export default function DettagliCorso({ addToCart }) {
   if (!corso) {
     return (
       <div className="error-container">
-        <p>Errore: corso non trovato.</p>
+        <p>Errore: Corso non trovato.</p>
       </div>
     );
   }
