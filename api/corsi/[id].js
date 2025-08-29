@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
   }
 
   // Vercel passa i parametri dinamici (es. :id) in req.query
-  const { id } = req.query;
+  const { id } = req.query
   console.log('ID estratto dalla query:', id);
 
   try {

@@ -28,6 +28,7 @@ export default function DettagliCorso({ addToCart }) {
    fetch(`/api/corsi/${id}`)
       .then(response => response.json())
       .then(data => {
+        console.error("corso ok", data);
         setCorso(data); // Imposta il corso nello stato
         setIsLoading(false); // Conclude il caricamento
       })
