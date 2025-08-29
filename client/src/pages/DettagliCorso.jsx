@@ -26,7 +26,7 @@ export default function DettagliCorso({ addToCart }) {
     setIsLoading(true);
    // fetch(`${import.meta.env.VITE_API_URL}/corsi/${id}`) // Recupera i dettagli del corso dal backend
    fetch(`/api/corsi/${id}`)
-   console.log('Inizio fetch per l\'URL:', fetchUrl) // Log 1
+   console.log('Inizio fetch per l\'URL:') // Log 1
       .then(response => response.json())
       .then(data => {
         console.log('Dati ricevuti con successo:', data)
