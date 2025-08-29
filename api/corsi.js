@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
     console.log('Corsi trovati. OK');
     res.status(200).json(result.rows);
   } catch (err) {
-    console.error('Errore nel recupero dei corsi:', err);
+    console.error('Errore Nel recupero dei corsi:', err);
     res.status(400).send('Errore nel recupero dei corsi');
   }
 };

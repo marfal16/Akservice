@@ -24,7 +24,7 @@ module.exports = async (req, res) => {
     }
     res.json(result.rows[0]);
   } catch (err) {
-    console.error("Errore nel recupero del Corso", err);
+    console.error("Errore nel recupero del corso", err);
     res.status(500).json({ error: "Errore del server" });
   }
 }; 
