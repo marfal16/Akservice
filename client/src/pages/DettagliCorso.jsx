@@ -26,13 +26,15 @@ export default function DettagliCorso({ addToCart }) {
     setIsLoading(true);
    // fetch(`${import.meta.env.VITE_API_URL}/corsi/${id}`) // Recupera i dettagli del corso dal backend
    fetch(`/api/corsi/${id}`)
+   console.log('Inizio fetch per l\'URL:', fetchUrl) // Log 1
       .then(response => response.json())
       .then(data => {
+        console.log('Dati ricevuti con successo:', data)
         setCorso(data); // Imposta il corso nello stato
         setIsLoading(false); // Conclude il caricamento
       })
       .catch(error => {
-        console.error("Errore nel recupero del corso", error);
+        console.error("Errore nel recupero del Corso", error);
         setIsLoading(false);
       });
   }, [id]);
