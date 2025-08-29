@@ -6,6 +6,15 @@
     },
     {
       "source": "/(.*)",
+      "has": [
+        {
+          "type": "filesystem"
+        }
+      ],
+      "destination": "/client/dist/$1"
+    },
+    {
+      "source": "/(.*)",
       "destination": "/client/dist/index.html"
     }
   ]
