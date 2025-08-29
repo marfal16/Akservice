@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
 
   try {
     const result = await pool.query('SELECT * FROM corsi');
-    console.log('Corsi trovati');
+    console.log('Corsi trovati. OK');
     res.status(200).json(result.rows);
   } catch (err) {
     console.error('Errore nel recupero dei corsi:', err);
