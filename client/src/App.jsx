@@ -332,7 +332,7 @@ const [isMessageVisible, setIsMessageVisible] = useState(false);
           <Route path="/formazione-universitaria" element={<FormazioneUniversitaria addToCart={addToCart} />} />
           <Route path="/dettagli/:id" element={<DettagliCorso addToCart={addToCart} />} />
           <Route path="/checkout" element={<CheckoutPage />} />
-          <Route path="/conferma" element={<ConfermaPage />} />
+          <Route path="/conferma" element={<ConfermaPage setCartItems={setCartItems} />} />
           <Route path="/cart" element={<CartPage cartItems={cartItems} removeFromCart={removeFromCart} updateQuantity={updateQuantity} />} />
           <Route path="/checkout-paypal" element={<CheckoutPayPal cartItems={cartItems} setCartItems={setCartItems} />} />
           <Route

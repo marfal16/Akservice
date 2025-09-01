@@ -14,11 +14,12 @@ export default function ConfermaPage() {
 import React, { useEffect } from "react";
 import "./ConfermaPage.css";
 
-export default function ConfermaPage() {
+export default function ConfermaPage({ setCartItems }) {
   useEffect(() => {
-    localStorage.removeItem('cart'); // Svuota il carrello salvato
+    localStorage.removeItem('cart');     // Svuota il localStorage
+    setCartItems([]);                    // Svuota lo stato React
   }, []);
-
+  
   return (
     <div className="conferma-container">
       <h1>Grazie per il tuo acquisto!</h1>
