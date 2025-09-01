@@ -13,7 +13,7 @@ import { useLocation } from 'react-router-dom';
 import scrollDown from '../assets/scroll-bar.png';
 import scrittaLogo from '../assets/AKSERVICE-W.png';
 import whatsappImg from '../assets/whatsapp.png';
-import coverImage from '../assets/cover.jpg';  
+import imgforVideo from '../assets/imgforVideo.jpg';  
 import { Helmet } from 'react-helmet';
 
 
@@ -78,7 +78,7 @@ const Home = () => {
           muted
           playsInline
           preload="auto"
-          poster={coverImage}
+          poster={imgforVideo}
         />
         <img src={scrittaLogo} alt="Scritta Logo" className="top-icon" />
         <a href="#about">
