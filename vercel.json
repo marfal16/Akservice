@@ -2,6 +2,7 @@
   "buildCommand": "cd client && npm run build && cp -a dist/. ../",
   "outputDirectory": ".",
   "routes": [
+    { "src": "/api/corsi/(\\d+)", "dest": "/api/corsi" },
     { "handle": "filesystem" },
     { "src": "/api/(.*)", "dest": "/api/$1" },
     { "src": "/(.*)", "dest": "/index.html" }
