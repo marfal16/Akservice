@@ -76,6 +76,7 @@ const Home = () => {
           loop
           muted
           playsInline
+          preload="auto"
         />
         <img src={scrittaLogo} alt="Scritta Logo" className="top-icon" />
         <a href="#about">
