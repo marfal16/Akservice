@@ -1,5 +1,5 @@
 {
-  "buildCommand": "cd client && npm run build && cp -r client/dist/* .",
+  "buildCommand": "cd client && npm run build && cp -a dist/. ../",
   "outputDirectory": ".",
   "routes": [
     { "handle": "filesystem" },
