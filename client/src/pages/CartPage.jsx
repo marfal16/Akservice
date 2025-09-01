@@ -52,15 +52,22 @@ const CartPage = ({ cartItems, removeFromCart, updateQuantity, setCartItem }) =>
     } catch (error) {
       console.error('Errore nel recupero del clientSecret:', error);
       setPaymentError("Si è verificato un errore durante l'avvio del pagamento. Riprova più tardi.");
-    } finally {
+    } /* finally {
       setLoading(false);
-    }
+    }*/
   };
 
-  const handleProceedPayment = () => {
-    setIsPopupOpen(true);
-    createPaymentIntent();
-  };
+const handleProceedPayment = () => {
+  setLoading(true); // Mostra lo spinner
+
+  createPaymentIntent(); // Avvia la richiesta al backend
+
+  setTimeout(() => {
+    setLoading(false);     // Nasconde lo spinner
+    setIsPopupOpen(true);  // Mostra la popup
+  }, 3000); // ⏳ 3 secondi di attesa
+};
+
 
   const closePopup = () => {
     setIsPopupOpen(false);
@@ -161,9 +168,9 @@ const CartPage = ({ cartItems, removeFromCart, updateQuantity, setCartItem }) =>
                 <div className="payment-options">
                 
                  {loading ? (
-                  <div className="loading-message">
-                    <div className="spinner" />
-                    <p>Caricamento in corso...</p>
+                  <div className="loader-container">
+                    <div className="spinner"></div>
+                    
                   </div>
                 ) : (
                   <>
